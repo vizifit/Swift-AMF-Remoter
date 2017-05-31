@@ -16,7 +16,8 @@ open class ClassMap
     fileprivate var _classAlias:String
     //fileprivate var _classAlias:String
     
-    init(className:String, classAlias:String){
+    
+    public init(className:String, classAlias:String){
         
         _className = className
         _classAlias = classAlias

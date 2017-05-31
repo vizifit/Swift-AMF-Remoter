@@ -79,62 +79,6 @@
 		268F7C691EDA1F3A0087203B /* FakeCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C241EDA1F3A0087203B /* FakeCallBack.swift */; };
 		268F7C6A1EDA1F3A0087203B /* PendingCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C251EDA1F3A0087203B /* PendingCall.swift */; };
 		268F7C731EDA30120087203B /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268F7C721EDA30120087203B /* Reflection.framework */; };
-		2699C5441EDF575C00DB2F84 /* BaseRemoteServiceDefinition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD81EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5451EDF576B00DB2F84 /* BinaryUtils.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BCD1EDA1F3A0087203B /* BinaryUtils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5461EDF576B00DB2F84 /* EventDispatcher.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BCE1EDA1F3A0087203B /* EventDispatcher.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5471EDF576B00DB2F84 /* MessageUtil.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BCF1EDA1F3A0087203B /* MessageUtil.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5481EDF576B00DB2F84 /* ObjectUtils.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD01EDA1F3A0087203B /* ObjectUtils.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5491EDF576B00DB2F84 /* Protocol.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD11EDA1F3A0087203B /* Protocol.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54A1EDF576B00DB2F84 /* SwiftKVC.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD21EDA1F3A0087203B /* SwiftKVC.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54B1EDF577400DB2F84 /* IAMFCoder.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BDF1EDA1F3A0087203B /* IAMFCoder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54C1EDF577400DB2F84 /* IAMFServiceDefinition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE01EDA1F3A0087203B /* IAMFServiceDefinition.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54D1EDF577400DB2F84 /* IDictionaryBuilder.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE11EDA1F3A0087203B /* IDictionaryBuilder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54E1EDF577400DB2F84 /* IDictionaryItem.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE21EDA1F3A0087203B /* IDictionaryItem.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C54F1EDF577400DB2F84 /* IEnumeration.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE31EDA1F3A0087203B /* IEnumeration.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5501EDF577400DB2F84 /* IEventDispatcher.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE41EDA1F3A0087203B /* IEventDispatcher.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5511EDF577400DB2F84 /* IMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE51EDA1F3A0087203B /* IMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5521EDF577400DB2F84 /* INetConnection.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE61EDA1F3A0087203B /* INetConnection.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5531EDF577400DB2F84 /* IPendingServiceCall.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE71EDA1F3A0087203B /* IPendingServiceCall.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5541EDF577400DB2F84 /* IPendingServiceCallback.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE81EDA1F3A0087203B /* IPendingServiceCallback.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5551EDF577400DB2F84 /* IServiceCall.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BE91EDA1F3A0087203B /* IServiceCall.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5561EDF577400DB2F84 /* IServiceDefinition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BEA1EDA1F3A0087203B /* IServiceDefinition.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5571EDF577400DB2F84 /* IServiceHandlerProvider.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BEB1EDA1F3A0087203B /* IServiceHandlerProvider.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5581EDF577400DB2F84 /* IServiceInvoker.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BEC1EDA1F3A0087203B /* IServiceInvoker.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5591EDF577400DB2F84 /* IServiceNotification.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BED1EDA1F3A0087203B /* IServiceNotification.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55A1EDF577400DB2F84 /* IServiceRequest.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BEE1EDA1F3A0087203B /* IServiceRequest.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55B1EDF579600DB2F84 /* ASArray.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C031EDA1F3A0087203B /* ASArray.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55C1EDF579600DB2F84 /* ASObject.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C041EDA1F3A0087203B /* ASObject.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55D1EDF579600DB2F84 /* BasicObject.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C051EDA1F3A0087203B /* BasicObject.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55E1EDF579600DB2F84 /* DynamicObject.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C061EDA1F3A0087203B /* DynamicObject.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C55F1EDF579D00DB2F84 /* AMFServiceRequest.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD51EDA1F3A0087203B /* AMFServiceRequest.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5601EDF579D00DB2F84 /* AMFServiceRequestGroup.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD61EDA1F3A0087203B /* AMFServiceRequestGroup.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5611EDF579D00DB2F84 /* PendingModalServiceResult.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD91EDA1F3A0087203B /* PendingModalServiceResult.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5621EDF579D00DB2F84 /* RemoteServiceConfiguration.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BDA1EDA1F3A0087203B /* RemoteServiceConfiguration.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5631EDF579D00DB2F84 /* ServiceRequestGroup.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BDB1EDA1F3A0087203B /* ServiceRequestGroup.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5641EDF579D00DB2F84 /* ServiceRequestGroupResult.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BDC1EDA1F3A0087203B /* ServiceRequestGroupResult.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5651EDF579D00DB2F84 /* ServiceResult.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BDD1EDA1F3A0087203B /* ServiceResult.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5661EDF57AC00DB2F84 /* RemoteServiceErrorConstants.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C001EDA1F3A0087203B /* RemoteServiceErrorConstants.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5671EDF57B800DB2F84 /* AMFByteArray.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C101EDA1F3A0087203B /* AMFByteArray.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5681EDF57B800DB2F84 /* AMFMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C111EDA1F3A0087203B /* AMFMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5691EDF57B800DB2F84 /* AMFMessageBody.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C121EDA1F3A0087203B /* AMFMessageBody.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56A1EDF57B800DB2F84 /* AMFMessageHeader.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C131EDA1F3A0087203B /* AMFMessageHeader.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56B1EDF57B800DB2F84 /* AMFResult.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C141EDA1F3A0087203B /* AMFResult.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56C1EDF57D500DB2F84 /* ClassDefinition.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C081EDA1F3A0087203B /* ClassDefinition.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56D1EDF57D500DB2F84 /* ClassMap.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C091EDA1F3A0087203B /* ClassMap.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56E1EDF57D500DB2F84 /* ReferenceData.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C0A1EDA1F3A0087203B /* ReferenceData.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C56F1EDF57DE00DB2F84 /* AMF0Coder.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C0C1EDA1F3A0087203B /* AMF0Coder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5701EDF57DE00DB2F84 /* AMF3Coder.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C0D1EDA1F3A0087203B /* AMF3Coder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5711EDF57DE00DB2F84 /* AMFCoder.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C0E1EDA1F3A0087203B /* AMFCoder.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5721EDF57F100DB2F84 /* AcknowledgeMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C161EDA1F3A0087203B /* AcknowledgeMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5731EDF57F100DB2F84 /* AsyncMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C171EDA1F3A0087203B /* AsyncMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5741EDF57F100DB2F84 /* BinaryMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C181EDA1F3A0087203B /* BinaryMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5751EDF57F100DB2F84 /* CommandMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C191EDA1F3A0087203B /* CommandMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5761EDF57F100DB2F84 /* ErrorMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C1A1EDA1F3A0087203B /* ErrorMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5771EDF57F100DB2F84 /* FlexMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C1B1EDA1F3A0087203B /* FlexMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5781EDF57F100DB2F84 /* RemotingMessage.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C1C1EDA1F3A0087203B /* RemotingMessage.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C5791EDF57F900DB2F84 /* NetConnection.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C1F1EDA1F3A0087203B /* NetConnection.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C57A1EDF57F900DB2F84 /* RemotingClient.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7C201EDA1F3A0087203B /* RemotingClient.swift */; settings = {ATTRIBUTES = (Public, ); }; };
-		2699C57B1EDF580400DB2F84 /* SwiftAMFRemoterManager.swift in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BD31EDA1F3A0087203B /* SwiftAMFRemoterManager.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		26AB6ED51EDA466400E6CAA1 /* AMFEncoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB6ED41EDA466400E6CAA1 /* AMFEncoderTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -537,62 +481,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				268F7C4C1EDA1F3A0087203B /* RuntimeGlue.h in Headers */,
-				2699C54B1EDF577400DB2F84 /* IAMFCoder.swift in Headers */,
-				2699C54C1EDF577400DB2F84 /* IAMFServiceDefinition.swift in Headers */,
-				2699C54D1EDF577400DB2F84 /* IDictionaryBuilder.swift in Headers */,
-				2699C54E1EDF577400DB2F84 /* IDictionaryItem.swift in Headers */,
-				2699C54F1EDF577400DB2F84 /* IEnumeration.swift in Headers */,
-				2699C5501EDF577400DB2F84 /* IEventDispatcher.swift in Headers */,
-				2699C5511EDF577400DB2F84 /* IMessage.swift in Headers */,
-				2699C5521EDF577400DB2F84 /* INetConnection.swift in Headers */,
-				2699C5531EDF577400DB2F84 /* IPendingServiceCall.swift in Headers */,
-				2699C5541EDF577400DB2F84 /* IPendingServiceCallback.swift in Headers */,
-				2699C5551EDF577400DB2F84 /* IServiceCall.swift in Headers */,
-				2699C5561EDF577400DB2F84 /* IServiceDefinition.swift in Headers */,
-				2699C5571EDF577400DB2F84 /* IServiceHandlerProvider.swift in Headers */,
-				2699C5581EDF577400DB2F84 /* IServiceInvoker.swift in Headers */,
-				2699C5591EDF577400DB2F84 /* IServiceNotification.swift in Headers */,
-				2699C55A1EDF577400DB2F84 /* IServiceRequest.swift in Headers */,
-				2699C5451EDF576B00DB2F84 /* BinaryUtils.swift in Headers */,
-				2699C5461EDF576B00DB2F84 /* EventDispatcher.swift in Headers */,
-				2699C5471EDF576B00DB2F84 /* MessageUtil.swift in Headers */,
-				2699C5481EDF576B00DB2F84 /* ObjectUtils.swift in Headers */,
-				2699C5491EDF576B00DB2F84 /* Protocol.swift in Headers */,
-				2699C56F1EDF57DE00DB2F84 /* AMF0Coder.swift in Headers */,
-				2699C5701EDF57DE00DB2F84 /* AMF3Coder.swift in Headers */,
-				2699C5711EDF57DE00DB2F84 /* AMFCoder.swift in Headers */,
-				2699C56C1EDF57D500DB2F84 /* ClassDefinition.swift in Headers */,
-				2699C56D1EDF57D500DB2F84 /* ClassMap.swift in Headers */,
-				2699C56E1EDF57D500DB2F84 /* ReferenceData.swift in Headers */,
-				2699C5671EDF57B800DB2F84 /* AMFByteArray.swift in Headers */,
-				2699C5681EDF57B800DB2F84 /* AMFMessage.swift in Headers */,
-				2699C5691EDF57B800DB2F84 /* AMFMessageBody.swift in Headers */,
-				2699C56A1EDF57B800DB2F84 /* AMFMessageHeader.swift in Headers */,
-				2699C56B1EDF57B800DB2F84 /* AMFResult.swift in Headers */,
-				2699C5661EDF57AC00DB2F84 /* RemoteServiceErrorConstants.swift in Headers */,
-				2699C55F1EDF579D00DB2F84 /* AMFServiceRequest.swift in Headers */,
-				2699C5601EDF579D00DB2F84 /* AMFServiceRequestGroup.swift in Headers */,
-				2699C5611EDF579D00DB2F84 /* PendingModalServiceResult.swift in Headers */,
-				2699C5621EDF579D00DB2F84 /* RemoteServiceConfiguration.swift in Headers */,
-				2699C5631EDF579D00DB2F84 /* ServiceRequestGroup.swift in Headers */,
-				2699C5641EDF579D00DB2F84 /* ServiceRequestGroupResult.swift in Headers */,
-				2699C5651EDF579D00DB2F84 /* ServiceResult.swift in Headers */,
-				2699C55B1EDF579600DB2F84 /* ASArray.swift in Headers */,
-				2699C55C1EDF579600DB2F84 /* ASObject.swift in Headers */,
-				2699C55D1EDF579600DB2F84 /* BasicObject.swift in Headers */,
-				2699C55E1EDF579600DB2F84 /* DynamicObject.swift in Headers */,
-				2699C54A1EDF576B00DB2F84 /* SwiftKVC.swift in Headers */,
-				2699C57B1EDF580400DB2F84 /* SwiftAMFRemoterManager.swift in Headers */,
-				2699C5791EDF57F900DB2F84 /* NetConnection.swift in Headers */,
-				2699C57A1EDF57F900DB2F84 /* RemotingClient.swift in Headers */,
-				2699C5721EDF57F100DB2F84 /* AcknowledgeMessage.swift in Headers */,
-				2699C5731EDF57F100DB2F84 /* AsyncMessage.swift in Headers */,
-				2699C5741EDF57F100DB2F84 /* BinaryMessage.swift in Headers */,
-				2699C5751EDF57F100DB2F84 /* CommandMessage.swift in Headers */,
-				2699C5761EDF57F100DB2F84 /* ErrorMessage.swift in Headers */,
-				2699C5771EDF57F100DB2F84 /* FlexMessage.swift in Headers */,
-				2699C5781EDF57F100DB2F84 /* RemotingMessage.swift in Headers */,
-				2699C5441EDF575C00DB2F84 /* BaseRemoteServiceDefinition.swift in Headers */,
 				268F7BC31EDA1A9D0087203B /* SwiftAMFRemoter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

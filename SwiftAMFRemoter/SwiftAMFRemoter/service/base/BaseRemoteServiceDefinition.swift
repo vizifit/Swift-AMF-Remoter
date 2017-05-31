@@ -10,7 +10,7 @@ import Foundation
 
 open class BaseRemoteServiceDefinition: IAMFServiceDefinition{
     
-    init(_ value:String,
+    public init(_ value:String,
          _ methodName:String,
          _ source:String?=nil,
          _ modalWaitMessage:String="Loading...",

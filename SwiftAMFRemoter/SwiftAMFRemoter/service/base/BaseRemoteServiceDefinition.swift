@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BaseRemoteServiceDefinition: IAMFServiceDefinition{
+open class BaseRemoteServiceDefinition: IAMFServiceDefinition{
     
     init(_ value:String,
          _ methodName:String,
@@ -59,53 +59,53 @@ class BaseRemoteServiceDefinition: IAMFServiceDefinition{
     
     
     
-    var value: String{
+    public var value: String{
         
         get{return self._value}
 
     }
     
-    var methodName: String{
+    public var methodName: String{
         get{return self._methodName}
 
     }
     
-    var destination: String?{
+    public var destination: String?{
         get{return self._destination}
 
     }
     
-    var endpoint: String?{
+    public var endpoint: String?{
         get{return self._endpoint}
 
     }
     
-    var source: String?{
+    public var source: String?{
         get{return self._source}
 
     }
     
-    var modalWait: Bool{
+    public var modalWait: Bool{
         get{return self._modalWait}
 
     }
     
-    var modalWaitMessage: String?{
+    public var modalWaitMessage: String?{
         get{return self._modalWaitMessage}
 
     }
     
-    var alwaysSendNotification: Bool{
+    public var alwaysSendNotification: Bool{
         get{return self._alwaysSendNotification}
 
     }
     
-    var resultNotificationId: String?{
+    public var resultNotificationId: String?{
         get{return self._resultNotificationId}
 
     }
     
-    var faultNotificationId: String?{
+    public var faultNotificationId: String?{
         get{return self._faultNotificationId}
 
     }

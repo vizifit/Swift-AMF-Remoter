@@ -159,7 +159,8 @@ open class ObjectUtils{
     
     static private func continueIfPrivateVar( enabled:Bool, value:String )->Bool{
         if value.indexOf("_") != nil {
-            print("REMOVE: \(value)")
+            
+            //print("REMOVE: \(value)")
             return true
         }
         return false

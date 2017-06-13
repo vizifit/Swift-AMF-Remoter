@@ -25,6 +25,10 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
         encode(value)
     }
     
+    public func resetPosition() {
+        position = 0
+    }
+    
     public func decodeValue(_ bytes:[UInt8]?) throws -> Any? {
        
         // Bytes are passed in
@@ -153,6 +157,7 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
     open func clear() -> Self {
         position = 0
         _bytes.removeAll()
+        
         return self
     }
     
@@ -227,6 +232,7 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
     
     open func encodeMessage( message: AMFMessage){
         
+        clear()
     
         //encodeShort(UInt16(message.version.rawValue))
         encodeShort(3)
@@ -254,7 +260,7 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
         
         
         
-        
+            
         //encode(message.getBodyAt(0))
         
 //        for i in 0..<headerCount{

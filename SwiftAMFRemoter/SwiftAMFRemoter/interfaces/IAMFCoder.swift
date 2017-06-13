@@ -16,7 +16,6 @@ public protocol IAMFCoder {
     var bytesAvailable:Int { get }
     subscript(i: Int) -> UInt8 { get set }
     
-   
     @discardableResult
     func encode(_ value:Any?) -> Self
     func decode() throws -> Any?
@@ -51,6 +50,7 @@ public protocol IAMFCoder {
     func clear() -> Self
    
     func resetReferences()
+    func resetPosition()
     
     func addClassMap(map:ClassMap)
     

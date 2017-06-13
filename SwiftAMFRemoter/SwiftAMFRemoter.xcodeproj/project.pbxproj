@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260ACD2B1EEB59130066231C /* RemoteServiceManagerConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACD2A1EEB59130066231C /* RemoteServiceManagerConstants.swift */; };
+		260ACD2E1EED27EC0066231C /* IMessageQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACD2D1EED27EC0066231C /* IMessageQueue.swift */; };
+		260ACD301EED283D0066231C /* MessageQueueItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACD2F1EED283D0066231C /* MessageQueueItem.swift */; };
+		260ACD321EED29C90066231C /* MessageQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACD311EED29C90066231C /* MessageQueue.swift */; };
 		268F7BBC1EDA1A9D0087203B /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268F7BB21EDA1A9D0087203B /* SwiftAMFRemoter.framework */; };
 		268F7BC11EDA1A9D0087203B /* SwiftAMFRemoterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BC01EDA1A9D0087203B /* SwiftAMFRemoterTests.swift */; };
 		268F7BC31EDA1A9D0087203B /* SwiftAMFRemoter.h in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BB51EDA1A9D0087203B /* SwiftAMFRemoter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,6 +97,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		260ACD2A1EEB59130066231C /* RemoteServiceManagerConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManagerConstants.swift; sourceTree = "<group>"; };
+		260ACD2D1EED27EC0066231C /* IMessageQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IMessageQueue.swift; sourceTree = "<group>"; };
+		260ACD2F1EED283D0066231C /* MessageQueueItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageQueueItem.swift; sourceTree = "<group>"; };
+		260ACD311EED29C90066231C /* MessageQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageQueue.swift; sourceTree = "<group>"; };
 		268F7BB21EDA1A9D0087203B /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAMFRemoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268F7BB51EDA1A9D0087203B /* SwiftAMFRemoter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAMFRemoter.h; sourceTree = "<group>"; };
 		268F7BB61EDA1A9D0087203B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +199,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260ACD2C1EED27720066231C /* queues */ = {
+			isa = PBXGroup;
+			children = (
+				260ACD2F1EED283D0066231C /* MessageQueueItem.swift */,
+				260ACD311EED29C90066231C /* MessageQueue.swift */,
+			);
+			path = queues;
+			sourceTree = "<group>";
+		};
 		268F7BA81EDA1A9D0087203B = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +230,7 @@
 		268F7BB41EDA1A9D0087203B /* SwiftAMFRemoter */ = {
 			isa = PBXGroup;
 			children = (
+				260ACD2C1EED27720066231C /* queues */,
 				268F7BCC1EDA1F3A0087203B /* utils */,
 				268F7BD41EDA1F3A0087203B /* service */,
 				268F7BDE1EDA1F3A0087203B /* interfaces */,
@@ -293,6 +311,7 @@
 				268F7BEC1EDA1F3A0087203B /* IServiceInvoker.swift */,
 				268F7BED1EDA1F3A0087203B /* IServiceNotification.swift */,
 				268F7BEE1EDA1F3A0087203B /* IServiceRequest.swift */,
+				260ACD2D1EED27EC0066231C /* IMessageQueue.swift */,
 			);
 			path = interfaces;
 			sourceTree = "<group>";
@@ -363,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				268F7C001EDA1F3A0087203B /* RemoteServiceErrorConstants.swift */,
+				260ACD2A1EEB59130066231C /* RemoteServiceManagerConstants.swift */,
 			);
 			path = constants;
 			sourceTree = "<group>";
@@ -603,6 +623,7 @@
 				268F7C641EDA1F3A0087203B /* RemotingMessage.swift in Sources */,
 				268F7C581EDA1F3A0087203B /* AMFCoder.swift in Sources */,
 				268F7C3A1EDA1F3A0087203B /* IEventDispatcher.swift in Sources */,
+				260ACD301EED283D0066231C /* MessageQueueItem.swift in Sources */,
 				268F7C561EDA1F3A0087203B /* AMF0Coder.swift in Sources */,
 				268F7C531EDA1F3A0087203B /* ClassDefinition.swift in Sources */,
 				268F7C5F1EDA1F3A0087203B /* AsyncMessage.swift in Sources */,
@@ -610,6 +631,7 @@
 				268F7C351EDA1F3A0087203B /* IAMFCoder.swift in Sources */,
 				268F7C481EDA1F3A0087203B /* String+HTML.swift in Sources */,
 				268F7C391EDA1F3A0087203B /* IEnumeration.swift in Sources */,
+				260ACD2B1EEB59130066231C /* RemoteServiceManagerConstants.swift in Sources */,
 				268F7C691EDA1F3A0087203B /* FakeCallBack.swift in Sources */,
 				268F7C471EDA1F3A0087203B /* String+Extensions.swift in Sources */,
 				268F7C3D1EDA1F3A0087203B /* IPendingServiceCall.swift in Sources */,
@@ -617,11 +639,13 @@
 				268F7C591EDA1F3A0087203B /* AMFByteArray.swift in Sources */,
 				268F7C311EDA1F3A0087203B /* RemoteServiceConfiguration.swift in Sources */,
 				268F7C341EDA1F3A0087203B /* ServiceResult.swift in Sources */,
+				260ACD2E1EED27EC0066231C /* IMessageQueue.swift in Sources */,
 				268F7C551EDA1F3A0087203B /* ReferenceData.swift in Sources */,
 				268F7C421EDA1F3A0087203B /* IServiceInvoker.swift in Sources */,
 				268F7C291EDA1F3A0087203B /* ObjectUtils.swift in Sources */,
 				268F7C5D1EDA1F3A0087203B /* AMFResult.swift in Sources */,
 				268F7C261EDA1F3A0087203B /* BinaryUtils.swift in Sources */,
+				260ACD321EED29C90066231C /* MessageQueue.swift in Sources */,
 				268F7C2B1EDA1F3A0087203B /* SwiftKVC.swift in Sources */,
 				268F7C271EDA1F3A0087203B /* EventDispatcher.swift in Sources */,
 				268F7C2C1EDA1F3A0087203B /* SwiftAMFRemoterManager.swift in Sources */,

@@ -138,6 +138,7 @@ open class SwiftAMFRemoterManager : EventDispatcher {
             // Todo: Throw error/log
             return
         }
+    
         
         
         let config:RemoteServiceConfiguration = (_registeredServiceConfigurations.getItem( serviceConfigKey ) as? RemoteServiceConfiguration)!

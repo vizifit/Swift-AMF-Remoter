@@ -80,7 +80,7 @@ open class AMF3Coder : AMFCoder{
         let alias = value.remoteClassAlias
         
         if(alias == nil){
-            print("Class type: [\(name)] not supported for registration.")
+            if(AMF3Coder.verboseDebug){ print("Class type: [\(name)] not supported for registration.") }
             return
         }
         
@@ -92,8 +92,7 @@ open class AMF3Coder : AMFCoder{
             return
         }
         
-        print("Warning: Class alias: [\(alias!)] already exists for registered type: [\(name)]")
-
+        if(AMF3Coder.verboseDebug){ print("Warning: Class alias: [\(alias!)] already exists for registered type: [\(name)]") }
     }
     
     func registerClassNameAlias(_ value: AnyObject, alias:String){
@@ -112,7 +111,8 @@ open class AMF3Coder : AMFCoder{
                     break
                 }
                 
-                print("Warning: Class alias: [\(alias)] already exists for registered type: [\(name)]")
+                if(AMF3Coder.verboseDebug){ print("Warning: Class alias: [\(alias)] already exists for registered type: [\(name)]") }
+              
                 
             break
             
@@ -136,7 +136,10 @@ open class AMF3Coder : AMFCoder{
 
             
         default:
-            print("Class type: [\(name)] not supported for registration.")
+            if(AMF3Coder.verboseDebug){
+                print("Class type: [\(name)] not supported for registration.")
+            }
+            
         }
     }
     
@@ -411,7 +414,11 @@ open class AMF3Coder : AMFCoder{
         // Return reference
         if (header.isReference){
             let action = "Decoding:"
-            print("\(action) Object (Ref) at index:\(header.value)")
+            
+            if(AMF3Coder.verboseDebug){
+               print("\(action) Object (Ref) at index:\(header.value)")
+            }
+            
             
             let zeroBasedIndex = header.value
             
@@ -482,8 +489,11 @@ open class AMF3Coder : AMFCoder{
         
         // Return reference
         if (header.isReference){
-            let action = "Decoding:"
-            print("\(action) String (Ref) at index:\(header.value)")
+            
+            if(AMF3Coder.verboseDebug){
+                let action = "Decoding:"
+                print("\(action) String (Ref) at index:\(header.value)")
+            }
             
             let zeroBasedIndex = header.value
             
@@ -859,13 +869,19 @@ open class AMF3Coder : AMFCoder{
             // Write class properties & values
             for (key, _) in clsDict {
                 encodeUTFBytes(key)
-                print("Property Key: \(key)")
+                if(AMF3Coder.verboseDebug){
+                    print("Property Key: \(key)")
+                }
+                
             }
             
             for (key, value) in clsDict {
                 encode(value!)
-                print("Key Value: \(key)")
-                print("Property Value: \(value!)")
+                
+                if(AMF3Coder.verboseDebug){
+                    print("Key Value: \(key)")
+                    print("Property Value: \(value!)")
+                }
             }
 
             ///Note: Dynamic classes are not supported at this time
@@ -918,9 +934,6 @@ open class AMF3Coder : AMFCoder{
         for index in 0..<clsMemberCount {
             memberName = try decodeString()
             
-            if(memberName == "UserType"){
-                print("here")
-            }
             
             if(AMF3Coder.verboseDebug) { print("Member: \(memberName) at Index: \(index)") }
             members.append(memberName)
@@ -983,10 +996,6 @@ open class AMF3Coder : AMFCoder{
 //                        
 //                        continue
 //                    }
-                    
-                    if(member == "NetworkMessages"){
-                        print("here")
-                    }
                     
                     if(anyValue == nil){
                         continue
@@ -1079,8 +1088,10 @@ open class AMF3Coder : AMFCoder{
         
         let oneBasedIndex = index+1 // 1 Based array values for References
         
-        let action = "Encoding:"
-        print("\(action) String (Ref) at index:\(oneBasedIndex)")
+        if(AMF3Coder.verboseDebug){
+            let action = "Encoding:"
+            print("\(action) String (Ref) at index:\(oneBasedIndex)")
+        }
 
         return encodeReference(index: oneBasedIndex)
         
@@ -1116,6 +1127,12 @@ open class AMF3Coder : AMFCoder{
         _referenceData.reset(excludeClassMap: true)
         
     }
+    
+//    override open func encodeMessage( message: AMFMessage){
+//        resetReferences()
+//        super.encodeMessage(message: message)
+//    }
+
     //    func isReference(index:Int)->Bool{
     //
     //       return ((index & 0x01) == 0 ) ?  true : false

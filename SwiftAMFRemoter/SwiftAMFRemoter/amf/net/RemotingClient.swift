@@ -13,45 +13,86 @@ open class RemotingClient: EventDispatcher, INetConnection{
     
     fileprivate var _gatewayUrl:String = ""
     fileprivate var _netConnection:NetConnection
-    fileprivate var _amfCoder:IAMFCoder;
-    fileprivate var _requestCount:Int = 0;
-    
+    fileprivate var _encoder:IAMFCoder
+    fileprivate var _decoder:IAMFCoder
+    fileprivate var _requestCount:Int = 0
+    fileprivate var _index:Int = 0
+    fileprivate var _isPendingCallResponse:Bool = false
     
     init(netConnection connection:NetConnection) {
         
         _netConnection = connection
-        _amfCoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
+        
+        // Require copy of both encoder and decoder for concurrency.
+        _encoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
+        _decoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
         
         super.init()
     }
     
+    //TODO: Add this functionality later.
     open func connect(_ command: String, params arguments: [AnyObject]?) {
         
         _gatewayUrl = command
         
         //let commandMessage = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
-        
         //call(commandMessage, callback: nil)
     }
     
-    open func close(){
-        
-    }
+    //TODO: Add this functionality later
+    open func close(){}
     
     open var connected:Bool {
-        get{
+        get{ return true }
+    }
+    
+    public var encoder:IAMFCoder {
+        get{ return _encoder }
+    }
+    
+    public var decoder:IAMFCoder {
+        get{ return _decoder }
+    }
+    
+    public var isPendingCallResponse:Bool{
+        get { return _isPendingCallResponse}
+    }
+    
+    
+    private func encodeAndSendMessage(requestMessage:AMFMessage){
+        
+        self.encoder.encodeMessage(message: requestMessage)
+        
+        // TODO: Fix
+        //_registeredServiceConfigurations.updateItem(config)
+        
+        invokeCall(self._gatewayUrl, requestMessage: Data(encoder.bytes)) { (success, resultMessage) -> () in
+            if success {
+                
+                
+                self.dispatch(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, bubbles: false, data: resultMessage)
+                
+                //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
+                //self.dispatch("test", bubbles: false, data: resultMessage)
+                
+                print("logged in successfully!")
+            } else {
+                print("there was an error:", resultMessage!)
+            }
+        }
+
+    }
+    
+    private func isWaiting() -> Bool{
+        
+        if(self.isPendingCallResponse==true){
+            
+            // Add to Batch
             return true
         }
         
+        return false
     }
-    
-    public var coder:IAMFCoder {
-        get{
-            return _amfCoder
-        }
-    }
-    
-    
 
  
     //: For Flex RPC
@@ -66,13 +107,19 @@ open class RemotingClient: EventDispatcher, INetConnection{
             return
         }
         
-        if(_requestCount == 0){
-            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
-            _requestCount = _requestCount+1
-            
-        }
+        let responseString = (_requestCount == 0) ? "0" : String(_requestCount+1)
         
-        let responseString = "" ///\(String(_requestCount))"
+        _requestCount = _requestCount+1
+        
+//        if(_requestCount == 0){
+//            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
+//            _requestCount = _requestCount+1
+//        }
+//        else{
+//            _requestCount = _requestCount+1
+//        }
+//        
+//        let responseString = String(_requestCount)
         
         let amfMessage:AMFMessage = AMFMessage(version:  _netConnection.objectEncoding)
         amfMessage.serviceDefinition = serviceDefinition
@@ -81,52 +128,59 @@ open class RemotingClient: EventDispatcher, INetConnection{
         let amfMessageBody:AMFMessageBody = AMFMessageBody(target: "", response: responseString, content: message)
         amfMessage.addBody(amfMessageBody)
         
-        coder.encodeMessage(message: amfMessage)
         
-        // TODO: Fix
-        //_registeredServiceConfigurations.updateItem(config)
+        encodeAndSendMessage(requestMessage: amfMessage)
         
-        invokeCall(self._gatewayUrl, amfMessage: Data(coder.bytes)) { (success, message) -> () in
-            if success {
-  
-                //dispatch(<#T##type: String##String#>, bubbles: <#T##Bool#>, data: <#T##Any?#>)
-                
-                SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
-                //self.dispatch("test", bubbles: false, data: amfMessage)
-                
-                print("logged in successfully!")
-            } else {
-                print("there was an error:", message!)
-            }
-        }
+//        coder.encodeMessage(message: amfMessage)
+//        
+//        // TODO: Fix
+//        //_registeredServiceConfigurations.updateItem(config)
+//        
+//        invokeCall(self._gatewayUrl, amfMessage: Data(coder.bytes)) { (success, message) -> () in
+//            if success {
+//  
+//                //dispatch(<#T##type: String##String#>, bubbles: <#T##Bool#>, data: <#T##Any?#>)
+//                
+//                //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
+//                self.dispatch("test", bubbles: false, data: amfMessage)
+//                
+//                print("logged in successfully!")
+//            } else {
+//                print("there was an error:", message!)
+//            }
+//        }
     }
     
-    fileprivate func invokeCall(_ endpoint:String, amfMessage:Data, completion: @escaping (_ success: Bool, _ message: AMFMessage?) -> ()) {
-        
+    fileprivate func invokeCall(_ endpoint:String, requestMessage:Data, completion: @escaping (_ success: Bool, _ resultMessage: AMFMessage?) -> ()) {
         
         //let loginObject = ["email": email, "password": password]
         
-        post(clientAMFRequest(endpoint, amfMessage: amfMessage)) { (success, object) -> () in
+        post(clientAMFRequest(endpoint, requestAMFMessage: requestMessage)) { (success, result) -> () in
             
+            // Thread on main queue
             DispatchQueue.main.async(execute: { () -> Void in
+                
                 if success {
-                    completion(true, object as? AMFMessage)
+                    completion(true, result as? AMFMessage)
+                
                 } else {
+                    
                     // TODO: More in-depth error logic
                     var errorMessage = "there was an error"
-                    if let object = object, let passedMessage = object["message"] as? String {
+                    if let result = result, let passedMessage = result["message"] as? String {
                         errorMessage = passedMessage
                     }
                      
                     print(errorMessage)
-                    completion(true, object as? AMFMessage)
+                    completion(true, result as? AMFMessage)
                 }
             })
         }
     }
     
     
-    fileprivate func clientAMFRequest(_ endpoint:String, amfMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
+    // TODO: Will need to add custom headers eventually
+    fileprivate func clientAMFRequest(_ endpoint:String, requestAMFMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
         
         var request = URLRequest(url: URL(string: endpoint)!)
         
@@ -148,7 +202,7 @@ open class RemotingClient: EventDispatcher, INetConnection{
             request.setValue("BigMavAMF", forHTTPHeaderField: "User-Agent")
             //request.setValue("", forHTTPHeaderField: "Accept-Encoding")
             //request.setValue("100-continue", forHTTPHeaderField: "Expect")
-            request.httpBody = amfMessage
+            request.httpBody = requestAMFMessage
         }
         
         return request
@@ -177,22 +231,42 @@ open class RemotingClient: EventDispatcher, INetConnection{
         let session = URLSession(configuration: URLSessionConfiguration.default)
          
         session.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-            
-            
+           
             if let data = data {
                 
+                let bytes:[UInt8]? = data.bytes
+                
+                //self._index = self._index + 1
+                //print("completed_" + String(self._index) + " - SIZE - " + String(data.bytes.count))
+                //return
+                    
                 // Need to update coder to have decode method that takes parameter
                 //let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 
-                self._amfCoder.position=0;
+                self.decoder.resetPosition()
                 
-                let amfMessage:AMFMessage = try! self._amfCoder.decodeMessage(data.bytes)
-                
-                if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
-                    completion(true, amfMessage)
-                } else {
-                    completion(false, amfMessage)
+                if(bytes != nil || data.bytes.count > 0){
+                    let amfMessage:AMFMessage = try! self.decoder.decodeMessage(data.bytes)
+                    
+                    if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
+                        completion(true, amfMessage)
+                    } else {
+                        completion(false, amfMessage)
+                    }
+                    
+                    return
                 }
+                
+                // Error happened but still need to return
+                if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
+                    completion(true, nil)
+                } else {
+                    completion(false, nil)
+                }
+
+              
+                
+                
 //                if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
 //                    completion(true, json as AnyObject?)
 //                } else {

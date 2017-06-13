@@ -65,7 +65,7 @@ open class ReferenceData {
     func add(_ value:String) {
         
         if(indexOf(value) != nil){
-            print("Reference string \(value) already exists")
+            if(AMF3Coder.verboseDebug){ print("Reference string \(value) already exists") }
             return
         }
         
@@ -75,7 +75,8 @@ open class ReferenceData {
     func add(_ value:BasicObject) {
         
         if(indexOf(value) != nil){
-            print("Reference object already exists ")
+            if(AMF3Coder.verboseDebug){ print("Reference Object already exists ") }
+            
             return
         }
         
@@ -85,7 +86,7 @@ open class ReferenceData {
     func add(_ value:Date) {
         
         if(indexOf(value) != nil){
-            print("Reference object already exists ")
+            if(AMF3Coder.verboseDebug){ print("Reference Date already exists ") }
             return
         }
         
@@ -96,7 +97,7 @@ open class ReferenceData {
     func add(_ value:ClassDefinition) {
         
         if(indexOf(value) != nil){
-            print("Reference ClassDefinition already exists ")
+            if(AMF3Coder.verboseDebug){ print("Reference ClassDefinition already exists ") }
             return
         }
         
@@ -107,7 +108,7 @@ open class ReferenceData {
     func add(_ value:ClassMap) {
         
         if(indexOf(value) != nil){
-            print("Reference ClassMap already exists ")
+            if(AMF3Coder.verboseDebug){ print("Reference ClassMap already exists ") }
             return
         }
         
@@ -117,7 +118,8 @@ open class ReferenceData {
     func add(_ value:ASArray) {
         
         if(indexOf(value) != nil){
-            print("Reference ClassMap already exists ")
+            if(AMF3Coder.verboseDebug){ print("Reference ClassMap already exists ") }
+            
             return
         }
         

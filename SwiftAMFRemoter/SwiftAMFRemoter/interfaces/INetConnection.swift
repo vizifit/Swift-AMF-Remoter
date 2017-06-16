@@ -12,6 +12,8 @@ import Foundation
 public protocol INetConnection : IEventDispatcher {
     // protocol definition goe
     
+    var key:String {get}
+
     
     func connect(_ command:String, params arguments:[AnyObject]?  )
     

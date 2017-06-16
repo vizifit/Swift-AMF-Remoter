@@ -18,11 +18,12 @@ open class RemotingClient: EventDispatcher, INetConnection{
     fileprivate var _requestCount:Int = 0
     fileprivate var _index:Int = 0
     fileprivate var _isPendingCallResponse:Bool = false
+    fileprivate var _key:String = String()
     
-    init(netConnection connection:NetConnection) {
+    init(netConnection connection:NetConnection, key: String) {
         
         _netConnection = connection
-        
+        _key = key
         // Require copy of both encoder and decoder for concurrency.
         _encoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
         _decoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
@@ -41,6 +42,10 @@ open class RemotingClient: EventDispatcher, INetConnection{
     
     //TODO: Add this functionality later
     open func close(){}
+    
+    open var key: String {
+        get{ return _key }
+    }
     
     open var connected:Bool {
         get{ return true }
@@ -70,12 +75,13 @@ open class RemotingClient: EventDispatcher, INetConnection{
             if success {
                 
                 
-                self.dispatch(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, bubbles: false, data: resultMessage)
+                //emoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION
+                self.dispatch(self.key, bubbles: false, data: resultMessage)
                 
                 //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
                 //self.dispatch("test", bubbles: false, data: resultMessage)
                 
-                print("logged in successfully!")
+                //print("logged in successfully!")
             } else {
                 print("there was an error:", resultMessage!)
             }

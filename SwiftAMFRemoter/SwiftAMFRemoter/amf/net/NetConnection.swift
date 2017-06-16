@@ -134,7 +134,7 @@ public final class NetConnection :NSObject{
         
         if(_uri?.scheme == "http" || _uri?.scheme == "https")
         {
-            _netConnectionClient =  RemotingClient(netConnection: self);
+            //_netConnectionClient =  RemotingClient(netConnection: self, key: String);
             _netConnectionClient?.connect((_uri?.absoluteString)!, params: _arguments)
             
         }

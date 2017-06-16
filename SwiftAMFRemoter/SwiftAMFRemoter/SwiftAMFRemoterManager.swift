@@ -58,10 +58,21 @@ open class SwiftAMFRemoterManager : EventDispatcher {
 
     func onClientResponse(_ notification: Notification) {
         
-        
-        //dispatch(<#T##type: String##String#>, bubbles: <#T##Bool#>, data: <#T##Any?#>)
-        print("Here")
-        
+        for (key,val) in (notification.userInfo)! {
+            let val_str = "\(key)"
+            
+            
+            if val_str == "event" {
+                let returnEvent:Event =  val as! Event
+                //let message = returnEvent.data as! AMFMessage
+                
+                
+                dispatch(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, bubbles: false, data: returnEvent.data)
+                
+                //remoteVideoURL = val
+                break
+            }
+        } 
     }
     
     open func addClassMap(_ map:ClassMap){
@@ -76,7 +87,7 @@ open class SwiftAMFRemoterManager : EventDispatcher {
             // TODO: Add logging here
             return
         }
-        
+         
         _registeredServiceConfigurations.addItem(configuration)
         
         configuration.connection.addEventListener(configuration.key, selector: #selector(onClientResponse(_:)), observer: self, useCapture: false)

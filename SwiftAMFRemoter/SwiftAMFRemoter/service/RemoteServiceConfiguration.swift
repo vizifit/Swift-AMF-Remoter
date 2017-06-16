@@ -30,7 +30,9 @@ open class  RemoteServiceConfiguration:IDictionaryItem{
         self._modalWait = modalWait
         self._isUpdateable = isUpdateable
         self._encoding = encoding
-        self._connection = RemotingClient(netConnection: NetConnection(objectEncoding: encoding))
+        
+        //(netConnection: NetConnection(objectEncoding: encoding), key: self._key)
+        self._connection = RemotingClient(netConnection: NetConnection(objectEncoding: encoding), key: key)
         
         self._connection.connect(endpoint!, params: nil)
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public protocol INetConnection : IEventDispatcher {
+public protocol INetConnection  {
     // protocol definition goe
     
     var key:String {get}

@@ -9,7 +9,9 @@
 import Foundation
 
 
-open class RemotingClient: EventDispatcher, INetConnection{
+
+open class RemotingClient: INetConnection {
+    
     
     fileprivate var _gatewayUrl:String = ""
     fileprivate var _netConnection:NetConnection
@@ -19,16 +21,21 @@ open class RemotingClient: EventDispatcher, INetConnection{
     fileprivate var _index:Int = 0
     fileprivate var _isPendingCallResponse:Bool = false
     fileprivate var _key:String = String()
+    fileprivate var _pendingMessages:[Int:PendingMessageResult]
+
+    
+    
     
     init(netConnection connection:NetConnection, key: String) {
         
         _netConnection = connection
         _key = key
+        
         // Require copy of both encoder and decoder for concurrency.
         _encoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
         _decoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
+        _pendingMessages = [:]
         
-        super.init()
     }
     
     //TODO: Add this functionality later.
@@ -63,26 +70,96 @@ open class RemotingClient: EventDispatcher, INetConnection{
         get { return _isPendingCallResponse}
     }
     
+    private func addPendingMessageResult( _ message:IMessage, serviceDefinition:IAMFServiceDefinition){
+        
+        _pendingMessages[_pendingMessages.count] = PendingMessageResult(message, serviceDefinition: serviceDefinition)
+        
+    }
+    
+    private func removePendingMessageResult(messageId:String?) -> PendingMessageResult?{
+        
+        if(messageId == nil){
+            return nil
+        }
+        
+        print("Remove Pending message for MessageID:" + messageId!)
+        
+        for (index, pendingMessage) in _pendingMessages {
+            
+            if messageId! == pendingMessage.messageId {
+                
+                print("Message found at index:" + String(index))
+                let foundMessage = _pendingMessages.removeValue(forKey: index)
+                return foundMessage
+            }
+        }
+        
+        print("Message remove FAILED")
+
+        
+        return nil
+        
+//        let result = PendingMessageResult.getPendingMessageResult(messageId, pendingMessages: _pendingMessages)
+//        print("MessageID:" + messageId)
+//        
+//        if(result == nil){
+//            print("Message Not FOUND")
+//            return nil
+//        }
+//        
+//        print("Message found at index:" + String((result?.index)!))
+//        
+//        // Remove pending message
+//        _pendingMessages.removeValue(forKey: (result?.index)!)
+//        
+//        return result?.pendingMessage
+    }
     
     private func encodeAndSendMessage(requestMessage:AMFMessage){
         
+        
         self.encoder.encodeMessage(message: requestMessage)
         
-        // TODO: Fix
+                // TODO: Fix
         //_registeredServiceConfigurations.updateItem(config)
         
         invokeCall(self._gatewayUrl, requestMessage: Data(encoder.bytes)) { (success, resultMessage) -> () in
+            
             if success {
                 
+                if(resultMessage == nil){
+                    //TODO: Print error here
+                    return
+                }
                 
-                //emoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION
-                self.dispatch(self.key, bubbles: false, data: resultMessage)
+                var messageCorrelationId:String? = nil
+                
+                do{
+                    
+                    messageCorrelationId = try resultMessage!.getMessageId()
+                    
+                }catch let e {
+                    print(e.localizedDescription)
+                }
+                
+ 
+                
+                let result = self.removePendingMessageResult(messageId: messageCorrelationId)
+                
+                // Update result message with service definition
+                resultMessage!.serviceDefinition = (result?.serviceDefinition)!
+                
+                NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": resultMessage!, "serviceKey": self.key])
+ 
+                //self.dispatch(self.key, bubbles: false, data: resultMessage)
                 
                 //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
                 //self.dispatch("test", bubbles: false, data: resultMessage)
                 
                 //print("logged in successfully!")
             } else {
+                
+                // Do logic to handle errors here
                 print("there was an error:", resultMessage!)
             }
         }
@@ -113,6 +190,9 @@ open class RemotingClient: EventDispatcher, INetConnection{
             return
         }
         
+        // Add pending message for future retrieval
+        addPendingMessageResult(message, serviceDefinition: serviceDefinition)
+
         let responseString = (_requestCount == 0) ? "0" : String(_requestCount+1)
         
         _requestCount = _requestCount+1

@@ -178,6 +178,41 @@ open class AMFMessage: BasicObject {
         
     }
     
+    open func getMessageId(_ index: Int = 0) throws -> String?{
+        
+        if(_bodies.count > 0 && ((_bodies.count-1) >= index)){
+            
+            let messageBody = getBodyAt(index)
+            
+            guard let messageResultSet:[Any?] = messageBody.content! as? [Any?] else {
+                throw AMFCoder.Error.badResult
+            }
+            
+            if(messageResultSet.count == 0){
+                throw AMFCoder.Error.badResult
+            }
+            
+            let messageResult = messageResultSet[0]!
+            switch messageResult
+            {
+                
+            case _ as AcknowledgeMessage:
+                return (messageResult as? AcknowledgeMessage)?.correlationId
+                
+                
+            case _ as ErrorMessage:
+                return (messageResult as? ErrorMessage)?.correlationId
+                
+            default:
+                return nil
+                
+            }
+        }
+        
+        return nil
+
+        
+    }
     
     open func getResult(_ index: Int = 0) throws -> (ResultType, Any?) {
         
@@ -200,15 +235,17 @@ open class AMFMessage: BasicObject {
             switch messageResult
             {
                 
-            case _ as AcknowledgeMessage:
-                type = .success
-                result = (messageResult as? AcknowledgeMessage)?.body
-                break
                 
             case _ as ErrorMessage:
                 type = .serverError
                 result = (messageResult as? ErrorMessage)?.body
                 break
+                
+            case _ as AcknowledgeMessage:
+                type = .success
+                result = (messageResult as? AcknowledgeMessage)?.body
+                break
+
                 
             default:
                 result = messageResult

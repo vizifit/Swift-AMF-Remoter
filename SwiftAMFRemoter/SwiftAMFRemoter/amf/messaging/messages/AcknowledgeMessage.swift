@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc(AcknowledgeMessage) open class AcknowledgeMessage : AsyncMessage{
+@objc(AcknowledgeMessage) open class AcknowledgeMessage : AsyncMessage, IResultMessage{
     
     
     required public init() {

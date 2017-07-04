@@ -26,8 +26,8 @@ open class BaseRemoteServiceDefinition: IAMFServiceDefinition{
         self._methodName = methodName
         self._modalWaitMessage=modalWaitMessage
         self._modalWait = modalWait
-        self._resultNotificationId=resultNotificationId
-        self._faultNotificationId=faultNotificationId
+        self._resultNotificationId = (resultNotificationId == nil) ? "result_" + value : resultNotificationId
+        self._faultNotificationId = (faultNotificationId == nil) ? "fault_" + value : faultNotificationId
         self._destination=destination
         self._source=source
         self._endpoint=endpoint

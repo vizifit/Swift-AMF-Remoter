@@ -140,7 +140,7 @@ open class RemoteServiceManager : EventDispatcher {
         var connector:IServiceConnector
         
         // Loop through connectors & call interface method
-        for (_, value) in _registeredServiceConnectors.list {
+        for (key, value) in _registeredServiceConnectors.list {
             
             connector = value as! IServiceConnector
             
@@ -149,8 +149,8 @@ open class RemoteServiceManager : EventDispatcher {
             //connector.connectorNotificationFilter
             connector.onServiceNotification(notification)
             
-            //print("Property Value: \(key)")
-            //print("Key Value: \(String(describing: value))")
+            print("Property Value: \(key)")
+            print("Key Value: \(String(describing: value))")
         }
     }
     

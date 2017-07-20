@@ -8,7 +8,7 @@
 
 import Foundation
 
-open class MessageQueue: EventDispatcher{
+open class MessageQueue {
     
     
     

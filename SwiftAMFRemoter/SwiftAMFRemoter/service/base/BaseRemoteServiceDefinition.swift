@@ -33,7 +33,6 @@ open class BaseRemoteServiceDefinition: IAMFServiceDefinition{
         self._endpoint=endpoint
         self._alwaysSendNotification=alwaysSendNotification
         
-        
     }
     
  

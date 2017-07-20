@@ -17,36 +17,16 @@ open class BaseServiceConnector: IServiceConnectorView{
         
         registerServiceConnector(self)
     }
-    
-    public init(notificationFilter:ServiceConnectorNotificationFilter){
-        
-        self._connectorId = UUID().uuidString // "D" - xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (32 digits separated by hyphens)
-        self._connectorNotificationFilter = notificationFilter
-        self._rsmgr = RemoteServiceManager.getInstance({ RemoteServiceManager() })
-        
-        registerServiceConnector(self)
-    }
+ 
  
     private var _rsmgr:IRemoteServiceManager
     
     private var _connectorId:String
     
-    private var _connectorNotificationFilter:ServiceConnectorNotificationFilter? = nil
-    
-    
     open func registerServiceConnector(_ connector:IServiceConnectorView){
         remoteServiceManager.registerServiceConnector(connector)
     }
-    
-//    open func registerServiceConnector(_ connector:IServiceConnector, withNotificationFilter:ServiceConnectorNotificationFilter){
-//        
-//        // Set filter
-//        var localConnector = connector
-//        localConnector.connectorNotificationFilter = withNotificationFilter
-//        
-//        RemoteServiceManager.sharedInstance.registerServiceConnector(localConnector)
-//    }
-    
+  
     open func removeServiceConnector(_ connectorId:String){
         remoteServiceManager.removeServiceConnector(connectorId)
     }
@@ -81,14 +61,6 @@ open class BaseServiceConnector: IServiceConnectorView{
      Gets unique Id of connector
      */
     open var connectorId:String { get { return self.connectorId} }
-    
-    /**
-     Gets/Sets service connector notification filter
-     */
-    open var connectorNotificationFilter: ServiceConnectorNotificationFilter? {
-        get { return self._connectorNotificationFilter}
-        set { self._connectorNotificationFilter = newValue}
-    }
     
     
 }

@@ -80,7 +80,6 @@
 		26A4EE841F16F983008038A9 /* BaseRemoteServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE761F16F983008038A9 /* BaseRemoteServiceDefinition.swift */; };
 		26A4EE851F16F983008038A9 /* BaseServiceConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE771F16F983008038A9 /* BaseServiceConnector.swift */; };
 		26A4EE861F16F983008038A9 /* ServiceConnectorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */; };
-		26A4EE871F16F983008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */; };
 		26A4EE881F16F983008038A9 /* RemoteServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7B1F16F983008038A9 /* RemoteServiceConfiguration.swift */; };
 		26A4EE891F16F983008038A9 /* AMFServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7D1F16F983008038A9 /* AMFServiceRequest.swift */; };
 		26A4EE8A1F16F983008038A9 /* AMFServiceRequestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7E1F16F983008038A9 /* AMFServiceRequestGroup.swift */; };
@@ -91,11 +90,11 @@
 		26A4EE941F16FA6E008038A9 /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */; };
 		26A4EE971F184105008038A9 /* IGlobalNotificationConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE961F184105008038A9 /* IGlobalNotificationConnector.swift */; };
 		26A4EEAA1F196EE5008038A9 /* IGlobalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEA91F196EE5008038A9 /* IGlobalNotification.swift */; };
-		26A4EEB71F1A0551008038A9 /* ServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */; };
-		26A4EEB81F1A0551008038A9 /* IServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */; };
 		26A4EEBA1F1D8BF2008038A9 /* IServiceConnectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB91F1D8BF2008038A9 /* IServiceConnectorView.swift */; };
 		26A4EEBC1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEBB1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift */; };
 		26A4EEBE1F1D8D40008038A9 /* IRemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEBD1F1D8D40008038A9 /* IRemoteServiceManager.swift */; };
+		26A4EEC01F215F0E008038A9 /* IServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEBF1F215F0E008038A9 /* IServiceConnectorObserver.swift */; };
+		26A4EEC21F215F1F008038A9 /* ServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEC11F215F1F008038A9 /* ServiceConnectorObserver.swift */; };
 		26AB6ED51EDA466400E6CAA1 /* AMFEncoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB6ED41EDA466400E6CAA1 /* AMFEncoderTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -186,7 +185,6 @@
 		26A4EE761F16F983008038A9 /* BaseRemoteServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRemoteServiceDefinition.swift; sourceTree = "<group>"; };
 		26A4EE771F16F983008038A9 /* BaseServiceConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConnector.swift; sourceTree = "<group>"; };
 		26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotification.swift; sourceTree = "<group>"; };
-		26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotificationFilter.swift; sourceTree = "<group>"; };
 		26A4EE7B1F16F983008038A9 /* RemoteServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceConfiguration.swift; sourceTree = "<group>"; };
 		26A4EE7D1F16F983008038A9 /* AMFServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequest.swift; sourceTree = "<group>"; };
 		26A4EE7E1F16F983008038A9 /* AMFServiceRequestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequestGroup.swift; sourceTree = "<group>"; };
@@ -197,11 +195,11 @@
 		26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
 		26A4EE961F184105008038A9 /* IGlobalNotificationConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGlobalNotificationConnector.swift; sourceTree = "<group>"; };
 		26A4EEA91F196EE5008038A9 /* IGlobalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGlobalNotification.swift; sourceTree = "<group>"; };
-		26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorObserver.swift; sourceTree = "<group>"; };
-		26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnectorObserver.swift; sourceTree = "<group>"; };
 		26A4EEB91F1D8BF2008038A9 /* IServiceConnectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnectorView.swift; sourceTree = "<group>"; };
 		26A4EEBB1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRemoteServiceConfiguration.swift; sourceTree = "<group>"; };
 		26A4EEBD1F1D8D40008038A9 /* IRemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRemoteServiceManager.swift; sourceTree = "<group>"; };
+		26A4EEBF1F215F0E008038A9 /* IServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnectorObserver.swift; sourceTree = "<group>"; };
+		26A4EEC11F215F1F008038A9 /* ServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorObserver.swift; sourceTree = "<group>"; };
 		26AB6ED41EDA466400E6CAA1 /* AMFEncoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFEncoderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -298,6 +296,7 @@
 		268F7BDE1EDA1F3A0087203B /* interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				26A4EEBF1F215F0E008038A9 /* IServiceConnectorObserver.swift */,
 				268F7BDF1EDA1F3A0087203B /* IAMFCoder.swift */,
 				268F7BE01EDA1F3A0087203B /* IAMFServiceDefinition.swift */,
 				268F7BE11EDA1F3A0087203B /* IDictionaryBuilder.swift */,
@@ -520,8 +519,8 @@
 		26A4EE781F16F983008038A9 /* connector */ = {
 			isa = PBXGroup;
 			children = (
+				26A4EEC11F215F1F008038A9 /* ServiceConnectorObserver.swift */,
 				26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */,
-				26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */,
 			);
 			path = connector;
 			sourceTree = "<group>";
@@ -549,19 +548,9 @@
 		26A4EE911F16FA6E008038A9 /* managers */ = {
 			isa = PBXGroup;
 			children = (
-				26A4EEB21F1A0551008038A9 /* globalNotificationManager */,
 				26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */,
 			);
 			path = managers;
-			sourceTree = "<group>";
-		};
-		26A4EEB21F1A0551008038A9 /* globalNotificationManager */ = {
-			isa = PBXGroup;
-			children = (
-				26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */,
-				26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */,
-			);
-			path = globalNotificationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -681,13 +670,11 @@
 				268F7C441EDA1F3A0087203B /* IServiceRequest.swift in Sources */,
 				268F7C431EDA1F3A0087203B /* IServiceNotification.swift in Sources */,
 				26A4EE8E1F16F983008038A9 /* ServiceResult.swift in Sources */,
-				26A4EEB81F1A0551008038A9 /* IServiceConnectorObserver.swift in Sources */,
 				268F7C3E1EDA1F3A0087203B /* IPendingServiceCallback.swift in Sources */,
 				268F7C671EDA1F3A0087203B /* RemotingClient.swift in Sources */,
 				268F7C601EDA1F3A0087203B /* BinaryMessage.swift in Sources */,
 				268F7C501EDA1F3A0087203B /* ASObject.swift in Sources */,
 				26A4EE8B1F16F983008038A9 /* ServiceRequestGroup.swift in Sources */,
-				26A4EEB71F1A0551008038A9 /* ServiceConnectorObserver.swift in Sources */,
 				268F7C5C1EDA1F3A0087203B /* AMFMessageHeader.swift in Sources */,
 				268F7C461EDA1F3A0087203B /* SiwftCore+Extension.swift in Sources */,
 				268F7C4A1EDA1F3A0087203B /* DictionaryBuilder.swift in Sources */,
@@ -721,6 +708,7 @@
 				260ACD2E1EED27EC0066231C /* IMessageQueue.swift in Sources */,
 				268F7C551EDA1F3A0087203B /* ReferenceData.swift in Sources */,
 				268F7C421EDA1F3A0087203B /* IServiceInvoker.swift in Sources */,
+				26A4EEC21F215F1F008038A9 /* ServiceConnectorObserver.swift in Sources */,
 				268F7C291EDA1F3A0087203B /* ObjectUtils.swift in Sources */,
 				268F7C5D1EDA1F3A0087203B /* AMFResult.swift in Sources */,
 				268F7C261EDA1F3A0087203B /* BinaryUtils.swift in Sources */,
@@ -755,10 +743,10 @@
 				26A4EE561F04DA4A008038A9 /* IServiceConnnectorNotification.swift in Sources */,
 				26A4EE631F09ACFF008038A9 /* IResultMessage.swift in Sources */,
 				268F7C621EDA1F3A0087203B /* ErrorMessage.swift in Sources */,
-				26A4EE871F16F983008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */,
 				268F7C511EDA1F3A0087203B /* BasicObject.swift in Sources */,
 				26A4EE841F16F983008038A9 /* BaseRemoteServiceDefinition.swift in Sources */,
 				268F7C611EDA1F3A0087203B /* CommandMessage.swift in Sources */,
+				26A4EEC01F215F0E008038A9 /* IServiceConnectorObserver.swift in Sources */,
 				268F7C5B1EDA1F3A0087203B /* AMFMessageBody.swift in Sources */,
 				268F7C521EDA1F3A0087203B /* DynamicObject.swift in Sources */,
 				268F7C3B1EDA1F3A0087203B /* IMessage.swift in Sources */,

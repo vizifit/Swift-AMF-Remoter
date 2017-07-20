@@ -21,15 +21,6 @@
 		268F7C291EDA1F3A0087203B /* ObjectUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD01EDA1F3A0087203B /* ObjectUtils.swift */; };
 		268F7C2A1EDA1F3A0087203B /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD11EDA1F3A0087203B /* Protocol.swift */; };
 		268F7C2B1EDA1F3A0087203B /* SwiftKVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD21EDA1F3A0087203B /* SwiftKVC.swift */; };
-		268F7C2C1EDA1F3A0087203B /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD31EDA1F3A0087203B /* RemoteServiceManager.swift */; };
-		268F7C2D1EDA1F3A0087203B /* AMFServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD51EDA1F3A0087203B /* AMFServiceRequest.swift */; };
-		268F7C2E1EDA1F3A0087203B /* AMFServiceRequestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD61EDA1F3A0087203B /* AMFServiceRequestGroup.swift */; };
-		268F7C2F1EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD81EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift */; };
-		268F7C301EDA1F3A0087203B /* PendingModalServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BD91EDA1F3A0087203B /* PendingModalServiceResult.swift */; };
-		268F7C311EDA1F3A0087203B /* RemoteServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BDA1EDA1F3A0087203B /* RemoteServiceConfiguration.swift */; };
-		268F7C321EDA1F3A0087203B /* ServiceRequestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BDB1EDA1F3A0087203B /* ServiceRequestGroup.swift */; };
-		268F7C331EDA1F3A0087203B /* ServiceRequestGroupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BDC1EDA1F3A0087203B /* ServiceRequestGroupResult.swift */; };
-		268F7C341EDA1F3A0087203B /* ServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BDD1EDA1F3A0087203B /* ServiceResult.swift */; };
 		268F7C351EDA1F3A0087203B /* IAMFCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BDF1EDA1F3A0087203B /* IAMFCoder.swift */; };
 		268F7C361EDA1F3A0087203B /* IAMFServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BE01EDA1F3A0087203B /* IAMFServiceDefinition.swift */; };
 		268F7C371EDA1F3A0087203B /* IDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BE11EDA1F3A0087203B /* IDictionaryBuilder.swift */; };
@@ -83,12 +74,28 @@
 		268F7C691EDA1F3A0087203B /* FakeCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C241EDA1F3A0087203B /* FakeCallBack.swift */; };
 		268F7C6A1EDA1F3A0087203B /* PendingCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C251EDA1F3A0087203B /* PendingCall.swift */; };
 		268F7C731EDA30120087203B /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 268F7C721EDA30120087203B /* Reflection.framework */; };
-		26A4EE541F04D940008038A9 /* BaseServiceConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE531F04D940008038A9 /* BaseServiceConnector.swift */; };
 		26A4EE561F04DA4A008038A9 /* IServiceConnnectorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE551F04DA4A008038A9 /* IServiceConnnectorNotification.swift */; };
-		26A4EE581F04DC6F008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE571F04DC6F008038A9 /* ServiceConnectorNotificationFilter.swift */; };
-		26A4EE5F1F04EFBE008038A9 /* ServiceConnectorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE5E1F04EFBE008038A9 /* ServiceConnectorNotification.swift */; };
 		26A4EE611F099E58008038A9 /* PendingMessageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE601F099E58008038A9 /* PendingMessageResult.swift */; };
 		26A4EE631F09ACFF008038A9 /* IResultMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE621F09ACFF008038A9 /* IResultMessage.swift */; };
+		26A4EE841F16F983008038A9 /* BaseRemoteServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE761F16F983008038A9 /* BaseRemoteServiceDefinition.swift */; };
+		26A4EE851F16F983008038A9 /* BaseServiceConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE771F16F983008038A9 /* BaseServiceConnector.swift */; };
+		26A4EE861F16F983008038A9 /* ServiceConnectorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */; };
+		26A4EE871F16F983008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */; };
+		26A4EE881F16F983008038A9 /* RemoteServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7B1F16F983008038A9 /* RemoteServiceConfiguration.swift */; };
+		26A4EE891F16F983008038A9 /* AMFServiceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7D1F16F983008038A9 /* AMFServiceRequest.swift */; };
+		26A4EE8A1F16F983008038A9 /* AMFServiceRequestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7E1F16F983008038A9 /* AMFServiceRequestGroup.swift */; };
+		26A4EE8B1F16F983008038A9 /* ServiceRequestGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE7F1F16F983008038A9 /* ServiceRequestGroup.swift */; };
+		26A4EE8D1F16F983008038A9 /* PendingModalServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE821F16F983008038A9 /* PendingModalServiceResult.swift */; };
+		26A4EE8E1F16F983008038A9 /* ServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE831F16F983008038A9 /* ServiceResult.swift */; };
+		26A4EE901F16F9DF008038A9 /* ServiceRequestGroupResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE8F1F16F9DF008038A9 /* ServiceRequestGroupResult.swift */; };
+		26A4EE941F16FA6E008038A9 /* RemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */; };
+		26A4EE971F184105008038A9 /* IGlobalNotificationConnector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE961F184105008038A9 /* IGlobalNotificationConnector.swift */; };
+		26A4EEAA1F196EE5008038A9 /* IGlobalNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEA91F196EE5008038A9 /* IGlobalNotification.swift */; };
+		26A4EEB71F1A0551008038A9 /* ServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */; };
+		26A4EEB81F1A0551008038A9 /* IServiceConnectorObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */; };
+		26A4EEBA1F1D8BF2008038A9 /* IServiceConnectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEB91F1D8BF2008038A9 /* IServiceConnectorView.swift */; };
+		26A4EEBC1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEBB1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift */; };
+		26A4EEBE1F1D8D40008038A9 /* IRemoteServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EEBD1F1D8D40008038A9 /* IRemoteServiceManager.swift */; };
 		26AB6ED51EDA466400E6CAA1 /* AMFEncoderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26AB6ED41EDA466400E6CAA1 /* AMFEncoderTest.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,15 +127,6 @@
 		268F7BD01EDA1F3A0087203B /* ObjectUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectUtils.swift; sourceTree = "<group>"; };
 		268F7BD11EDA1F3A0087203B /* Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		268F7BD21EDA1F3A0087203B /* SwiftKVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftKVC.swift; sourceTree = "<group>"; };
-		268F7BD31EDA1F3A0087203B /* RemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
-		268F7BD51EDA1F3A0087203B /* AMFServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequest.swift; sourceTree = "<group>"; };
-		268F7BD61EDA1F3A0087203B /* AMFServiceRequestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequestGroup.swift; sourceTree = "<group>"; };
-		268F7BD81EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRemoteServiceDefinition.swift; sourceTree = "<group>"; };
-		268F7BD91EDA1F3A0087203B /* PendingModalServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingModalServiceResult.swift; sourceTree = "<group>"; };
-		268F7BDA1EDA1F3A0087203B /* RemoteServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceConfiguration.swift; sourceTree = "<group>"; };
-		268F7BDB1EDA1F3A0087203B /* ServiceRequestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestGroup.swift; sourceTree = "<group>"; };
-		268F7BDC1EDA1F3A0087203B /* ServiceRequestGroupResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestGroupResult.swift; sourceTree = "<group>"; };
-		268F7BDD1EDA1F3A0087203B /* ServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
 		268F7BDF1EDA1F3A0087203B /* IAMFCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAMFCoder.swift; sourceTree = "<group>"; };
 		268F7BE01EDA1F3A0087203B /* IAMFServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAMFServiceDefinition.swift; sourceTree = "<group>"; };
 		268F7BE11EDA1F3A0087203B /* IDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDictionaryBuilder.swift; sourceTree = "<group>"; };
@@ -182,12 +180,28 @@
 		268F7C241EDA1F3A0087203B /* FakeCallBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeCallBack.swift; sourceTree = "<group>"; };
 		268F7C251EDA1F3A0087203B /* PendingCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingCall.swift; sourceTree = "<group>"; };
 		268F7C721EDA30120087203B /* Reflection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reflection.framework; path = "../Reflection/build/Debug-iphoneos/Reflection.framework"; sourceTree = "<group>"; };
-		26A4EE531F04D940008038A9 /* BaseServiceConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConnector.swift; sourceTree = "<group>"; };
 		26A4EE551F04DA4A008038A9 /* IServiceConnnectorNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnnectorNotification.swift; sourceTree = "<group>"; };
-		26A4EE571F04DC6F008038A9 /* ServiceConnectorNotificationFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotificationFilter.swift; sourceTree = "<group>"; };
-		26A4EE5E1F04EFBE008038A9 /* ServiceConnectorNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotification.swift; sourceTree = "<group>"; };
 		26A4EE601F099E58008038A9 /* PendingMessageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingMessageResult.swift; sourceTree = "<group>"; };
 		26A4EE621F09ACFF008038A9 /* IResultMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IResultMessage.swift; sourceTree = "<group>"; };
+		26A4EE761F16F983008038A9 /* BaseRemoteServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseRemoteServiceDefinition.swift; sourceTree = "<group>"; };
+		26A4EE771F16F983008038A9 /* BaseServiceConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseServiceConnector.swift; sourceTree = "<group>"; };
+		26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotification.swift; sourceTree = "<group>"; };
+		26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorNotificationFilter.swift; sourceTree = "<group>"; };
+		26A4EE7B1F16F983008038A9 /* RemoteServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceConfiguration.swift; sourceTree = "<group>"; };
+		26A4EE7D1F16F983008038A9 /* AMFServiceRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequest.swift; sourceTree = "<group>"; };
+		26A4EE7E1F16F983008038A9 /* AMFServiceRequestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFServiceRequestGroup.swift; sourceTree = "<group>"; };
+		26A4EE7F1F16F983008038A9 /* ServiceRequestGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestGroup.swift; sourceTree = "<group>"; };
+		26A4EE821F16F983008038A9 /* PendingModalServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PendingModalServiceResult.swift; sourceTree = "<group>"; };
+		26A4EE831F16F983008038A9 /* ServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResult.swift; sourceTree = "<group>"; };
+		26A4EE8F1F16F9DF008038A9 /* ServiceRequestGroupResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceRequestGroupResult.swift; sourceTree = "<group>"; };
+		26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteServiceManager.swift; sourceTree = "<group>"; };
+		26A4EE961F184105008038A9 /* IGlobalNotificationConnector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGlobalNotificationConnector.swift; sourceTree = "<group>"; };
+		26A4EEA91F196EE5008038A9 /* IGlobalNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IGlobalNotification.swift; sourceTree = "<group>"; };
+		26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConnectorObserver.swift; sourceTree = "<group>"; };
+		26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnectorObserver.swift; sourceTree = "<group>"; };
+		26A4EEB91F1D8BF2008038A9 /* IServiceConnectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IServiceConnectorView.swift; sourceTree = "<group>"; };
+		26A4EEBB1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRemoteServiceConfiguration.swift; sourceTree = "<group>"; };
+		26A4EEBD1F1D8D40008038A9 /* IRemoteServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRemoteServiceManager.swift; sourceTree = "<group>"; };
 		26AB6ED41EDA466400E6CAA1 /* AMFEncoderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMFEncoderTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,17 +256,17 @@
 		268F7BB41EDA1A9D0087203B /* SwiftAMFRemoter */ = {
 			isa = PBXGroup;
 			children = (
-				260ACD2C1EED27720066231C /* queues */,
-				268F7BCC1EDA1F3A0087203B /* utils */,
-				268F7BD41EDA1F3A0087203B /* service */,
-				268F7BDE1EDA1F3A0087203B /* interfaces */,
-				268F7BEF1EDA1F3A0087203B /* extension */,
-				268F7BF41EDA1F3A0087203B /* exception */,
-				268F7BF61EDA1F3A0087203B /* core */,
-				268F7BFF1EDA1F3A0087203B /* constants */,
 				268F7C011EDA1F3A0087203B /* amf */,
+				268F7BFF1EDA1F3A0087203B /* constants */,
+				268F7BF61EDA1F3A0087203B /* core */,
+				268F7BF41EDA1F3A0087203B /* exception */,
+				268F7BEF1EDA1F3A0087203B /* extension */,
+				268F7BDE1EDA1F3A0087203B /* interfaces */,
+				26A4EE911F16FA6E008038A9 /* managers */,
+				260ACD2C1EED27720066231C /* queues */,
+				26A4EE741F16F983008038A9 /* service */,
+				268F7BCC1EDA1F3A0087203B /* utils */,
 				268F7BB51EDA1A9D0087203B /* SwiftAMFRemoter.h */,
-				268F7BD31EDA1F3A0087203B /* RemoteServiceManager.swift */,
 				268F7BB61EDA1A9D0087203B /* Info.plist */,
 			);
 			path = SwiftAMFRemoter;
@@ -281,29 +295,6 @@
 			path = utils;
 			sourceTree = "<group>";
 		};
-		268F7BD41EDA1F3A0087203B /* service */ = {
-			isa = PBXGroup;
-			children = (
-				268F7BD71EDA1F3A0087203B /* base */,
-				268F7BD51EDA1F3A0087203B /* AMFServiceRequest.swift */,
-				268F7BD61EDA1F3A0087203B /* AMFServiceRequestGroup.swift */,
-				268F7BD91EDA1F3A0087203B /* PendingModalServiceResult.swift */,
-				268F7BDA1EDA1F3A0087203B /* RemoteServiceConfiguration.swift */,
-				268F7BDB1EDA1F3A0087203B /* ServiceRequestGroup.swift */,
-				268F7BDC1EDA1F3A0087203B /* ServiceRequestGroupResult.swift */,
-				268F7BDD1EDA1F3A0087203B /* ServiceResult.swift */,
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
-		268F7BD71EDA1F3A0087203B /* base */ = {
-			isa = PBXGroup;
-			children = (
-				268F7BD81EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift */,
-			);
-			path = base;
-			sourceTree = "<group>";
-		};
 		268F7BDE1EDA1F3A0087203B /* interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,7 +317,12 @@
 				268F7BEE1EDA1F3A0087203B /* IServiceRequest.swift */,
 				260ACD361EF5288F0066231C /* IServiceConnector.swift */,
 				26A4EE551F04DA4A008038A9 /* IServiceConnnectorNotification.swift */,
+				26A4EEB91F1D8BF2008038A9 /* IServiceConnectorView.swift */,
 				26A4EE621F09ACFF008038A9 /* IResultMessage.swift */,
+				26A4EE961F184105008038A9 /* IGlobalNotificationConnector.swift */,
+				26A4EEA91F196EE5008038A9 /* IGlobalNotification.swift */,
+				26A4EEBB1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift */,
+				26A4EEBD1F1D8D40008038A9 /* IRemoteServiceManager.swift */,
 			);
 			path = interfaces;
 			sourceTree = "<group>";
@@ -478,9 +474,6 @@
 			isa = PBXGroup;
 			children = (
 				268F7C221EDA1F3A0087203B /* Remoting */,
-				26A4EE531F04D940008038A9 /* BaseServiceConnector.swift */,
-				26A4EE571F04DC6F008038A9 /* ServiceConnectorNotificationFilter.swift */,
-				26A4EE5E1F04EFBE008038A9 /* ServiceConnectorNotification.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -501,6 +494,74 @@
 				268F7C721EDA30120087203B /* Reflection.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		26A4EE741F16F983008038A9 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EE751F16F983008038A9 /* base */,
+				26A4EE781F16F983008038A9 /* connector */,
+				26A4EE7C1F16F983008038A9 /* request */,
+				26A4EE811F16F983008038A9 /* result */,
+				26A4EE7B1F16F983008038A9 /* RemoteServiceConfiguration.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		26A4EE751F16F983008038A9 /* base */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EE761F16F983008038A9 /* BaseRemoteServiceDefinition.swift */,
+				26A4EE771F16F983008038A9 /* BaseServiceConnector.swift */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		26A4EE781F16F983008038A9 /* connector */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EE791F16F983008038A9 /* ServiceConnectorNotification.swift */,
+				26A4EE7A1F16F983008038A9 /* ServiceConnectorNotificationFilter.swift */,
+			);
+			path = connector;
+			sourceTree = "<group>";
+		};
+		26A4EE7C1F16F983008038A9 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EE7D1F16F983008038A9 /* AMFServiceRequest.swift */,
+				26A4EE7E1F16F983008038A9 /* AMFServiceRequestGroup.swift */,
+				26A4EE7F1F16F983008038A9 /* ServiceRequestGroup.swift */,
+			);
+			path = request;
+			sourceTree = "<group>";
+		};
+		26A4EE811F16F983008038A9 /* result */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EE8F1F16F9DF008038A9 /* ServiceRequestGroupResult.swift */,
+				26A4EE821F16F983008038A9 /* PendingModalServiceResult.swift */,
+				26A4EE831F16F983008038A9 /* ServiceResult.swift */,
+			);
+			path = result;
+			sourceTree = "<group>";
+		};
+		26A4EE911F16FA6E008038A9 /* managers */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EEB21F1A0551008038A9 /* globalNotificationManager */,
+				26A4EE921F16FA6E008038A9 /* RemoteServiceManager.swift */,
+			);
+			path = managers;
+			sourceTree = "<group>";
+		};
+		26A4EEB21F1A0551008038A9 /* globalNotificationManager */ = {
+			isa = PBXGroup;
+			children = (
+				26A4EEB41F1A0551008038A9 /* ServiceConnectorObserver.swift */,
+				26A4EEB51F1A0551008038A9 /* IServiceConnectorObserver.swift */,
+			);
+			path = globalNotificationManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,39 +680,44 @@
 			files = (
 				268F7C441EDA1F3A0087203B /* IServiceRequest.swift in Sources */,
 				268F7C431EDA1F3A0087203B /* IServiceNotification.swift in Sources */,
+				26A4EE8E1F16F983008038A9 /* ServiceResult.swift in Sources */,
+				26A4EEB81F1A0551008038A9 /* IServiceConnectorObserver.swift in Sources */,
 				268F7C3E1EDA1F3A0087203B /* IPendingServiceCallback.swift in Sources */,
-				268F7C301EDA1F3A0087203B /* PendingModalServiceResult.swift in Sources */,
 				268F7C671EDA1F3A0087203B /* RemotingClient.swift in Sources */,
 				268F7C601EDA1F3A0087203B /* BinaryMessage.swift in Sources */,
 				268F7C501EDA1F3A0087203B /* ASObject.swift in Sources */,
+				26A4EE8B1F16F983008038A9 /* ServiceRequestGroup.swift in Sources */,
+				26A4EEB71F1A0551008038A9 /* ServiceConnectorObserver.swift in Sources */,
 				268F7C5C1EDA1F3A0087203B /* AMFMessageHeader.swift in Sources */,
 				268F7C461EDA1F3A0087203B /* SiwftCore+Extension.swift in Sources */,
-				26A4EE541F04D940008038A9 /* BaseServiceConnector.swift in Sources */,
 				268F7C4A1EDA1F3A0087203B /* DictionaryBuilder.swift in Sources */,
-				268F7C2D1EDA1F3A0087203B /* AMFServiceRequest.swift in Sources */,
 				268F7C3F1EDA1F3A0087203B /* IServiceCall.swift in Sources */,
-				268F7C2F1EDA1F3A0087203B /* BaseRemoteServiceDefinition.swift in Sources */,
+				26A4EE8D1F16F983008038A9 /* PendingModalServiceResult.swift in Sources */,
 				268F7C641EDA1F3A0087203B /* RemotingMessage.swift in Sources */,
 				268F7C581EDA1F3A0087203B /* AMFCoder.swift in Sources */,
+				26A4EE8A1F16F983008038A9 /* AMFServiceRequestGroup.swift in Sources */,
 				268F7C3A1EDA1F3A0087203B /* IEventDispatcher.swift in Sources */,
 				260ACD301EED283D0066231C /* MessageQueueItem.swift in Sources */,
+				26A4EE861F16F983008038A9 /* ServiceConnectorNotification.swift in Sources */,
 				268F7C561EDA1F3A0087203B /* AMF0Coder.swift in Sources */,
+				26A4EE901F16F9DF008038A9 /* ServiceRequestGroupResult.swift in Sources */,
+				26A4EEBC1F1D8CA0008038A9 /* IRemoteServiceConfiguration.swift in Sources */,
+				26A4EE881F16F983008038A9 /* RemoteServiceConfiguration.swift in Sources */,
 				268F7C531EDA1F3A0087203B /* ClassDefinition.swift in Sources */,
 				268F7C5F1EDA1F3A0087203B /* AsyncMessage.swift in Sources */,
-				268F7C2E1EDA1F3A0087203B /* AMFServiceRequestGroup.swift in Sources */,
 				268F7C351EDA1F3A0087203B /* IAMFCoder.swift in Sources */,
 				268F7C481EDA1F3A0087203B /* String+HTML.swift in Sources */,
 				26A4EE611F099E58008038A9 /* PendingMessageResult.swift in Sources */,
 				268F7C391EDA1F3A0087203B /* IEnumeration.swift in Sources */,
+				26A4EE941F16FA6E008038A9 /* RemoteServiceManager.swift in Sources */,
+				26A4EE851F16F983008038A9 /* BaseServiceConnector.swift in Sources */,
 				260ACD2B1EEB59130066231C /* RemoteServiceManagerConstants.swift in Sources */,
 				268F7C691EDA1F3A0087203B /* FakeCallBack.swift in Sources */,
 				268F7C471EDA1F3A0087203B /* String+Extensions.swift in Sources */,
 				268F7C3D1EDA1F3A0087203B /* IPendingServiceCall.swift in Sources */,
-				26A4EE5F1F04EFBE008038A9 /* ServiceConnectorNotification.swift in Sources */,
 				268F7C4F1EDA1F3A0087203B /* ASArray.swift in Sources */,
 				268F7C591EDA1F3A0087203B /* AMFByteArray.swift in Sources */,
-				268F7C311EDA1F3A0087203B /* RemoteServiceConfiguration.swift in Sources */,
-				268F7C341EDA1F3A0087203B /* ServiceResult.swift in Sources */,
+				26A4EEBA1F1D8BF2008038A9 /* IServiceConnectorView.swift in Sources */,
 				260ACD2E1EED27EC0066231C /* IMessageQueue.swift in Sources */,
 				268F7C551EDA1F3A0087203B /* ReferenceData.swift in Sources */,
 				268F7C421EDA1F3A0087203B /* IServiceInvoker.swift in Sources */,
@@ -661,21 +727,23 @@
 				260ACD321EED29C90066231C /* MessageQueue.swift in Sources */,
 				268F7C2B1EDA1F3A0087203B /* SwiftKVC.swift in Sources */,
 				268F7C271EDA1F3A0087203B /* EventDispatcher.swift in Sources */,
-				268F7C2C1EDA1F3A0087203B /* RemoteServiceManager.swift in Sources */,
+				26A4EE891F16F983008038A9 /* AMFServiceRequest.swift in Sources */,
 				268F7C451EDA1F3A0087203B /* Foundation+Extension.swift in Sources */,
-				26A4EE581F04DC6F008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */,
 				268F7C661EDA1F3A0087203B /* NetConnection.swift in Sources */,
 				268F7C281EDA1F3A0087203B /* MessageUtil.swift in Sources */,
 				268F7C6A1EDA1F3A0087203B /* PendingCall.swift in Sources */,
+				26A4EEAA1F196EE5008038A9 /* IGlobalNotification.swift in Sources */,
 				268F7C491EDA1F3A0087203B /* InvocationException.swift in Sources */,
 				268F7C5E1EDA1F3A0087203B /* AcknowledgeMessage.swift in Sources */,
 				268F7C4B1EDA1F3A0087203B /* GeneralErrors.swift in Sources */,
 				268F7C3C1EDA1F3A0087203B /* INetConnection.swift in Sources */,
+				26A4EEBE1F1D8D40008038A9 /* IRemoteServiceManager.swift in Sources */,
 				260ACD371EF5288F0066231C /* IServiceConnector.swift in Sources */,
 				268F7C411EDA1F3A0087203B /* IServiceHandlerProvider.swift in Sources */,
 				268F7C371EDA1F3A0087203B /* IDictionaryBuilder.swift in Sources */,
 				268F7C631EDA1F3A0087203B /* FlexMessage.swift in Sources */,
 				268F7C361EDA1F3A0087203B /* IAMFServiceDefinition.swift in Sources */,
+				26A4EE971F184105008038A9 /* IGlobalNotificationConnector.swift in Sources */,
 				268F7C571EDA1F3A0087203B /* AMF3Coder.swift in Sources */,
 				268F7C681EDA1F3A0087203B /* Call.swift in Sources */,
 				268F7C5A1EDA1F3A0087203B /* AMFMessage.swift in Sources */,
@@ -687,11 +755,11 @@
 				26A4EE561F04DA4A008038A9 /* IServiceConnnectorNotification.swift in Sources */,
 				26A4EE631F09ACFF008038A9 /* IResultMessage.swift in Sources */,
 				268F7C621EDA1F3A0087203B /* ErrorMessage.swift in Sources */,
-				268F7C331EDA1F3A0087203B /* ServiceRequestGroupResult.swift in Sources */,
+				26A4EE871F16F983008038A9 /* ServiceConnectorNotificationFilter.swift in Sources */,
 				268F7C511EDA1F3A0087203B /* BasicObject.swift in Sources */,
+				26A4EE841F16F983008038A9 /* BaseRemoteServiceDefinition.swift in Sources */,
 				268F7C611EDA1F3A0087203B /* CommandMessage.swift in Sources */,
 				268F7C5B1EDA1F3A0087203B /* AMFMessageBody.swift in Sources */,
-				268F7C321EDA1F3A0087203B /* ServiceRequestGroup.swift in Sources */,
 				268F7C521EDA1F3A0087203B /* DynamicObject.swift in Sources */,
 				268F7C3B1EDA1F3A0087203B /* IMessage.swift in Sources */,
 			);

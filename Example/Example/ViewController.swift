@@ -9,66 +9,61 @@
 import UIKit
 import SwiftAMFRemoter
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, IServiceConnectorView {
+    
+    open func handleServiceNotification(_ notification: IServiceConnectorNotification) {
+     
+        print("NotificationID: " + notification.notificationId)
+        
+        switch(notification.notificationId){
+            
+        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!:
+            print("Received RESULT for:" + notification.notificationId)
+            break
+            
+        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!:
+            print("Received FAULT for:" + notification.notificationId)
+            
+            break
+            
+        default:
+            print("Unregistered notification...")
+            break
+        }
+    }
 
+    open func listNotificationInterests() -> [String]{
+        
+        return [UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!,
+                UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!]
+    }
+
+    private var _connectorId:String = ""
+     
+    
+    /**
+     Gets unique Id of connector
+     */
+    open var connectorId:String { get { return self._connectorId} }
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerServiceConnector(self)
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    deinit {
+        removeServiceConnector(self.connectorId)
     }
+    
+    
     
     private var  _before:Double = 0
     private var _after:Double = 0
     
-    let mgr = SwiftAMFRemoterManager.sharedInstance
-
-    
-    func onRemoteServiceEvent(_ notification: Notification) {
-        
-        do {
-            for (key,val) in (notification.userInfo)! {
-                let val_str = "\(key)"
-                
-                
-                print(key)
-                if val_str == "event" {
-                    let returnEvent:Event =  val as! Event
-                    let message = returnEvent.data as! AMFMessage
-                    
-                    let result = try message.getResult()
-                    
-                    if((result.1 as? ASObject) != nil){
-                        
-                        print("ERROR")
-                        print("------------------------")
-                        print(((result.1 as? ErrorMessage)?.faultCode)! + " " + ((result.1 as? ErrorMessage)?.faultString)!)
-                        return
-                    }
-                    
-                    //PunchJunkieModel.sharedInstance.userFacadeModel.LoginByEmailResult = (result.1 as? UserContext)!
-                    
-                    print("SUCCESS")
-                    print("------------------------")
-                    print(result)
-                    //remoteVideoURL = val
-                    break
-                }
-            }
-            
-            _after = Date().timeIntervalSince1970
-            
-            print (String(format: "%.2f Seconds", (_after-_before)))
-        }
-        catch let e as Error {
-            print(e.localizedDescription)
-        }
-        
-    }
-
     @IBAction func callAmfSimpleMethod(_ sender: AnyObject) {
         
         
@@ -76,7 +71,7 @@ class ViewController: UIViewController {
         
         _before = Date().timeIntervalSince1970
         
-        let mgr = SwiftAMFRemoterManager.sharedInstance
+        let mgr = UIViewController.getRemoteServiceManager()
         
         DataTypeInitializer.registerClassAliases()
         
@@ -89,7 +84,7 @@ class ViewController: UIViewController {
                                                                modalWait: true,
                                                                isUpdateable: false))
         
-        mgr.addEventListener("test", selector: #selector(ViewController.onRemoteServiceEvent(_:)), observer: self)
+        //mgr.addEventListener(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, selector: #selector(ViewController.onRemoteServiceEvent(_:)), observer: self)
         
         
 //        var values = self.form.values(includeHidden: true)
@@ -114,10 +109,50 @@ class ViewController: UIViewController {
         
         _after = Date().timeIntervalSince1970
         
-        
-        
-        
     }
 
 }
+
+//    func onRemoteServiceEvent(_ notification: Notification) {
+//
+//        do {
+//            for (key,val) in (notification.userInfo)! {
+//                let val_str = "\(key)"
+//
+//
+//                print(key)
+//                if val_str == "event" {
+//                    let returnEvent:Event =  val as! Event
+//                    let message = returnEvent.data as! AMFMessage
+//
+//                    let result = try message.getResult()
+//
+//                    if((result.1 as? ASObject) != nil){
+//
+//                        print("ERROR")
+//                        print("------------------------")
+//                        print(((result.1 as? ErrorMessage)?.faultCode)! + " " + ((result.1 as? ErrorMessage)?.faultString)!)
+//                        return
+//                    }
+//
+//                    //PunchJunkieModel.sharedInstance.userFacadeModel.LoginByEmailResult = (result.1 as? UserContext)!
+//
+//                    print("SUCCESS")
+//                    print("------------------------")
+//                    print(result)
+//                    //remoteVideoURL = val
+//                    break
+//                }
+//            }
+//
+//            _after = Date().timeIntervalSince1970
+//
+//            print (String(format: "%.2f Seconds", (_after-_before)))
+//        }
+//        catch let e as Error {
+//            print(e.localizedDescription)
+//        }
+//
+//    }
+
 

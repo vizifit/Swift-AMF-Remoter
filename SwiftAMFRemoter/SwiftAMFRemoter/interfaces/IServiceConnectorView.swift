@@ -20,8 +20,7 @@ public protocol IServiceConnectorView : IServiceConnector
      Gets unique Id of connector
      */
     var connectorId:String { get}
-    
-    //var connectorNotificationFilter:ServiceConnectorNotificationFilter? { get set }
+     
     
     /**
      NOTE: Might not need

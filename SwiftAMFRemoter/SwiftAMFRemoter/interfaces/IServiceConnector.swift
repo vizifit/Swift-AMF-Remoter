@@ -8,25 +8,47 @@
 
 import Foundation
 
-public protocol IServiceConnector:IDictionaryItem
+public protocol IServiceConnector 
 {
     
-    
-    func registerConnector(_ connector:IServiceConnector)
-    
-    func registerConnector(_ connector:IServiceConnector, withNotificationFilter:ServiceConnectorNotificationFilter)
-    
-    func unRegisterConnector(_ connectorId:String)
-    
-    func unRegisterConnector(_ connector:IServiceConnector)
-    
-    func onServiceNotification(_ notification:IServiceConnectorNotification)
+    /**
+     Register an `IServiceConnector` instance with the ServiceConnectorManager.
+     
+     - parameter connector: the IServiceConnector
+     */
+    func registerServiceConnector(_ connector:IServiceConnectorView)
     
     /**
-     Gets unique Id of connector
+     Register an `IServiceConnector` instance with the ServiceConnectorManager and notifications
+     
+     - parameter connector: the IServiceConnector
+     - parameter withNotificationFilter: the notification filter
      */
-    var connectorId:String { get}
+    //func registerServiceConnector(_ connector:IServiceConnector, withNotificationFilter:ServiceConnectorNotificationFilter)
     
-    var connectorNotificationFilter:ServiceConnectorNotificationFilter? { get set }
+    /**
+     Remove an `IServiceConnector` from the implementing class.
+     
+     - parameter connectorId: name of the `IServiceConnector` instance to be removed.
+     */
+    func removeServiceConnector(_ connectorId:String)
+    
+    /**
+     Retrieve an `IServicdeConnector` from the implementing class.
+     
+     - parameter connectorId: the name of the `IMediator` instance to retrieve.
+     - returns: the `IServiceConnector` instance previously registered with the given `connectorId`.
+     */
+    func getServiceConnector(_ connectorId:String)->IServiceConnectorView?
+    
+    /**
+     Check if a Mediator is registered or not
+     
+     - parameter connectorId:
+     - returns: whether a Connector is registered with the given `connectorId`.
+     */
+    func hasServiceConnector(_ connectorId:String) -> Bool
+    
 
+      
 }

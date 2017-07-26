@@ -44,10 +44,8 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         serviceConnectorMap = [:]
         observerMap = [:]
         
-        _pendingModalServiceResults = DictionaryBuilder()
         _registeredServiceConfigurations = DictionaryBuilder()
         _registeredServiceRequestGroups = DictionaryBuilder()
-        _registeredServiceConnectors = DictionaryBuilder()
         
         _amfCoder = AMF3Coder()
         
@@ -74,15 +72,14 @@ open class RemoteServiceManager: IRemoteServiceManager  {
 //    
 //    }
     
-    fileprivate var _amfCoder:IAMFCoder;
+    fileprivate var _amfCoder:IAMFCoder
     
-    fileprivate var _pendingModalServiceResults:DictionaryBuilder
+    fileprivate var _debugMode:Bool = false
     
     fileprivate var _registeredServiceConfigurations:DictionaryBuilder
     
     fileprivate var _registeredServiceRequestGroups:DictionaryBuilder
     
-    fileprivate var _registeredServiceConnectors:DictionaryBuilder
     
     /// Message constant
     open static let SINGLETON_MSG = "RemoteServiceManager Singleton already constructed!"
@@ -120,6 +117,13 @@ open class RemoteServiceManager: IRemoteServiceManager  {
             return _amfCoder
         }
     }
+    
+    public var debugMode:Bool {
+        get{
+            return _debugMode
+        }
+    }
+
 
     @objc func serviceResponseHandler(_ notification: Notification) throws {
         
@@ -169,6 +173,12 @@ open class RemoteServiceManager: IRemoteServiceManager  {
 //        } 
     }
     
+    open func toggleDebugMode(_ isEnabled:Bool){
+        
+        if(_debugMode != isEnabled){
+            _debugMode = isEnabled
+        }
+    }
     /**
      *
      * @default
@@ -251,29 +261,25 @@ open class RemoteServiceManager: IRemoteServiceManager  {
     
     // MARK: - Service Connector
 
-    /**
-     *
-     * @default
-     */
-    open func registerServiceConnector(_ connector: IServiceConnectorView) {
-        // do not allow re-registration (you must removeConnector first)
-        if (hasServiceConnector(connector.connectorId)) {
-            return
-        }
+    private func registerServiceConnector(_ connector: AnyObject) {
         
         serviceConnectorMapQueue.sync(flags: .barrier, execute: {
             
+            if(_debugMode){
+                print("Registering IServiceConnectorView: " + (connector as! IServiceConnectorView).connectorId)
+            }
+            
             // Register the Connector for retrieval by name
-            self.serviceConnectorMap[connector.connectorId] = connector
+            self.serviceConnectorMap[(connector as! IServiceConnectorView).connectorId] = connector as? IServiceConnectorView
             
             // Get Notification interests, if any.
-            let interests = connector.listNotificationInterests()
+            let interests = (connector as! IServiceConnectorView).listNotificationInterests()
             
             // Register Mediator as an observer for each notification of interests
             if !interests.isEmpty {
                 // Create Observer referencing this mediator's handlNotification method
                 
-                let observer = ServiceConnectorObserver(notifyMethod: {notification in connector.handleServiceNotification(notification)}, notifyContext: connector as AnyObject )
+                let observer = ServiceConnectorObserver(notifyMethod: {notification in (connector as! IServiceConnectorView).handleServiceNotification(notification)}, notifyContext: connector )
                 
                 // Register Mediator as Observer for its list of Notification interests
                 for notificationName in interests {
@@ -284,6 +290,43 @@ open class RemoteServiceManager: IRemoteServiceManager  {
             //TODO: Not sure if I need
             //connector.onRegister()
         })
+
+    }
+    /**
+     *
+     * @default
+     */
+    open func registerServiceConnector(_ connector: IServiceConnectorView) {
+        // do not allow re-registration (you must removeConnector first)
+        if (hasServiceConnector(connector.connectorId)) {
+            return
+        }
+        
+        registerServiceConnector(connector as AnyObject)
+        
+//        serviceConnectorMapQueue.sync(flags: .barrier, execute: {
+//            
+//            // Register the Connector for retrieval by name
+//            self.serviceConnectorMap[connector.connectorId] = connector
+//            
+//            // Get Notification interests, if any.
+//            let interests = connector.listNotificationInterests()
+//            
+//            // Register Mediator as an observer for each notification of interests
+//            if !interests.isEmpty {
+//                // Create Observer referencing this mediator's handlNotification method
+//                
+//                let observer = ServiceConnectorObserver(notifyMethod: {notification in connector.handleServiceNotification(notification)}, notifyContext: connector as AnyObject )
+//                
+//                // Register Mediator as Observer for its list of Notification interests
+//                for notificationName in interests {
+//                    self.registerServiceConnectorObserver(notificationName, observer: observer)
+//                }
+//            }
+//            
+//            //TODO: Not sure if I need
+//            //connector.onRegister()
+//        })
     }
     
     /**
@@ -304,7 +347,11 @@ open class RemoteServiceManager: IRemoteServiceManager  {
                     self.removeServiceConnectorObserver(notificationName, notifyContext: connector as AnyObject)
                 }
                 
-                // remove the mediator from the map
+                if(_debugMode){
+                    print("Removing IServiceConnectorView: " + connectorId)
+                }
+                
+                // remove the connector from the map
                 removed = self.serviceConnectorMap.removeValue(forKey: connectorId)
                 
                 // alert the connector that it has been removed
@@ -458,6 +505,10 @@ open class RemoteServiceManager: IRemoteServiceManager  {
             config.remoteMessage?.source = source
         }
         else{
+            
+            //TODO: Not sure if we want unique or per session
+            // Update Unique messageId
+            //config.remoteMessage?.clientId = UUID().uuidString
             
             if serviceDefinition.destination != nil{
                 config.remoteMessage?.destination = destination

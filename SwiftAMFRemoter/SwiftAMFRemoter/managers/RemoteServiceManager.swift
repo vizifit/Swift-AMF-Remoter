@@ -178,7 +178,10 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         if(_debugMode != isEnabled){
             _debugMode = isEnabled
         }
+        
+        AMF3Coder.verboseDebug = _debugMode
     }
+    
     /**
      *
      * @default

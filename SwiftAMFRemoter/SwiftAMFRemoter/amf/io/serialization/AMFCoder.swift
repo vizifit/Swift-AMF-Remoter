@@ -18,7 +18,8 @@ public enum ObjectEncoding : Int {
 
 open class AMFCoder: AMFByteArray, IAMFCoder {
     
-       
+    open static var bypassUtf16Length:Bool = false
+    
     func encodeValue(_ value:Any?) {
         
         clear()
@@ -122,8 +123,10 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
         let localBytes:[UInt8] = [UInt8](value.utf8)
         
         // Force maximum byte size for UTF string
-        let byteCount = (localBytes.count > Int(UInt16.max)) ? Int(UInt16.max) : localBytes.count
+        let byteCountConstrained = (localBytes.count > Int(UInt16.max)) ? Int(UInt16.max) : localBytes.count
         
+        let byteCount = ( AMFCoder.bypassUtf16Length) ? localBytes.count : byteCountConstrained
+ 
         /// encode string header and value
         encodeAmfInlineHeader( byteCount )
         encodeBytes(localBytes)

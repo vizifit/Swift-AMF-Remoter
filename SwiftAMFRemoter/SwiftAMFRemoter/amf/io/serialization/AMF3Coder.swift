@@ -546,6 +546,15 @@ open class AMF3Coder : AMFCoder{
 
     @discardableResult
     func encodeUInt29( _ value:UInt, excludeMarker:Bool=false )  -> Self {
+        
+        //check valid range for 29bits
+        if( value > Int(AMF3Constants.MaxU29) && value > 0){
+            encodeDouble(Double(value), excludeMarker: excludeMarker)
+            
+            return self
+        }
+       
+        
         var bytes:[UInt8] = [UInt8]()
         
         //uint &= 0x1fffffff;

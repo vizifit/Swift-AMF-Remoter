@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260ACC931EE994BB0066231C /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260ACC911EE9947A0066231C /* SwiftAMFRemoter.framework */; };
-		260ACC981EE9952F0066231C /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 260ACC971EE9952F0066231C /* Reflection.framework */; };
-		260ACC9A1EE995E30066231C /* Reflection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260ACC971EE9952F0066231C /* Reflection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		260ACC9B1EE995E90066231C /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 260ACC911EE9947A0066231C /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		260ACCF31EE997010066231C /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACC9D1EE997010066231C /* ServiceConstants.swift */; };
 		260ACCF41EE997010066231C /* ActivityFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACCA01EE997010066231C /* ActivityFacadeServiceDefinition.swift */; };
 		260ACCF51EE997010066231C /* CloudStorageFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACCA11EE997010066231C /* CloudStorageFacadeServiceDefinition.swift */; };
@@ -71,27 +67,38 @@
 		261E1AC61EE8C4D600A0D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC41EE8C4D600A0D2B5 /* Main.storyboard */; };
 		261E1AC81EE8C4D600A0D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */; };
 		261E1ACB1EE8C4D600A0D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC91EE8C4D600A0D2B5 /* LaunchScreen.storyboard */; };
+		266EAE5F1F5B493C00667BB8 /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; };
+		266EAE601F5B494800667BB8 /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		267362351F778151005EC9E4 /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267362341F778151005EC9E4 /* Reflection.framework */; };
+		267362361F778151005EC9E4 /* Reflection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 267362341F778151005EC9E4 /* Reflection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26A4EE5D1F04EA1B008038A9 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		260ACC951EE994BB0066231C /* Embed Frameworks */ = {
+		266EAE491F5B356400667BB8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				260ACC9B1EE995E90066231C /* SwiftAMFRemoter.framework in Embed Frameworks */,
-				260ACC9A1EE995E30066231C /* Reflection.framework in Embed Frameworks */,
+				266EAE601F5B494800667BB8 /* SwiftAMFRemoter.framework in Embed Frameworks */,
+				267362361F778151005EC9E4 /* Reflection.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		266EAE5A1F5B48C300667BB8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		260ACC911EE9947A0066231C /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftAMFRemoter.framework; path = "../../../../../../../../Users/thenderson/Library/Developer/Xcode/DerivedData/SwiftAMFRemoterWS-coeqzahoxvyemdcmtpeszgcnsysm/Build/Products/Debug-iphonesimulator/SwiftAMFRemoter.framework"; sourceTree = "<group>"; };
-		260ACC971EE9952F0066231C /* Reflection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reflection.framework; path = ../Carthage/Build/iOS/Reflection.framework; sourceTree = "<group>"; };
 		260ACC9D1EE997010066231C /* ServiceConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 		260ACCA01EE997010066231C /* ActivityFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeServiceDefinition.swift; sourceTree = "<group>"; };
 		260ACCA11EE997010066231C /* CloudStorageFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeServiceDefinition.swift; sourceTree = "<group>"; };
@@ -154,6 +161,8 @@
 		261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		261E1ACA1EE8C4D600A0D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261E1ACC1EE8C4D600A0D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftAMFRemoter.framework; path = "../../../../../../../../Users/thenderson/Library/Developer/Xcode/DerivedData/SwiftAMFRemoterWS-coeqzahoxvyemdcmtpeszgcnsysm/Build/Products/Debug-iphoneos/SwiftAMFRemoter.framework"; sourceTree = "<group>"; };
+		267362341F778151005EC9E4 /* Reflection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reflection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,23 +171,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				260ACC981EE9952F0066231C /* Reflection.framework in Frameworks */,
-				260ACC931EE994BB0066231C /* SwiftAMFRemoter.framework in Frameworks */,
+				266EAE5F1F5B493C00667BB8 /* SwiftAMFRemoter.framework in Frameworks */,
+				267362351F778151005EC9E4 /* Reflection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		260ACC901EE9947A0066231C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				260ACC971EE9952F0066231C /* Reflection.framework */,
-				260ACC911EE9947A0066231C /* SwiftAMFRemoter.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		260ACC9C1EE997010066231C /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,9 +490,10 @@
 		261E1AB41EE8C4D600A0D2B5 = {
 			isa = PBXGroup;
 			children = (
+				267362341F778151005EC9E4 /* Reflection.framework */,
 				261E1ABF1EE8C4D600A0D2B5 /* Example */,
 				261E1ABE1EE8C4D600A0D2B5 /* Products */,
-				260ACC901EE9947A0066231C /* Frameworks */,
+				266EAE5D1F5B493C00667BB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -521,6 +522,14 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		266EAE5D1F5B493C00667BB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		26A4EE5B1F04E9EC008038A9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,7 +548,8 @@
 				261E1AB91EE8C4D600A0D2B5 /* Sources */,
 				261E1ABA1EE8C4D600A0D2B5 /* Frameworks */,
 				261E1ABB1EE8C4D600A0D2B5 /* Resources */,
-				260ACC951EE994BB0066231C /* Embed Frameworks */,
+				266EAE491F5B356400667BB8 /* Embed Frameworks */,
+				266EAE5A1F5B48C300667BB8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -787,6 +797,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4R87445M8P;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahhenderson.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -800,6 +811,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4R87445M8P;
 				INFOPLIST_FILE = Example/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahhenderson.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";

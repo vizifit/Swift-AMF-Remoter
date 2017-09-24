@@ -13,7 +13,7 @@ open class FakeCallBack : IPendingServiceCallback{
     
     open func resultReceived(_ call: IPendingServiceCall) {
         
-        let test=""
+        //let test=""
     }
     
 }

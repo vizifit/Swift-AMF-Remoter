@@ -337,7 +337,7 @@ open class RemoteServiceManager: IRemoteServiceManager  {
      * @default
      */
     open func removeServiceConnector(_ connectorId: String) {
-        var removed: IServiceConnectorView?
+        var removed: IServiceConnectorView? = nil
         serviceConnectorMapQueue.sync(flags: .barrier, execute: {
             if let connector = self.serviceConnectorMap[connectorId] {
                 

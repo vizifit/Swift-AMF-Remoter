@@ -67,25 +67,25 @@
 		261E1AC61EE8C4D600A0D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC41EE8C4D600A0D2B5 /* Main.storyboard */; };
 		261E1AC81EE8C4D600A0D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */; };
 		261E1ACB1EE8C4D600A0D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC91EE8C4D600A0D2B5 /* LaunchScreen.storyboard */; };
-		266EAE5F1F5B493C00667BB8 /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; };
-		266EAE601F5B494800667BB8 /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		267362351F778151005EC9E4 /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267362341F778151005EC9E4 /* Reflection.framework */; };
-		267362361F778151005EC9E4 /* Reflection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 267362341F778151005EC9E4 /* Reflection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26241DD41F7866FE0086A66B /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; };
+		26241DD51F7867060086A66B /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26241DD71F7867140086A66B /* Reflection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26241DD61F7867140086A66B /* Reflection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		26241DD81F7867250086A66B /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26241DD61F7867140086A66B /* Reflection.framework */; };
 		26A4EE5D1F04EA1B008038A9 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		266EAE491F5B356400667BB8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				266EAE601F5B494800667BB8 /* SwiftAMFRemoter.framework in Embed Frameworks */,
-				267362361F778151005EC9E4 /* Reflection.framework in Embed Frameworks */,
+				26241DD71F7867140086A66B /* Reflection.framework in Embed Frameworks */,
+				26241DD51F7867060086A66B /* SwiftAMFRemoter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 		266EAE5A1F5B48C300667BB8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -161,8 +161,8 @@
 		261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		261E1ACA1EE8C4D600A0D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261E1ACC1EE8C4D600A0D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26241DD61F7867140086A66B /* Reflection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reflection.framework; path = ../Carthage/Build/iOS/Reflection.framework; sourceTree = "<group>"; };
 		266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftAMFRemoter.framework; path = "../../../../../../../../Users/thenderson/Library/Developer/Xcode/DerivedData/SwiftAMFRemoterWS-coeqzahoxvyemdcmtpeszgcnsysm/Build/Products/Debug-iphoneos/SwiftAMFRemoter.framework"; sourceTree = "<group>"; };
-		267362341F778151005EC9E4 /* Reflection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Reflection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,8 +171,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266EAE5F1F5B493C00667BB8 /* SwiftAMFRemoter.framework in Frameworks */,
-				267362351F778151005EC9E4 /* Reflection.framework in Frameworks */,
+				26241DD81F7867250086A66B /* Reflection.framework in Frameworks */,
+				26241DD41F7866FE0086A66B /* SwiftAMFRemoter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +490,7 @@
 		261E1AB41EE8C4D600A0D2B5 = {
 			isa = PBXGroup;
 			children = (
-				267362341F778151005EC9E4 /* Reflection.framework */,
+				26241DD61F7867140086A66B /* Reflection.framework */,
 				261E1ABF1EE8C4D600A0D2B5 /* Example */,
 				261E1ABE1EE8C4D600A0D2B5 /* Products */,
 				266EAE5D1F5B493C00667BB8 /* Frameworks */,
@@ -567,7 +567,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Tony Henderson";
 				TargetAttributes = {
 					261E1ABC1EE8C4D600A0D2B5 = {
@@ -706,7 +706,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -714,7 +716,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -757,7 +763,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -765,7 +773,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

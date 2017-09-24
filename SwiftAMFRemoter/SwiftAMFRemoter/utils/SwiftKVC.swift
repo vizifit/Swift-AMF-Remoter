@@ -1,12 +1,5 @@
-//
-//  SwiftKVC.swift
-//  SwiftAMFManager
-//
-//  Created by Tony Henderson on 12/22/16.
-//  Copyright © 2016 Tony Henderson. All rights reserved.
-//
 
-import Foundation
+
 
 
 //
@@ -16,7 +9,7 @@ import Foundation
 //  Created by Bradley Hilton on 7/20/15.
 //  Copyright © 2015 Skyvive. All rights reserved.
 //
-
+import Foundation
 import Reflection
 
 /// Enables dynamic, KVC-style behavior for native Swift structures.

@@ -54,16 +54,22 @@ class ViewController: UIViewController, IServiceConnectorView {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        removeServiceConnector(self.connectorId)
+        
+        super.viewWillDisappear(animated)
+    }
     
     deinit {
-        removeServiceConnector(self.connectorId)
+        print("deinitializing")
+        
     }
     
     
     
     private var  _before:Double = 0
     private var _after:Double = 0
-    
+    private var _mgr:IRemoteServiceManager? = nil
     @IBAction func callAmfSimpleMethod(_ sender: AnyObject) {
         
         
@@ -71,11 +77,13 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         _before = Date().timeIntervalSince1970
         
-        let mgr = UIViewController.getRemoteServiceManager()
+        _mgr = UIViewController.getRemoteServiceManager()
         
         DataTypeInitializer.registerClassAliases()
         
-        mgr.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
+        _mgr?.toggleDebugMode(true)
+        
+        _mgr?.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
                                                                destination: "fluorine",
                                                                endpoint: "http://vizifitdev.cloudapp.net/Gateway.aspx",
                                                                securityPolicyUrl: "securityPolicyUrl",
@@ -97,7 +105,21 @@ class ViewController: UIViewController, IServiceConnectorView {
         var counter=0
         var startIdx = 0
         
-        mgr.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+//        let myPicture = UIImage(data: try! Data(contentsOf: URL(string:"http://i.stack.imgur.com/Xs4RX.jpg")!))!
+//        
+//        // ADD IMAGE METHOD
+//        //let myThumb1 = myPicture.resized(withPercentage: 0.1)
+//        let myThumb2 = myPicture.resizeWithWidth(width: 10.0)
+//        let imageData:Data = UIImagePNGRepresentation(myThumb2!)! as Data
+//        
+//        AMFCoder.bypassUtf16Length = true
+//        
+//        self.updateUserProfileImage(filedata: imageData.base64EncodedString())
+        
+        // LOGIN METHOD
+        _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+        
+        
         
 //        for i in startIdx..<max{
 //            mgr.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
@@ -110,8 +132,30 @@ class ViewController: UIViewController, IServiceConnectorView {
         _after = Date().timeIntervalSince1970
         
     }
+    
+    func updateUserProfileImage(filedata:String){
+        
+        print(filedata)
+        let nonceToken = ""  // Not implemented yet
+        
+        let userId:Int = 1
+        let typeId:Int = 3 // Thumbnail Need to get from Helper Utility
+        let contentTypeId:Int = 1 // PNG Need to get from Helper Utility
+        let name = "Profile Image Name" // PNG Need to get from Helper Utility
+        let description = "Profile Image Description" // PNG Need to get from Helper Utility
+        var filedata = filedata
+        let blobContainerName = "profile" // Should come from enum or constants
+        
+        //print(filedata.endIndex)
+        //let index = filedata.index(filedata.startIndex, offsetBy: 70000)
+        //filedata = filedata.substring(to: index)
+        //let metricEnum:UnitMetricEnum = UnitMetricEnum.Pounds
+        _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: CloudStorageFacadeServiceDefinition.SAVE_MEDIA_ASSET_BY_USER_ID , args:nonceToken, userId, typeId, contentTypeId, name, description, filedata, blobContainerName)
+    }
 
 }
+
+
 
 //    func onRemoteServiceEvent(_ notification: Notification) {
 //
@@ -154,5 +198,6 @@ class ViewController: UIViewController, IServiceConnectorView {
 //        }
 //
 //    }
+
 
 

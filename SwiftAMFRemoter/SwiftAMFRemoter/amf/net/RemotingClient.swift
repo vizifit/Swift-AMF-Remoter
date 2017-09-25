@@ -135,14 +135,10 @@ open class RemotingClient: INetConnection {
                 var messageCorrelationId:String? = nil
                 
                 do{
-                    
                     messageCorrelationId = try resultMessage!.getMessageId()
-                    
                 }catch let e {
                     print(e.localizedDescription)
                 }
-                
- 
                 
                 let result = self.removePendingMessageResult(messageId: messageCorrelationId)
                 
@@ -216,25 +212,7 @@ open class RemotingClient: INetConnection {
         
         
         encodeAndSendMessage(requestMessage: amfMessage)
-        
-//        coder.encodeMessage(message: amfMessage)
-//        
-//        // TODO: Fix
-//        //_registeredServiceConfigurations.updateItem(config)
-//        
-//        invokeCall(self._gatewayUrl, amfMessage: Data(coder.bytes)) { (success, message) -> () in
-//            if success {
-//  
-//                //dispatch(<#T##type: String##String#>, bubbles: <#T##Bool#>, data: <#T##Any?#>)
-//                
-//                //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
-//                self.dispatch("test", bubbles: false, data: amfMessage)
-//                
-//                print("logged in successfully!")
-//            } else {
-//                print("there was an error:", message!)
-//            }
-//        }
+
     }
     
     fileprivate func invokeCall(_ endpoint:String, requestMessage:Data, completion: @escaping (_ success: Bool, _ resultMessage: AMFMessage?) -> ()) {

@@ -35,7 +35,7 @@ class EncoderTest: XCTestCase {
     
     func testEncodeDecode() {
         
-        return
+        //return
         print("")
         print("-------------------------")
         print("- AMF Encoder")

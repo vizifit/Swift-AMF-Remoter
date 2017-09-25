@@ -62,15 +62,12 @@
 		260ACD271EE997010066231C /* VzUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACCF01EE997010066231C /* VzUser.swift */; };
 		260ACD281EE997010066231C /* VzUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACCF11EE997010066231C /* VzUserType.swift */; };
 		260ACD291EE997010066231C /* PunchJunkieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260ACCF21EE997010066231C /* PunchJunkieModel.swift */; };
+		261C8D831F78AB7D00126056 /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 261C8D851F78AB7D00126056 /* SwiftAMFRemoter.framework */; };
 		261E1AC11EE8C4D600A0D2B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1AC01EE8C4D600A0D2B5 /* AppDelegate.swift */; };
 		261E1AC31EE8C4D600A0D2B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261E1AC21EE8C4D600A0D2B5 /* ViewController.swift */; };
 		261E1AC61EE8C4D600A0D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC41EE8C4D600A0D2B5 /* Main.storyboard */; };
 		261E1AC81EE8C4D600A0D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */; };
 		261E1ACB1EE8C4D600A0D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC91EE8C4D600A0D2B5 /* LaunchScreen.storyboard */; };
-		26241DD41F7866FE0086A66B /* SwiftAMFRemoter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; };
-		26241DD51F7867060086A66B /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		26241DD71F7867140086A66B /* Reflection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 26241DD61F7867140086A66B /* Reflection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		26241DD81F7867250086A66B /* Reflection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26241DD61F7867140086A66B /* Reflection.framework */; };
 		26A4EE5D1F04EA1B008038A9 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -81,8 +78,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				26241DD71F7867140086A66B /* Reflection.framework in Embed Frameworks */,
-				26241DD51F7867060086A66B /* SwiftAMFRemoter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -154,6 +149,7 @@
 		260ACCF01EE997010066231C /* VzUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUser.swift; sourceTree = "<group>"; };
 		260ACCF11EE997010066231C /* VzUserType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserType.swift; sourceTree = "<group>"; };
 		260ACCF21EE997010066231C /* PunchJunkieModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PunchJunkieModel.swift; sourceTree = "<group>"; };
+		261C8D851F78AB7D00126056 /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftAMFRemoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1ABD1EE8C4D600A0D2B5 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		261E1AC01EE8C4D600A0D2B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		261E1AC21EE8C4D600A0D2B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,8 +157,6 @@
 		261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		261E1ACA1EE8C4D600A0D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261E1ACC1EE8C4D600A0D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		26241DD61F7867140086A66B /* Reflection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reflection.framework; path = ../Carthage/Build/iOS/Reflection.framework; sourceTree = "<group>"; };
-		266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftAMFRemoter.framework; path = "../../../../../../../../Users/thenderson/Library/Developer/Xcode/DerivedData/SwiftAMFRemoterWS-coeqzahoxvyemdcmtpeszgcnsysm/Build/Products/Debug-iphoneos/SwiftAMFRemoter.framework"; sourceTree = "<group>"; };
 		26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,8 +165,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26241DD81F7867250086A66B /* Reflection.framework in Frameworks */,
-				26241DD41F7866FE0086A66B /* SwiftAMFRemoter.framework in Frameworks */,
+				261C8D831F78AB7D00126056 /* SwiftAMFRemoter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,7 +483,6 @@
 		261E1AB41EE8C4D600A0D2B5 = {
 			isa = PBXGroup;
 			children = (
-				26241DD61F7867140086A66B /* Reflection.framework */,
 				261E1ABF1EE8C4D600A0D2B5 /* Example */,
 				261E1ABE1EE8C4D600A0D2B5 /* Products */,
 				266EAE5D1F5B493C00667BB8 /* Frameworks */,
@@ -525,7 +517,7 @@
 		266EAE5D1F5B493C00667BB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				266EAE5E1F5B493C00667BB8 /* SwiftAMFRemoter.framework */,
+				261C8D851F78AB7D00126056 /* SwiftAMFRemoter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

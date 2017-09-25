@@ -10,7 +10,7 @@
 //  Copyright © 2015 Skyvive. All rights reserved.
 //
 import Foundation
-import Reflection
+
 
 /// Enables dynamic, KVC-style behavior for native Swift structures.
 public protocol Value {}
@@ -21,6 +21,7 @@ extension Value {
     /// Handles failure silently.
     public subscript (key: String) -> Any? {
         get {
+             
             return try? get(key: key)
         }
         set {
@@ -30,12 +31,12 @@ extension Value {
     
     /// Get value for key; may throw Reflection error.
     public func get(key: String) throws -> Any {
-        return try Reflection.get(key, from: self)
+        return try SwiftAMFRemoter.get(key, from: self)
     }
     
     /// Set value for key; may throw Reflection error.
     public mutating func set(value: Any, key: String) throws {
-        try Reflection.set(value, key: key, for: &self)
+        try SwiftAMFRemoter.set(value, key: key, for: &self)
     }
     
 }
@@ -58,12 +59,12 @@ extension Object {
     
     /// Get value for key; may throw Reflection error.
     public func get(key: String) throws -> Any {
-        return try Reflection.get(key, from: self)
+        return try SwiftAMFRemoter.get(key, from: self)
     }
     
     /// Set value for key; may throw Reflection error.
     public func set(value: Any, key: String) throws {
-        try Reflection.set(value, key: key, for: self)
+        try SwiftAMFRemoter.set(value, key: key, for: self)
     }
     
 }

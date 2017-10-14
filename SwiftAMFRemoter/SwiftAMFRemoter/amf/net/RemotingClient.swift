@@ -21,7 +21,7 @@ open class RemotingClient: INetConnection {
     fileprivate var _index:Int = 0
     fileprivate var _isPendingCallResponse:Bool = false
     fileprivate var _key:String = String()
-    fileprivate var _pendingMessages:[Int:PendingMessageResult]
+    fileprivate var _pendingMessages:[String:PendingMessageResult]
 
     
     
@@ -72,7 +72,8 @@ open class RemotingClient: INetConnection {
     
     private func addPendingMessageResult( _ message:IMessage, serviceDefinition:IAMFServiceDefinition){
         
-        _pendingMessages[_pendingMessages.count] = PendingMessageResult(message, serviceDefinition: serviceDefinition)
+         print("ADD Pending message for MessageID:" + message.messageId)
+        _pendingMessages[message.messageId] = PendingMessageResult(message, serviceDefinition: serviceDefinition)
         
     }
     
@@ -82,18 +83,26 @@ open class RemotingClient: INetConnection {
             return nil
         }
         
-        print("Remove Pending message for MessageID:" + messageId!)
+        print("REMOVE Pending message for MessageID:" + messageId!)
         
-        for (index, pendingMessage) in _pendingMessages {
-            
-            if messageId! == pendingMessage.messageId {
-                
-                print("Message found at index:" + String(index))
-                let foundMessage = _pendingMessages.removeValue(forKey: index)
-                return foundMessage
-            }
+        let foundMessage = _pendingMessages.removeValue(forKey: messageId!)
+        
+        if((foundMessage) != nil){
+            return foundMessage
         }
         
+            print("Message remove FAILED")
+        
+//        for (index, pendingMessage) in _pendingMessages {
+//
+//            if messageId! == pendingMessage.messageId {
+//
+//                print("Message found at index:" + String(index))
+//                let foundMessage = _pendingMessages.removeValue(forKey: index)
+//                return foundMessage
+//            }
+//        }
+//
         print("Message remove FAILED")
 
         

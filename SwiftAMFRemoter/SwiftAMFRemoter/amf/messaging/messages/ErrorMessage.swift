@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 @objc(ErrorMessage) open class ErrorMessage : AcknowledgeMessage{
     
  

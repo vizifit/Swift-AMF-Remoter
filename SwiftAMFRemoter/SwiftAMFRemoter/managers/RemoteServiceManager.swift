@@ -509,9 +509,12 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         }
         else{
             
+            
             //TODO: Not sure if we want unique or per session
             // Update Unique messageId
             //config.remoteMessage?.clientId = UUID().uuidString
+          //config.remoteMessage?.clientId = UUID().uuidString
+            config.remoteMessage?.messageId = UUID().uuidString
             
             if serviceDefinition.destination != nil{
                 config.remoteMessage?.destination = destination

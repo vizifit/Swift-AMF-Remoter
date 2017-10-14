@@ -81,7 +81,7 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         DataTypeInitializer.registerClassAliases()
         
-        _mgr?.toggleDebugMode(true)
+        _mgr?.toggleDebugMode(false)
         
         _mgr?.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
                                                                destination: "fluorine",
@@ -118,7 +118,7 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         // LOGIN METHOD
         _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
-        
+        //_mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
         
         
 //        for i in startIdx..<max{

@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 @objc(AsyncMessage) open class AsyncMessage : FlexMessage{
     
     

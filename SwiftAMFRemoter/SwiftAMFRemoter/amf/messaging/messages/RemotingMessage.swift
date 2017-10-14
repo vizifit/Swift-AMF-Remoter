@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 @objc(RemotingMessage) open class RemotingMessage:FlexMessage{
     
     

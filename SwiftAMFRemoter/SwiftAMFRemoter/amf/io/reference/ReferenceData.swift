@@ -130,6 +130,7 @@ open class ReferenceData {
     func getString(_ index:Int) throws -> String {
         
         if (_strings.count <= index) {
+            print("Error: getString: \(index)")
             throw AMFCoderError.outOfIndex
         }
         return strings[index]! as String
@@ -137,6 +138,7 @@ open class ReferenceData {
     
     func getObject(_ index:Int) throws -> Any {
         if (_objects.count <= index) {
+            print("Error: getObject: \(index)")
             throw AMFCoderError.outOfIndex
         }
         return _objects[index]!
@@ -144,6 +146,7 @@ open class ReferenceData {
     
     func getClassDefinition(_ index:Int) throws -> ClassDefinition {
         if (_classDefinitions.count <= index) {
+            print("Error: getClassDefinition: \(index)")
             throw AMFCoderError.outOfIndex
         }
         return _classDefinitions[index]!

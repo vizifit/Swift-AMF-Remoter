@@ -203,6 +203,9 @@ open class AMFMessage: BasicObject {
             case _ as ErrorMessage:
                 return (messageResult as? ErrorMessage)?.correlationId
                 
+            case _ as FlexMessage:
+                return (messageResult as? ErrorMessage)?.messageId
+                
             default:
                 return nil
                 

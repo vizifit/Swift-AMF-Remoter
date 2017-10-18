@@ -13,30 +13,24 @@ open class  AMFServiceRequestGroup{
     
     
     init( amfServiceRequests:[String:AMFServiceRequest]?,
-        resultNotificationId:String?,
-        faultNotificationId:String?,
-        customGroupKey:String?=nil,
+        notificationId:String?,
         modalWait:Bool=true,
         modalWaitMessage:String?="Loading...")
     {
         
-        self._resultNotificationId = resultNotificationId;
-        self._faultNotificationId = faultNotificationId;
+        self._notificationId = notificationId;
         self._modalWait = modalWait;
         self._modalWaitMessage = modalWaitMessage;
         self._amfServiceRequests = amfServiceRequests;
         
         // Generate a group key if not provided.
-        self._groupKey = customGroupKey != nil ? customGroupKey! : generateGroupKey()!
+        self._groupKey =  AMFServiceRequestGroup.generateGroupKey(requestGroup: self)!
         
- 
     }
     
     fileprivate var _amfServiceRequests:[String:AMFServiceRequest]?
     
-    fileprivate var _resultNotificationId:String?
-    
-    fileprivate var _faultNotificationId:String?
+    fileprivate var _notificationId:String?
     
     fileprivate var _modalWait:Bool
     
@@ -70,25 +64,19 @@ open class  AMFServiceRequestGroup{
         
     }
     
-    open var resultNotificationId:String? {
+    open var notificationId:String? {
         
-        get{return self._resultNotificationId}
-        
-    }
-    
-    open var faultNotificationId:String? {
-        
-        get{return self._faultNotificationId}
+        get{return self._notificationId}
         
     }
 
    
-    func generateGroupKey()->String?{
+    open static func generateGroupKey(requestGroup:AMFServiceRequestGroup)->String?{
     
         var generatedKey:String = "SVC_GROUP_REQ_"
         generatedKey += UUID().uuidString
 
-        for (key, _) in self.amfServiceRequests!{
+        for (key, _) in requestGroup.amfServiceRequests!{
             
             generatedKey += "-" + key
         }

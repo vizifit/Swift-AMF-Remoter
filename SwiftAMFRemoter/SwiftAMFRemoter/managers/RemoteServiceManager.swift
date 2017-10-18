@@ -128,16 +128,26 @@ open class RemoteServiceManager: IRemoteServiceManager  {
     @objc func serviceResponseHandler(_ notification: Notification) throws {
         
         guard let userInfo = notification.userInfo,
-            let result  = userInfo["result"] as? AMFMessage,
-            let serviceKey     = userInfo["serviceKey"]    as? String else {
-                
+            let result = userInfo["result"] ,
+            let serviceKey = userInfo["serviceKey"]  as? String,
+            let messageGroupKey = userInfo["messageGroupKey"] as? String else {
                 
                 // TODO: Do logic here
                 print("No userInfo found in notification")
                 return
         }
         
-        let connectorNotification:ServiceConnectorNotification = try ServiceConnectorNotification(result, serviceKey: serviceKey)
+        
+        var connectorNotification:ServiceConnectorNotification?
+        
+        // Single Message
+        if(result is  AMFMessage){
+            connectorNotification = try ServiceConnectorNotification(result as! AMFMessage, serviceKey: serviceKey)
+        }
+        else{
+            // Grouped Message
+            connectorNotification = try ServiceConnectorNotification(result as! [AMFMessage], resultMessageGroupKey: messageGroupKey, serviceKey: serviceKey)
+        }
         
         //print(connectorNotification)
         // Display General services errors here
@@ -151,7 +161,7 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         
         // TODO: User service key as default filter
 
-        notifyServiceConnectorObservers(connectorNotification)
+        notifyServiceConnectorObservers(connectorNotification!)
         
         //notifyServiceConnectors(connectorNotification)
 
@@ -456,111 +466,82 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         return (_registeredServiceConfigurations.itemExists(key))
     }
     
+    
+    open func invokeGroupedServiceCall(_ serviceConfigKey:String, requestGroup:AMFServiceRequestGroup){
+        
+        let serviceConfig:RemoteServiceConfiguration? = getServiceConfiguration( serviceConfigKey )
+        
+        // TODO: Throw error
+        if(serviceConfig == nil){
+            print( "ERROR" )
+            return
+        }
+ 
+        var requestMessages:[AMFServiceRequestMessage] = []
+        
+        for (_ , value) in requestGroup.amfServiceRequests!{
+            
+            packageRemoteMessage(config: serviceConfig!, serviceDefinition: value.serviceDefinition, requestId: nil, groupKey: nil, args: value.args)
+
+            // TODO: Might have to do deep copy of remote message.
+            requestMessages.append(AMFServiceRequestMessage( message: (serviceConfig?.remoteMessage)!, serviceDefinition: value.serviceDefinition))
+        }
+        
+        serviceConfig?.connection.call(requestGroup: requestGroup, requestMessages: requestMessages) 
+    }
+    
     /**
      *
      * @default
      */
     open func invokeServiceCall(_ serviceConfigKey:String, serviceDefinition:IAMFServiceDefinition, args:Any?... ){
         
-        invokeServiceBaseMethod(serviceConfigKey,
-                                   serviceDefinition: serviceDefinition,
-                                   requestId: nil,
-                                   groupKey: nil,
-                                   args: args)
+        let serviceConfig:RemoteServiceConfiguration? = getServiceConfiguration( serviceConfigKey )
         
-    }
-    
- 
-   fileprivate func invokeServiceBaseMethod( _ serviceConfigKey:String,
-                                                 serviceDefinition:IAMFServiceDefinition,
-                                                 requestId:String? = nil,
-                                                 groupKey:String? = nil,
-                                                 args:Any?... ){
-        
-        if(_registeredServiceConfigurations.itemExists(serviceConfigKey) == false){
-            
-            // Todo: Throw error/log
+        // TODO: Throw error
+        if(serviceConfig == nil){
+            print( "ERROR" )
             return
         }
-    
         
+        packageRemoteMessage(config: serviceConfig!, serviceDefinition: serviceDefinition, requestId: nil, groupKey: nil, args: args)
         
-        let config:RemoteServiceConfiguration = (_registeredServiceConfigurations.getItem( serviceConfigKey ) as? RemoteServiceConfiguration)!
-    
-        if config.connection.connected == false {
-            // Todo: Throw error/log
-            print("NOT CONNECTED")
-            return
-        }
-    
-    
-        let destination = serviceDefinition.destination != nil ? serviceDefinition.destination : config.destination
-        let endpoint = serviceDefinition.endpoint != nil ? serviceDefinition.endpoint : config.endpoint
-        let source = serviceDefinition.source != nil ? serviceDefinition.source : config.source
-        
-        if(config.remoteMessage == nil){
-            
-            config.remoteMessage = RemotingMessage.remoteMessageFactory(destination: destination!,
-                                                                        endpoint: "my-amf",
-                                                                        timeToLive: config.timeout,
-                                                                        connectionId: requestId)
-            
-            config.remoteMessage?.source = source
-        }
-        else{
-            
-            
-            //TODO: Not sure if we want unique or per session
-            // Update Unique messageId
-            //config.remoteMessage?.clientId = UUID().uuidString
-          //config.remoteMessage?.clientId = UUID().uuidString
-            config.remoteMessage?.messageId = UUID().uuidString
-            
-            if serviceDefinition.destination != nil{
-                config.remoteMessage?.destination = destination
-            }
-           
-            if serviceDefinition.endpoint != nil {
-                RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: endpoint!, clientId: nil)
-            }
-            
-            if serviceDefinition.source != nil {
-                config.remoteMessage?.source = source
-            }
-            
-            if requestId != nil {
-                 RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: nil, clientId: requestId)
-            }
-           
-        }
-    
-        config.remoteMessage?.source = serviceDefinition.source //"com.vizifit.API.Facade.UserFacade"
-        config.remoteMessage?.operation = serviceDefinition.methodName
-    
-    
-        // Set body arguments
-        if(args.count > 0){
-            
-            var bodyArguments:[Any]? = []
-            let parameters:[Any]? = args[0] as? [Any]
-            
-            for parameter in parameters! {
-                bodyArguments!.append(parameter)
-            }
-            
-            config.remoteMessage?.body = bodyArguments
-        }
-    
-    
-        //config.remoteMessage?.body = ((parameters?.count)!>0) ? parameters : nil // args
-        config.connection.call(config.remoteMessage!, serviceDefinition:serviceDefinition, callback: nil)
-    
-        // Command test
-        //let commMessage:CommandMessage = CommandMessage.commandMessageFactory(destination: "Fluorine", endpoint: config.endpoint!)
-
-        //config.connection.call(commMessage, callback: nil)
-
+        serviceConfig?.connection.call(request:(serviceConfig?.remoteMessage)!, serviceDefinition: serviceDefinition)
+  
     }
+    
+    
+    
+    
+    
+    
+    
+//    fileprivate func invokeServiceBaseMethod( _ serviceConfigKey:String,
+//                                                 serviceDefinition:IAMFServiceDefinition,
+//                                                 requestId:String? = nil,
+//                                                 groupKey:String? = nil,
+//                                                 args:Any?... ){
+//
+//        let serviceConfig:RemoteServiceConfiguration? = getServiceConfiguration( serviceConfigKey )
+//
+//        // TODO: Throw error
+//        if(serviceConfig == nil){
+//            print( "ERROR" )
+//            return
+//        }
+//
+//        packageRemoteMessage(config: serviceConfig!, serviceDefinition: serviceDefinition, requestId: requestId, groupKey: groupKey, args: args)
+//
+//        //config.remoteMessage?.body = ((parameters?.count)!>0) ? parameters : nil // args
+//        serviceConfig?.connection.call((serviceConfig?.remoteMessage)!, serviceDefinition:serviceDefinition)
+//        //serviceConfig.connection.call(serviceConfig.remoteMessage!, serviceDefinition:serviceDefinition)
+//
+//        // Command test
+//        //let commMessage:CommandMessage = CommandMessage.commandMessageFactory(destination: "Fluorine", endpoint: config.endpoint!)
+//
+//        //config.connection.call(commMessage, callback: nil)
+//
+//    }
    
     fileprivate func clientAMFRequest(_ endpoint:String, amfMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
         
@@ -587,6 +568,89 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         }
         
         return request
+    }
+    
+    
+    fileprivate func getServiceConfiguration(serviceConfigKey:String)->RemoteServiceConfiguration?{
+        
+        if(_registeredServiceConfigurations.itemExists(serviceConfigKey) == false){
+            
+            // Todo: Throw error/log
+            return nil
+        }
+        
+        let serviceConfig:RemoteServiceConfiguration = (_registeredServiceConfigurations.getItem( serviceConfigKey ) as? RemoteServiceConfiguration)!
+        
+        if serviceConfig.connection.connected == false {
+            // Todo: Throw error/log
+            print("NOT CONNECTED")
+            return nil
+        }
+        
+        return serviceConfig
+    }
+    
+    fileprivate func packageRemoteMessage(config:RemoteServiceConfiguration,
+                                          serviceDefinition: IAMFServiceDefinition,
+                                          requestId:String? = nil,
+                                          groupKey:String? = nil,
+                                          args:Any?... ){
+        
+        let destination = serviceDefinition.destination != nil ? serviceDefinition.destination : config.destination
+        let endpoint = serviceDefinition.endpoint != nil ? serviceDefinition.endpoint : config.endpoint
+        let source = serviceDefinition.source != nil ? serviceDefinition.source : config.source
+        
+        if(config.remoteMessage == nil){
+            
+            config.remoteMessage = RemotingMessage.remoteMessageFactory(destination: destination!,
+                                                                        endpoint: "my-amf",
+                                                                        timeToLive: config.timeout,
+                                                                        connectionId: requestId)
+            
+            config.remoteMessage?.source = source
+        }
+        else{
+            
+            
+            //TODO: Not sure if we want unique or per session
+            // Update Unique messageId
+            //config.remoteMessage?.clientId = UUID().uuidString
+            //config.remoteMessage?.clientId = UUID().uuidString
+            config.remoteMessage?.messageId = UUID().uuidString
+            
+            if serviceDefinition.destination != nil{
+                config.remoteMessage?.destination = destination
+            }
+            
+            if serviceDefinition.endpoint != nil {
+                RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: endpoint!, clientId: nil)
+            }
+            
+            if serviceDefinition.source != nil {
+                config.remoteMessage?.source = source
+            }
+            
+            if requestId != nil {
+                RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: nil, clientId: requestId)
+            }
+        }
+        
+        config.remoteMessage?.source = serviceDefinition.source //"com.vizifit.API.Facade.UserFacade"
+        config.remoteMessage?.operation = serviceDefinition.methodName
+        
+        
+        // Set body arguments
+        if(args.count > 0){
+            
+            var bodyArguments:[Any]? = []
+            let parameters:[Any]? = args[0] as? [Any]
+            
+            for parameter in parameters! {
+                bodyArguments!.append(parameter)
+            }
+            
+            config.remoteMessage?.body = bodyArguments
+        }
     }
     
 }

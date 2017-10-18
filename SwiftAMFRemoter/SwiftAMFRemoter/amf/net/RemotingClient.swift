@@ -20,10 +20,13 @@ open class RemotingClient: INetConnection {
     fileprivate var _requestCount:Int = 0
     fileprivate var _index:Int = 0
     fileprivate var _isPendingMessageResponse:Bool = false
+    fileprivate var _isPendingGroupedMessageResponse:Bool = false
+    
     fileprivate var _key:String = String()
     fileprivate var _pendingMessageCount:Int = 0
     fileprivate var _pendingMessages:[String:PendingMessageResult]
     fileprivate var _pendingMessagesRaw:[[UInt8]]
+    fileprivate var _pendingGroupRequest:AMFServiceRequestGroup?
 
     
     
@@ -100,10 +103,7 @@ open class RemotingClient: INetConnection {
         return nil
  
     }
-    
-    private func sendMessage(rawMessage: [UInt8]){
-        
-        self.decoder.resetPosition()
+    private func packageResultMessage(rawMessage: [UInt8])->AMFMessage{
         
         let resultMessage:AMFMessage = try! self.decoder.decodeMessage(rawMessage)
         
@@ -120,7 +120,38 @@ open class RemotingClient: INetConnection {
         // Update result message with service definition
         resultMessage.serviceDefinition = (result?.serviceDefinition)!
         
-        NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": resultMessage, "serviceKey": self.key])
+        return resultMessage
+        
+    }
+    
+    private func sendMessageGroup(rawMessageGroup: [[UInt8]]){
+        
+        var results:[AMFMessage] = []
+        
+        for rawMessage in rawMessageGroup{
+            
+             self.decoder.resetPosition()
+            
+             let resultMessage:AMFMessage = packageResultMessage(rawMessage: rawMessage)
+            
+             results.append(resultMessage)
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": results, "serviceKey": self.key, "messageGroupKey": (self._pendingGroupRequest?.notificationId)!])
+        
+        // Reset flags/data for grouped service call
+        self._isPendingGroupedMessageResponse = false
+        self._pendingGroupRequest = nil
+    }
+    
+    
+    private func sendMessage(rawMessage: [UInt8]){
+        
+        self.decoder.resetPosition()
+        
+        let resultMessage:AMFMessage = packageResultMessage(rawMessage: rawMessage)
+        
+        NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": resultMessage, "serviceKey": self.key, "messageGroupKey": ""])
     }
     
     private func encodeAndSendMessage(_ messageId: String, requestMessage: AMFMessage){
@@ -158,10 +189,20 @@ open class RemotingClient: INetConnection {
                 }
                 else{
                     
-                    // Once all pending messages have returned, perform decoding
-                    for rawMessage in self._pendingMessagesRaw {
-                        self.sendMessage(rawMessage: rawMessage)
+                    // All messages have been processed (Single or Grouped)
+                    if(self._isPendingGroupedMessageResponse){
+                        
+                        self.sendMessageGroup(rawMessageGroup: self._pendingMessagesRaw)
+                        
                     }
+                    else{
+                        // Once all pending messages have returned, perform decoding
+                        for rawMessage in self._pendingMessagesRaw {
+                            self.sendMessage(rawMessage: rawMessage)
+                        }
+                    }
+                   
+                    self._isPendingMessageResponse = false
                     
                     print("Done")
                 }
@@ -192,16 +233,60 @@ open class RemotingClient: INetConnection {
         return false
     }
 
- 
-    //: For Flex RPC
-    open func call( _ message:IMessage, serviceDefinition:IAMFServiceDefinition, callback:IPendingServiceCallback?)
-    {
+    open static func generateGroupKey(requestGroup:AMFServiceRequestGroup)->String?{
+        
+        var generatedKey:String = "SVC_GROUP_REQ_"
+        generatedKey += UUID().uuidString
+        
+        for (key, _) in requestGroup.amfServiceRequests!{
+            
+            generatedKey += "-" + key
+        }
+        
+        return generatedKey
+        
+    }
+    
+    // Grouped Service Call
+    open func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
+        
         if (_netConnection.objectEncoding == ObjectEncoding.amf0){
             
             print("AMF0 not supported for Flex RPC")
-    
+            
             //throw new NotSupportedException("AMF0 not supported for Flex RPC")
-
+            
+            return
+        }
+        
+        if(!self._isPendingMessageResponse && !_isPendingGroupedMessageResponse){
+            self._isPendingGroupedMessageResponse = true
+            self._isPendingMessageResponse = true
+            self._pendingGroupRequest = requestGroup
+            
+            // TODO: Create another property for pending Request Group
+            // Set for Group
+            self._pendingMessageCount = requestMessages.count
+        }
+        else{
+            
+            // TODO: Throw error
+            print("Must wait until single service has returned")
+            return
+        }
+        
+        for request in requestMessages{
+            executeCall(request.message, serviceDefinition: request.serviceDefinition)
+        }
+    }
+    
+    
+    //: For Flex RPC
+    open func call( request:IMessage, serviceDefinition:IAMFServiceDefinition)
+    {
+        if (_netConnection.objectEncoding == ObjectEncoding.amf0){
+            print("AMF0 not supported for Flex RPC")
+            //throw new NotSupportedException("AMF0 not supported for Flex RPC")
             return
         }
         
@@ -213,22 +298,28 @@ open class RemotingClient: INetConnection {
             self._pendingMessageCount += 1
         }
         
+        executeCall( request, serviceDefinition: serviceDefinition)
+     
+    }
+    
+    func executeCall( _ message:IMessage, serviceDefinition:IAMFServiceDefinition){
+        
         // Add pending message for future retrieval
         addPendingMessageResult(message, serviceDefinition: serviceDefinition)
-
+        
         let responseString = (_requestCount == 0) ? "0" : String(_requestCount+1)
         
         _requestCount = _requestCount+1
         
-//        if(_requestCount == 0){
-//            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
-//            _requestCount = _requestCount+1
-//        }
-//        else{
-//            _requestCount = _requestCount+1
-//        }
-//        
-//        let responseString = String(_requestCount)
+        //        if(_requestCount == 0){
+        //            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
+        //            _requestCount = _requestCount+1
+        //        }
+        //        else{
+        //            _requestCount = _requestCount+1
+        //        }
+        //
+        //        let responseString = String(_requestCount)
         
         let amfMessage:AMFMessage = AMFMessage(version:  _netConnection.objectEncoding)
         amfMessage.serviceDefinition = serviceDefinition
@@ -239,9 +330,7 @@ open class RemotingClient: INetConnection {
         
         
         encodeAndSendMessage(message.messageId, requestMessage: amfMessage)
-
     }
-    
     
     // Chang this to just bytes, too : bytes:[UInt8]?
     fileprivate func invokeCall(_ endpoint:String, messageId:String, requestMessage:Data, completion: @escaping (_ success: Bool, _ resultMessage: AnyObject?) -> ()) {

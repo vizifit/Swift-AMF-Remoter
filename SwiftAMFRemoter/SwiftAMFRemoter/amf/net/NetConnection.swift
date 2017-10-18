@@ -149,25 +149,16 @@ public final class NetConnection :NSObject{
         // NOTE: Throw exc.
         
     }
+  
     
-    /// <summary>
-    /// Invokes a command or method on the server to which this connection is connected.
-    /// </summary>
-    /// <param name="endpoint">Flex RPC endpoint name.</param>
-    /// <param name="destination">Flex RPC message destination.</param>
-    /// <param name="source">The name of the service to be called including namespace name.</param>
-    /// <param name="operation">The name of the remote method/operation that should be called.</param>
-    /// <param name="callback">An optional object that is used to handle return values from the server.</param>
-    /// <param name="arguments">Optional arguments. These arguments are passed to the method specified in the command parameter when the method is executed on the remote application server.</param>
-    /// <remarks>
-    /// For a RTMP connection this method throws a NotSupportedException.
-    /// </remarks>
-    //    [ObsoleteAttribute("Overload of the Call method which accepts IPendingServiceCallback has been deprecated. Please investigate the use of the overload that accepts a Responder<T> instead.")]
- 
-    
-    open func call( _ message:RemotingMessage, serviceDefinition:IAMFServiceDefinition, callback:IPendingServiceCallback?){
+    open func call( request:IMessage, serviceDefinition:IAMFServiceDefinition){
         
-        _netConnectionClient!.call(message, serviceDefinition:serviceDefinition, callback:callback)
+        _netConnectionClient!.call(request: request, serviceDefinition: serviceDefinition)
+    }
+    
+    open func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
+        
+        _netConnectionClient!.call(requestGroup: requestGroup, requestMessages: requestMessages)
     }
     
     

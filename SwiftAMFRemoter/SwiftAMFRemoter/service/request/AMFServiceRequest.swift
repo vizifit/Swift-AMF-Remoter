@@ -9,8 +9,20 @@
 import Foundation
 
 open class  AMFServiceRequest:IServiceRequest{
-     
-    init(serviceConfigKey:String, serviceDefinition:IAMFServiceDefinition, args: Any...){
+    
+    fileprivate var _args:[Any]?
+    
+    fileprivate var _customWaitMessage:String?
+    
+    fileprivate var _key:String
+    
+    fileprivate var _serviceDefinition:IAMFServiceDefinition
+    
+    fileprivate var _isUpdateable:Bool
+    
+    fileprivate var _serviceConfigKey:String
+    
+    public init(serviceConfigKey:String, serviceDefinition:IAMFServiceDefinition, args: Any...){
         
         
         // Return args as an array
@@ -23,19 +35,6 @@ open class  AMFServiceRequest:IServiceRequest{
         self._isUpdateable = false
         
     }
-    
-    fileprivate var _args:[Any]?
-    
-    fileprivate var _customWaitMessage:String?
-    
-    fileprivate var _key:String
-    
-    fileprivate var _serviceDefinition:IAMFServiceDefinition
-    
-    fileprivate var _isUpdateable:Bool
-
-    fileprivate var _serviceConfigKey:String
-    
     
     open var serviceConfigKey: String{
         get{return self._serviceConfigKey}

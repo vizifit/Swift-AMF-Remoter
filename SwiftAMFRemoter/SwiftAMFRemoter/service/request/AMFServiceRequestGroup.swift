@@ -11,11 +11,34 @@ import Foundation
 
 open class  AMFServiceRequestGroup{
     
+    fileprivate var _amfServiceRequests:[AMFServiceRequest]?
     
-    init( amfServiceRequests:[String:AMFServiceRequest]?,
-        notificationId:String?,
-        modalWait:Bool=true,
-        modalWaitMessage:String?="Loading...")
+    fileprivate var _notificationId:String?
+    
+    fileprivate var _modalWait:Bool
+    
+    fileprivate var _modalWaitMessage:String?
+    
+    fileprivate var _groupKey:String?
+    
+    public init( amfServiceRequests:[AMFServiceRequest],
+          notificationId:String )
+    {
+        
+        self._notificationId = notificationId;
+        self._modalWait = false;
+        self._modalWaitMessage = nil;
+        self._amfServiceRequests = amfServiceRequests;
+        
+        // Generate a group key if not provided.
+        self._groupKey =  AMFServiceRequestGroup.generateGroupKey(requestGroup: self)!
+        
+    }
+    
+    public init( amfServiceRequests:[AMFServiceRequest],
+          notificationId:String,
+          modalWait:Bool,
+          modalWaitMessage:String)
     {
         
         self._notificationId = notificationId;
@@ -28,19 +51,7 @@ open class  AMFServiceRequestGroup{
         
     }
     
-    fileprivate var _amfServiceRequests:[String:AMFServiceRequest]?
-    
-    fileprivate var _notificationId:String?
-    
-    fileprivate var _modalWait:Bool
-    
-    fileprivate var _modalWaitMessage:String?
-    
-    fileprivate var _groupKey:String?
-
-    
-    
-    open var amfServiceRequests:[String:AMFServiceRequest]? {
+    open var amfServiceRequests:[AMFServiceRequest]? {
         
         get{return self._amfServiceRequests}
         
@@ -76,9 +87,9 @@ open class  AMFServiceRequestGroup{
         var generatedKey:String = "SVC_GROUP_REQ_"
         generatedKey += UUID().uuidString
 
-        for (key, _) in requestGroup.amfServiceRequests!{
-            
-            generatedKey += "-" + key
+        for request in requestGroup.amfServiceRequests!{
+             
+            generatedKey += "-" + request.serviceDefinition.value
         }
  
         return generatedKey

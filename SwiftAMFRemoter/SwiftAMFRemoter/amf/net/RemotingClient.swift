@@ -139,9 +139,6 @@ open class RemotingClient: INetConnection {
         
         NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": results, "serviceKey": self.key, "messageGroupKey": (self._pendingGroupRequest?.notificationId)!])
         
-        // Reset flags/data for grouped service call
-        self._isPendingGroupedMessageResponse = false
-        self._pendingGroupRequest = nil
     }
     
     
@@ -166,60 +163,52 @@ open class RemotingClient: INetConnection {
             if success {
                 
                 // If bad result...
-                if(resultMessage == nil){
+                if(resultMessage == nil ){
                     //TODO: Print error here
                     return
                 }
                 
-                // Only (1) message
-                if ( self._pendingMessageCount == 1 ){
+                // (1) HAS NO PENDING message results
+                if(self._pendingMessageCount == 1 && self._pendingMessagesRaw.count == 0){
                     self.sendMessage(rawMessage: resultMessage as! [UInt8])
-                    
                     self._pendingMessageCount = 0 // Reset pending message(s) count
                     return
                 }
                 
-                // (2) or more messages pending
-                if ( self._pendingMessageCount > 1){
-                    
-                    self._pendingMessageCount -= 1
-                    self._pendingMessagesRaw.append(resultMessage as! [UInt8])
-                    
-                    print("Removing counter: \(self._pendingMessageCount)")
+                // (2). HAS PENDING message results
+                self._pendingMessageCount -= 1
+                self._pendingMessagesRaw.append(resultMessage as! [UInt8])
+                print("Removing counter: \(self._pendingMessageCount)")
+                
+                // (3). Still pending message results from server... delay decoding
+                if ( self._pendingMessageCount > 0){
+                  return
+                }
+                
+                // (4). All messages have been processed (Single or Grouped)
+                if(self._isPendingGroupedMessageResponse){
+                    // (4.1) Grouped Message
+                    self.sendMessageGroup(rawMessageGroup: self._pendingMessagesRaw)
                 }
                 else{
-                    
-                    // All messages have been processed (Single or Grouped)
-                    if(self._isPendingGroupedMessageResponse){
-                        
-                        self.sendMessageGroup(rawMessageGroup: self._pendingMessagesRaw)
-                        
+                    // (4.2) Single Message
+                    for rawMessage in self._pendingMessagesRaw {
+                        self.sendMessage(rawMessage: rawMessage)
                     }
-                    else{
-                        // Once all pending messages have returned, perform decoding
-                        for rawMessage in self._pendingMessagesRaw {
-                            self.sendMessage(rawMessage: rawMessage)
-                        }
-                    }
-                   
-                    self._isPendingMessageResponse = false
-                    
-                    print("Done")
                 }
                 
-                // OLD CODE BELOW
-                //self.dispatch(self.key, bubbles: false, data: resultMessage)
-                //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
-                //self.dispatch("test", bubbles: false, data: resultMessage)
-                
-                //print("logged in successfully!")
-            } else {
+                // (5). Reset flags/data for grouped service call
+                self._isPendingGroupedMessageResponse = false
+                self._isPendingMessageResponse = false
+                self._pendingGroupRequest = nil
+                self._pendingMessagesRaw.removeAll()
+            }
+            else {
                 
                 // Do logic to handle errors here
                 print("there was an error:", resultMessage!)
             }
         }
-
     }
     
     private func isWaiting() -> Bool{
@@ -232,21 +221,7 @@ open class RemotingClient: INetConnection {
         
         return false
     }
-
-    open static func generateGroupKey(requestGroup:AMFServiceRequestGroup)->String?{
-        
-        var generatedKey:String = "SVC_GROUP_REQ_"
-        generatedKey += UUID().uuidString
-        
-        for (key, _) in requestGroup.amfServiceRequests!{
-            
-            generatedKey += "-" + key
-        }
-        
-        return generatedKey
-        
-    }
-    
+ 
     // Grouped Service Call
     open func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
         

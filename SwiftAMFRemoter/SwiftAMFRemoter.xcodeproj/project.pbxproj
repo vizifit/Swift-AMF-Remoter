@@ -59,8 +59,6 @@
 		268F7C491EDA1F3A0087203B /* InvocationException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BF51EDA1F3A0087203B /* InvocationException.swift */; };
 		268F7C4A1EDA1F3A0087203B /* DictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BF81EDA1F3A0087203B /* DictionaryBuilder.swift */; };
 		268F7C4B1EDA1F3A0087203B /* GeneralErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BFA1EDA1F3A0087203B /* GeneralErrors.swift */; };
-		268F7C4C1EDA1F3A0087203B /* RuntimeGlue.h in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BFC1EDA1F3A0087203B /* RuntimeGlue.h */; };
-		268F7C4D1EDA1F3A0087203B /* RuntimeGlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BFD1EDA1F3A0087203B /* RuntimeGlue.m */; };
 		268F7C4F1EDA1F3A0087203B /* ASArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C031EDA1F3A0087203B /* ASArray.swift */; };
 		268F7C501EDA1F3A0087203B /* ASObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C041EDA1F3A0087203B /* ASObject.swift */; };
 		268F7C511EDA1F3A0087203B /* BasicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7C051EDA1F3A0087203B /* BasicObject.swift */; };
@@ -162,8 +160,6 @@
 		268F7BF51EDA1F3A0087203B /* InvocationException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvocationException.swift; sourceTree = "<group>"; };
 		268F7BF81EDA1F3A0087203B /* DictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryBuilder.swift; sourceTree = "<group>"; };
 		268F7BFA1EDA1F3A0087203B /* GeneralErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralErrors.swift; sourceTree = "<group>"; };
-		268F7BFC1EDA1F3A0087203B /* RuntimeGlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuntimeGlue.h; sourceTree = "<group>"; };
-		268F7BFD1EDA1F3A0087203B /* RuntimeGlue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuntimeGlue.m; sourceTree = "<group>"; };
 		268F7C031EDA1F3A0087203B /* ASArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASArray.swift; sourceTree = "<group>"; };
 		268F7C041EDA1F3A0087203B /* ASObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASObject.swift; sourceTree = "<group>"; };
 		268F7C051EDA1F3A0087203B /* BasicObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicObject.swift; sourceTree = "<group>"; };
@@ -375,7 +371,6 @@
 			children = (
 				268F7BF71EDA1F3A0087203B /* collections */,
 				268F7BF91EDA1F3A0087203B /* errors */,
-				268F7BFB1EDA1F3A0087203B /* objc */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -396,15 +391,6 @@
 			path = errors;
 			sourceTree = "<group>";
 		};
-		268F7BFB1EDA1F3A0087203B /* objc */ = {
-			isa = PBXGroup;
-			children = (
-				268F7BFC1EDA1F3A0087203B /* RuntimeGlue.h */,
-				268F7BFD1EDA1F3A0087203B /* RuntimeGlue.m */,
-			);
-			path = objc;
-			sourceTree = "<group>";
-		};
 		268F7BFF1EDA1F3A0087203B /* constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,7 +405,6 @@
 				268F7C021EDA1F3A0087203B /* io */,
 				268F7C0F1EDA1F3A0087203B /* messaging */,
 				268F7C1D1EDA1F3A0087203B /* net */,
-				268F7C211EDA1F3A0087203B /* service */,
 			);
 			path = amf;
 			sourceTree = "<group>";
@@ -494,13 +479,6 @@
 			path = net;
 			sourceTree = "<group>";
 		};
-		268F7C211EDA1F3A0087203B /* service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = service;
-			sourceTree = "<group>";
-		};
 		268F7C711EDA30110087203B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,7 +542,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				268F7C4C1EDA1F3A0087203B /* RuntimeGlue.h in Headers */,
 				268F7BC31EDA1A9D0087203B /* SwiftAMFRemoter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -746,7 +723,6 @@
 				268F7C2A1EDA1F3A0087203B /* Protocol.swift in Sources */,
 				268F7C381EDA1F3A0087203B /* IDictionaryItem.swift in Sources */,
 				261C8DD01F78AED700126056 /* Any+Extensions.swift in Sources */,
-				268F7C4D1EDA1F3A0087203B /* RuntimeGlue.m in Sources */,
 				268F7C401EDA1F3A0087203B /* IServiceDefinition.swift in Sources */,
 				26A4EE561F04DA4A008038A9 /* IServiceConnectorNotification.swift in Sources */,
 				26A4EE631F09ACFF008038A9 /* IResultMessage.swift in Sources */,

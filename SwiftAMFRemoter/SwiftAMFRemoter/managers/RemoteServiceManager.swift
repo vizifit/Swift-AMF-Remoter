@@ -8,25 +8,54 @@
 
 import Foundation
 
-
-
 open class RemoteServiceManager: IRemoteServiceManager  {
     
+    fileprivate var _amfCoder:IAMFCoder
+    fileprivate var _debugMode:Bool = false
+    fileprivate var _registeredServiceConfigurations:DictionaryBuilder
+    fileprivate var _registeredServiceRequestGroups:DictionaryBuilder
     
     
-    /**
-     *
-     * @default
-     */
-    //public static const DEFAULT_LOADING_MESSAGE:String = "Loading data...";
+    /// Message constant
+    open static let SINGLETON_MSG = "RemoteServiceManager Singleton already constructed!"
     
-    /**
-     *
-     * @default
-     */
-    //public static const DEFAULT_LOADING_TITLE:String = "Please wait";
+    // Mapping of NotificationConnector
+    fileprivate var serviceConnectorMap: [String: IServiceConnectorView]
     
-    //open static let sharedInstance = RemoteServiceManager()
+    // Concurrent queue for notificationConnectorMap
+    // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
+    fileprivate let serviceConnectorMapQueue: DispatchQueue = DispatchQueue(label: "swiftAmfRemoter.serviceConnectorMapQueue", attributes: DispatchQueue.Attributes.concurrent)
+    
+    // Mapping of Notification names to Observer lists
+    fileprivate var observerMap: [String: Array<IServiceConnectorObserver>]
+    
+    // Concurrent queue for observerMap
+    // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
+    fileprivate let observerMapQueue: DispatchQueue = DispatchQueue(label: "swiftAmfRemoter.observerMapQueue", attributes: DispatchQueue.Attributes.concurrent)
+    
+    // Singleton instance
+    fileprivate static var instance: IRemoteServiceManager?
+    
+    // Concurrent queue for singleton instance
+    fileprivate static let instanceQueue = DispatchQueue(label: "swiftAmfRemoter.instanceQueue", attributes: DispatchQueue.Attributes.concurrent)
+    
+    internal enum EncryptionError: Error {
+        case empty
+        case short
+        case obvious(String)
+    }
+    
+    fileprivate var coder:IAMFCoder {
+        get{
+            return _amfCoder
+        }
+    }
+    
+    public var debugMode:Bool {
+        get{
+            return _debugMode
+        }
+    }
     
     open class func getInstance(_ closure: () -> IRemoteServiceManager) -> IRemoteServiceManager {
         instanceQueue.sync(flags: .barrier, execute: {
@@ -46,7 +75,6 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         
         _registeredServiceConfigurations = DictionaryBuilder()
         _registeredServiceRequestGroups = DictionaryBuilder()
-        
         _amfCoder = AMF3Coder()
         
         RemoteServiceManager.instance = self
@@ -54,77 +82,24 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         //initializeView()
     }
     
-    //This prevents others from using the default '()' initializer for this class.
-//    fileprivate override init() {
-//        
-//        
-//        _pendingModalServiceResults = DictionaryBuilder()
-//        _registeredServiceConfigurations = DictionaryBuilder()
-//        _registeredServiceRequestGroups = DictionaryBuilder()
-//        _registeredServiceConnectors = DictionaryBuilder()
-//        
-//        serviceConnectorMap = [:]
-//        observerMap = [:]
-//        
-//        _amfCoder = AMF3Coder()
-//        
-//        super.init()
-//    
-//    }
+    open func toggleDebugMode(_ isEnabled:Bool){
+        
+        if(_debugMode != isEnabled){
+            _debugMode = isEnabled
+        }
+        
+        AMF3Coder.verboseDebug = _debugMode
+    }
     
-    fileprivate var _amfCoder:IAMFCoder
-    
-    fileprivate var _debugMode:Bool = false
-    
-    fileprivate var _registeredServiceConfigurations:DictionaryBuilder
-    
-    fileprivate var _registeredServiceRequestGroups:DictionaryBuilder
-    
-    
-    /// Message constant
-    open static let SINGLETON_MSG = "RemoteServiceManager Singleton already constructed!"
-    
-    
-    // Mapping of NotificationConnector
-    fileprivate var serviceConnectorMap: [String: IServiceConnectorView]
-    
-    // Concurrent queue for notificationConnectorMap
-    // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
-    fileprivate let serviceConnectorMapQueue: DispatchQueue = DispatchQueue(label: "swiftAmfRemoter.serviceConnectorMapQueue", attributes: DispatchQueue.Attributes.concurrent)
-
-    // Mapping of Notification names to Observer lists
-    fileprivate var observerMap: [String: Array<IServiceConnectorObserver>]
-   
-    // Concurrent queue for observerMap
-    // for speed and convenience of running concurrently while reading, and thread safety of blocking while mutating
-    fileprivate let observerMapQueue: DispatchQueue = DispatchQueue(label: "swiftAmfRemoter.observerMapQueue", attributes: DispatchQueue.Attributes.concurrent)
-    
-    // Singleton instance
-    fileprivate static var instance: IRemoteServiceManager?
-    
-    // Concurrent queue for singleton instance
-    fileprivate static let instanceQueue = DispatchQueue(label: "swiftAmfRemoter.instanceQueue", attributes: DispatchQueue.Attributes.concurrent)
-
-    
-    internal enum EncryptionError: Error {
-        case empty
-        case short
-        case obvious(String)
+    open func addClassMap(_ map:ClassMap){
+        _amfCoder.addClassMap(map: map)
     }
    
-    fileprivate var coder:IAMFCoder {
-        get{
-            return _amfCoder
-        }
+    open func removeAllClassMaps(){
+        _amfCoder.removeAllClassMaps()
     }
     
-    public var debugMode:Bool {
-        get{
-            return _debugMode
-        }
-    }
-
-
+    // MARK: - Service Handler
     @objc func serviceResponseHandler(_ notification: Notification) throws {
         
         guard let userInfo = notification.userInfo,
@@ -136,7 +111,6 @@ open class RemoteServiceManager: IRemoteServiceManager  {
                 print("No userInfo found in notification")
                 return
         }
-        
         
         var connectorNotification:ServiceConnectorNotification?
         
@@ -150,64 +124,17 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         }
         
         //print(connectorNotification)
-        // Display General services errors here
+        // TODO: Display General services errors here
         
         //print(result)
         //print(serviceKey)
         
         // TODO: Remove EventHandler related code
         //dispatch(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, bubbles: false, data: result)
-
         
         // TODO: User service key as default filter
-
         notifyServiceConnectorObservers(connectorNotification!)
-        
-        //notifyServiceConnectors(connectorNotification)
-
-        
-//        for (key,val) in (notification.userInfo)! {
-//            let val_str = "\(key)"
-//            
-//            
-//            if val_str == "event" {
-//                let returnEvent:Event =  val as! Event
-//                //let message = returnEvent.data as! AMFMessage
-//                
-//                
-//                dispatch(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, bubbles: false, data: returnEvent.data)
-//                
-//                //remoteVideoURL = val
-//                break
-//            }
-//        } 
     }
-    
-    open func toggleDebugMode(_ isEnabled:Bool){
-        
-        if(_debugMode != isEnabled){
-            _debugMode = isEnabled
-        }
-        
-        AMF3Coder.verboseDebug = _debugMode
-    }
-    
-    /**
-     *
-     * @default
-     */
-    open func addClassMap(_ map:ClassMap){
-        _amfCoder.addClassMap(map: map)
-    }
-    
-    /**
-     *
-     * @default
-     */
-    open func removeAllClassMaps(){
-        _amfCoder.removeAllClassMaps()
-    }
-    
     // MARK: - Service Connector Observer
     
     /**
@@ -316,30 +243,6 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         }
         
         registerServiceConnector(connector as AnyObject)
-        
-//        serviceConnectorMapQueue.sync(flags: .barrier, execute: {
-//            
-//            // Register the Connector for retrieval by name
-//            self.serviceConnectorMap[connector.connectorId] = connector
-//            
-//            // Get Notification interests, if any.
-//            let interests = connector.listNotificationInterests()
-//            
-//            // Register Mediator as an observer for each notification of interests
-//            if !interests.isEmpty {
-//                // Create Observer referencing this mediator's handlNotification method
-//                
-//                let observer = ServiceConnectorObserver(notifyMethod: {notification in connector.handleServiceNotification(notification)}, notifyContext: connector as AnyObject )
-//                
-//                // Register Mediator as Observer for its list of Notification interests
-//                for notificationName in interests {
-//                    self.registerServiceConnectorObserver(notificationName, observer: observer)
-//                }
-//            }
-//            
-//            //TODO: Not sure if I need
-//            //connector.onRegister()
-//        })
     }
     
     /**
@@ -479,12 +382,11 @@ open class RemoteServiceManager: IRemoteServiceManager  {
  
         var requestMessages:[AMFServiceRequestMessage] = []
         
-        for (_ , value) in requestGroup.amfServiceRequests!{
-            
-            packageRemoteMessage(config: serviceConfig!, serviceDefinition: value.serviceDefinition, requestId: nil, groupKey: nil, args: value.args)
-
-            // TODO: Might have to do deep copy of remote message.
-            requestMessages.append(AMFServiceRequestMessage( message: (serviceConfig?.remoteMessage)!, serviceDefinition: value.serviceDefinition))
+        for request in requestGroup.amfServiceRequests!{
+        
+            let message:RemotingMessage = packageRemoteMessage(config: serviceConfig!, serviceDefinition: request.serviceDefinition, requestId: nil, groupKey: nil, args: request.args)
+  
+            requestMessages.append(AMFServiceRequestMessage( message: message, serviceDefinition: request.serviceDefinition))
         }
         
         serviceConfig?.connection.call(requestGroup: requestGroup, requestMessages: requestMessages) 
@@ -504,45 +406,12 @@ open class RemoteServiceManager: IRemoteServiceManager  {
             return
         }
         
-        packageRemoteMessage(config: serviceConfig!, serviceDefinition: serviceDefinition, requestId: nil, groupKey: nil, args: args)
+        let message = packageRemoteMessage(config: serviceConfig!, serviceDefinition: serviceDefinition, requestId: nil, groupKey: nil, args: args)
         
-        serviceConfig?.connection.call(request:(serviceConfig?.remoteMessage)!, serviceDefinition: serviceDefinition)
+        serviceConfig?.connection.call(request: message, serviceDefinition: serviceDefinition)
   
     }
     
-    
-    
-    
-    
-    
-    
-//    fileprivate func invokeServiceBaseMethod( _ serviceConfigKey:String,
-//                                                 serviceDefinition:IAMFServiceDefinition,
-//                                                 requestId:String? = nil,
-//                                                 groupKey:String? = nil,
-//                                                 args:Any?... ){
-//
-//        let serviceConfig:RemoteServiceConfiguration? = getServiceConfiguration( serviceConfigKey )
-//
-//        // TODO: Throw error
-//        if(serviceConfig == nil){
-//            print( "ERROR" )
-//            return
-//        }
-//
-//        packageRemoteMessage(config: serviceConfig!, serviceDefinition: serviceDefinition, requestId: requestId, groupKey: groupKey, args: args)
-//
-//        //config.remoteMessage?.body = ((parameters?.count)!>0) ? parameters : nil // args
-//        serviceConfig?.connection.call((serviceConfig?.remoteMessage)!, serviceDefinition:serviceDefinition)
-//        //serviceConfig.connection.call(serviceConfig.remoteMessage!, serviceDefinition:serviceDefinition)
-//
-//        // Command test
-//        //let commMessage:CommandMessage = CommandMessage.commandMessageFactory(destination: "Fluorine", endpoint: config.endpoint!)
-//
-//        //config.connection.call(commMessage, callback: nil)
-//
-//    }
-   
     fileprivate func clientAMFRequest(_ endpoint:String, amfMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
         
         var request = URLRequest(url: URL(string: endpoint)!)
@@ -594,50 +463,33 @@ open class RemoteServiceManager: IRemoteServiceManager  {
                                           serviceDefinition: IAMFServiceDefinition,
                                           requestId:String? = nil,
                                           groupKey:String? = nil,
-                                          args:Any?... ){
+                                          args:Any?... ) -> RemotingMessage{
         
         let destination = serviceDefinition.destination != nil ? serviceDefinition.destination : config.destination
         let endpoint = serviceDefinition.endpoint != nil ? serviceDefinition.endpoint : config.endpoint
         let source = serviceDefinition.source != nil ? serviceDefinition.source : config.source
         
-        if(config.remoteMessage == nil){
-            
-            config.remoteMessage = RemotingMessage.remoteMessageFactory(destination: destination!,
-                                                                        endpoint: "my-amf",
-                                                                        timeToLive: config.timeout,
-                                                                        connectionId: requestId)
-            
-            config.remoteMessage?.source = source
-        }
-        else{
-            
-            
-            //TODO: Not sure if we want unique or per session
-            // Update Unique messageId
-            //config.remoteMessage?.clientId = UUID().uuidString
-            //config.remoteMessage?.clientId = UUID().uuidString
-            config.remoteMessage?.messageId = UUID().uuidString
-            
-            if serviceDefinition.destination != nil{
-                config.remoteMessage?.destination = destination
-            }
-            
-            if serviceDefinition.endpoint != nil {
-                RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: endpoint!, clientId: nil)
-            }
-            
-            if serviceDefinition.source != nil {
-                config.remoteMessage?.source = source
-            }
-            
-            if requestId != nil {
-                RemotingMessage.updateRemoteMessage(message: config.remoteMessage!, endpoint: nil, clientId: requestId)
-            }
+        let remoteMessage:RemotingMessage = RemotingMessage.remoteMessageFactory(destination: destination!,
+                                                                                 endpoint: "my-amf",
+                                                                                 timeToLive: config.timeout,
+                                                                                 connectionId: requestId)
+        
+        //TODO: Not sure if we want unique or per session
+        // Update Unique messageId
+        //config.remoteMessage?.clientId = UUID().uuidString
+        
+        remoteMessage.messageId = UUID().uuidString
+        remoteMessage.destination = destination
+        remoteMessage.source = source
+        remoteMessage.operation = serviceDefinition.methodName
+        
+        if serviceDefinition.endpoint != nil {
+            RemotingMessage.updateRemoteMessage(message: remoteMessage, endpoint: endpoint!, clientId: nil)
         }
         
-        config.remoteMessage?.source = serviceDefinition.source //"com.vizifit.API.Facade.UserFacade"
-        config.remoteMessage?.operation = serviceDefinition.methodName
-        
+        if requestId != nil {
+            RemotingMessage.updateRemoteMessage(message: remoteMessage, endpoint: nil, clientId: requestId)
+        }
         
         // Set body arguments
         if(args.count > 0){
@@ -649,13 +501,46 @@ open class RemoteServiceManager: IRemoteServiceManager  {
                 bodyArguments!.append(parameter)
             }
             
-            config.remoteMessage?.body = bodyArguments
+            remoteMessage.body = bodyArguments
         }
+        
+        return remoteMessage
     }
-    
 }
 
 // MARK: - Old service connector code
+//open func registerServiceConnector(_ connector: IServiceConnectorView) {
+//    // do not allow re-registration (you must removeConnector first)
+//    if (hasServiceConnector(connector.connectorId)) {
+//        return
+//    }
+//
+//    registerServiceConnector(connector as AnyObject)
+//
+//    //        serviceConnectorMapQueue.sync(flags: .barrier, execute: {
+//    //
+//    //            // Register the Connector for retrieval by name
+//    //            self.serviceConnectorMap[connector.connectorId] = connector
+//    //
+//    //            // Get Notification interests, if any.
+//    //            let interests = connector.listNotificationInterests()
+//    //
+//    //            // Register Mediator as an observer for each notification of interests
+//    //            if !interests.isEmpty {
+//    //                // Create Observer referencing this mediator's handlNotification method
+//    //
+//    //                let observer = ServiceConnectorObserver(notifyMethod: {notification in connector.handleServiceNotification(notification)}, notifyContext: connector as AnyObject )
+//    //
+//    //                // Register Mediator as Observer for its list of Notification interests
+//    //                for notificationName in interests {
+//    //                    self.registerServiceConnectorObserver(notificationName, observer: observer)
+//    //                }
+//    //            }
+//    //
+//    //            //TODO: Not sure if I need
+//    //            //connector.onRegister()
+//    //        })
+//}
 //
 //    open func registerServiceConnector(_ connector:IServiceConnector){
 //

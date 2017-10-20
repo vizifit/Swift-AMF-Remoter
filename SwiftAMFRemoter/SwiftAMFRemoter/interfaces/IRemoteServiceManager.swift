@@ -16,6 +16,8 @@ public protocol IRemoteServiceManager : IServiceConnector, IRemoteServiceConfigu
     
     func invokeServiceCall(_ serviceConfigKey:String, serviceDefinition:IAMFServiceDefinition, args:Any?... )
     
+    func invokeGroupedServiceCall(_ serviceConfigKey:String, requestGroup:AMFServiceRequestGroup)
+    
     func toggleDebugMode(_ isEnabled:Bool)
     
      var debugMode:Bool { get  }

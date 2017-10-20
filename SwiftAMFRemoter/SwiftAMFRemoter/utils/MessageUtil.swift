@@ -9,8 +9,7 @@
 import Foundation
 
 open class AMFMessageUtil{
-    
-    
+     
      static open func getHeader(_ key: String, headers:[AMFMessageHeader]?) -> AMFMessageHeader? {
         
         for header in headers!{

@@ -29,6 +29,6 @@ public protocol IServiceConnectorNotification
     
     var groupedResultErrorCount:Int { get }
     
-    var resultMessageGroup:[IResultMessage]? { get }
+    var resultMessageGroup:[String:Any?]? { get }
 
 }

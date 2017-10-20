@@ -217,10 +217,11 @@ open class AMFMessage: BasicObject {
         
     }
     
-    open func getResult(_ index: Int = 0) throws -> (ResultType, Any?) {
+    open func getResult(_ index: Int = 0) throws -> (ResultType, Any?, String?) {
         
         var result:Any? = nil
         var type:ResultType = .unknownError
+        var resultMessageId:String?
         
         if(_bodies.count > 0 && ((_bodies.count-1) >= index)){
             
@@ -237,30 +238,27 @@ open class AMFMessage: BasicObject {
             let messageResult = messageResultSet[0]!
             switch messageResult
             {
+                case _ as ErrorMessage:
+                    type = .serverError
+                    result = (messageResult as? ErrorMessage)?.body
+                    resultMessageId = (messageResult as? ErrorMessage)?.correlationId
+                    
+                    break
                 
-                
-            case _ as ErrorMessage:
-                type = .serverError
-                result = (messageResult as? ErrorMessage)?.body
-                break
-                
-            case _ as AcknowledgeMessage:
-                type = .success
-                result = (messageResult as? AcknowledgeMessage)?.body
-                break
-
-                
-            default:
-                result = messageResult
-                type = .unknownError
-                break
-
+                case _ as AcknowledgeMessage:
+                    type = .success
+                    result = (messageResult as? AcknowledgeMessage)?.body
+                    resultMessageId = (messageResult as? AcknowledgeMessage)?.correlationId
+                    break
+     
+                default:
+                    result = messageResult
+                    type = .unknownError
+                    break
             }
         }
        
-        return (type, result)
-        
-    
+        return (type, result, resultMessageId)
     }
     
     //    public func addBodyWithTargetURI(targetURI: String, responseURI: String, data: AnyObject) {

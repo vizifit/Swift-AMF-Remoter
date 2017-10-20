@@ -21,5 +21,14 @@ public protocol IServiceConnectorNotification
     var isError:Bool { get}
     
     var errorMessage:ErrorMessage? { get }
+    
+    // Grouped messages
+    var isGroupedResult:Bool { get }
+    
+    var hasGroupedResultErrors:Bool { get }
+    
+    var groupedResultErrorCount:Int { get }
+    
+    var resultMessageGroup:[String:Any?]? { get }
 
 }

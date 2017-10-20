@@ -10,21 +10,6 @@ import Foundation
 
 open class  AMFServiceRequest:IServiceRequest{
     
-    
-    init(serviceDefinition:IAMFServiceDefinition, args: Any...){
-        
-        
-        // Return args as an array
-        
-        self._serviceDefinition=serviceDefinition
-        self._args = args
-        
-        self._customWaitMessage = nil;
-        self._key=UUID().uuidString
-        self._isUpdateable = false
-        
-    }
-    
     fileprivate var _args:[Any]?
     
     fileprivate var _customWaitMessage:String?
@@ -34,7 +19,26 @@ open class  AMFServiceRequest:IServiceRequest{
     fileprivate var _serviceDefinition:IAMFServiceDefinition
     
     fileprivate var _isUpdateable:Bool
-
+    
+    fileprivate var _serviceConfigKey:String
+    
+    public init(serviceConfigKey:String, serviceDefinition:IAMFServiceDefinition, args: Any...){
+        
+        
+        // Return args as an array
+        self._serviceConfigKey = serviceConfigKey
+        self._serviceDefinition=serviceDefinition
+        self._args = args
+        
+        self._customWaitMessage = nil;
+        self._key=UUID().uuidString
+        self._isUpdateable = false
+        
+    }
+    
+    open var serviceConfigKey: String{
+        get{return self._serviceConfigKey}
+    }
     
     open var requestId: String{
         get{return self._key}
@@ -49,7 +53,7 @@ open class  AMFServiceRequest:IServiceRequest{
  
     }
     
-    open var serviceDefinition: IServiceDefinition{
+    open var serviceDefinition: IAMFServiceDefinition{
         get{return self._serviceDefinition} 
     }
     

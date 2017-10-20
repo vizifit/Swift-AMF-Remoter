@@ -19,9 +19,14 @@ open class RemotingClient: INetConnection {
     fileprivate var _decoder:IAMFCoder
     fileprivate var _requestCount:Int = 0
     fileprivate var _index:Int = 0
-    fileprivate var _isPendingCallResponse:Bool = false
+    fileprivate var _isPendingMessageResponse:Bool = false
+    fileprivate var _isPendingGroupedMessageResponse:Bool = false
+    
     fileprivate var _key:String = String()
-    fileprivate var _pendingMessages:[Int:PendingMessageResult]
+    fileprivate var _pendingMessageCount:Int = 0
+    fileprivate var _pendingMessages:[String:PendingMessageResult]
+    fileprivate var _pendingMessagesRaw:[[UInt8]]
+    fileprivate var _pendingGroupRequest:AMFServiceRequestGroup?
 
     
     
@@ -35,7 +40,7 @@ open class RemotingClient: INetConnection {
         _encoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
         _decoder = (connection.objectEncoding == ObjectEncoding.amf3) ? AMF3Coder() : AMF0Coder()
         _pendingMessages = [:]
-        
+        _pendingMessagesRaw = []
     }
     
     //TODO: Add this functionality later.
@@ -66,13 +71,15 @@ open class RemotingClient: INetConnection {
         get{ return _decoder }
     }
     
-    public var isPendingCallResponse:Bool{
-        get { return _isPendingCallResponse}
+    public var isPendingMessageResponse:Bool{
+        get { return _isPendingMessageResponse}
     }
     
     private func addPendingMessageResult( _ message:IMessage, serviceDefinition:IAMFServiceDefinition){
         
-        _pendingMessages[_pendingMessages.count] = PendingMessageResult(message, serviceDefinition: serviceDefinition)
+         print("ADD Pending message for MessageID:" + message.messageId)
+        
+        _pendingMessages[message.messageId] = PendingMessageResult(message, serviceDefinition: serviceDefinition)
         
     }
     
@@ -82,89 +89,131 @@ open class RemotingClient: INetConnection {
             return nil
         }
         
-        print("Remove Pending message for MessageID:" + messageId!)
+        print("REMOVE Pending message for MessageID:" + messageId!)
         
-        for (index, pendingMessage) in _pendingMessages {
-            
-            if messageId! == pendingMessage.messageId {
-                
-                print("Message found at index:" + String(index))
-                let foundMessage = _pendingMessages.removeValue(forKey: index)
-                return foundMessage
-            }
+        let foundMessage = _pendingMessages.removeValue(forKey: messageId!)
+        
+        if((foundMessage) != nil){
+            return foundMessage
         }
         
-        print("Message remove FAILED")
-
-        
+        print("FAILED - REMOVE Pending message for MessageID:" + messageId!)
+ 
+ 
         return nil
+ 
+    }
+    private func packageResultMessage(rawMessage: [UInt8])->AMFMessage{
         
-//        let result = PendingMessageResult.getPendingMessageResult(messageId, pendingMessages: _pendingMessages)
-//        print("MessageID:" + messageId)
-//        
-//        if(result == nil){
-//            print("Message Not FOUND")
-//            return nil
-//        }
-//        
-//        print("Message found at index:" + String((result?.index)!))
-//        
-//        // Remove pending message
-//        _pendingMessages.removeValue(forKey: (result?.index)!)
-//        
-//        return result?.pendingMessage
+        let resultMessage:AMFMessage = try! self.decoder.decodeMessage(rawMessage)
+        
+        var messageCorrelationId:String? = nil
+        
+        do{
+            messageCorrelationId = try resultMessage.getMessageId()
+        }catch let e {
+            print(e.localizedDescription)
+        }
+        
+        let result = self.removePendingMessageResult(messageId: messageCorrelationId)
+        
+        // Update result message with service definition
+        resultMessage.serviceDefinition = (result?.serviceDefinition)!
+        
+        return resultMessage
+        
     }
     
-    private func encodeAndSendMessage(requestMessage:AMFMessage){
+    private func sendMessageGroup(rawMessageGroup: [[UInt8]]){
         
+        var results:[AMFMessage] = []
+        
+        for rawMessage in rawMessageGroup{
+            
+             self.decoder.resetPosition()
+            
+             let resultMessage:AMFMessage = packageResultMessage(rawMessage: rawMessage)
+            
+             results.append(resultMessage)
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": results, "serviceKey": self.key, "messageGroupKey": (self._pendingGroupRequest?.notificationId)!])
+        
+    }
+    
+    
+    private func sendMessage(rawMessage: [UInt8]){
+        
+        self.decoder.resetPosition()
+        
+        let resultMessage:AMFMessage = packageResultMessage(rawMessage: rawMessage)
+        
+        NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": resultMessage, "serviceKey": self.key, "messageGroupKey": ""])
+    }
+    
+    private func encodeAndSendMessage(_ messageId: String, requestMessage: AMFMessage){
         
         self.encoder.encodeMessage(message: requestMessage)
         
                 // TODO: Fix
         //_registeredServiceConfigurations.updateItem(config)
         
-        invokeCall(self._gatewayUrl, requestMessage: Data(encoder.bytes)) { (success, resultMessage) -> () in
+        invokeCall(self._gatewayUrl, messageId: messageId, requestMessage: Data(encoder.bytes)) { [unowned self] (success, resultMessage) -> () in
             
             if success {
                 
-                if(resultMessage == nil){
+                // If bad result...
+                if(resultMessage == nil ){
                     //TODO: Print error here
                     return
                 }
                 
-                var messageCorrelationId:String? = nil
-                
-                do{
-                    messageCorrelationId = try resultMessage!.getMessageId()
-                }catch let e {
-                    print(e.localizedDescription)
+                // (1) HAS NO PENDING message results
+                if(self._pendingMessageCount == 1 && self._pendingMessagesRaw.count == 0){
+                    self.sendMessage(rawMessage: resultMessage as! [UInt8])
+                    self._pendingMessageCount = 0 // Reset pending message(s) count
+                    return
                 }
                 
-                let result = self.removePendingMessageResult(messageId: messageCorrelationId)
+                // (2). HAS PENDING message results
+                self._pendingMessageCount -= 1
+                self._pendingMessagesRaw.append(resultMessage as! [UInt8])
+                print("Removing counter: \(self._pendingMessageCount)")
                 
-                // Update result message with service definition
-                resultMessage!.serviceDefinition = (result?.serviceDefinition)!
+                // (3). Still pending message results from server... delay decoding
+                if ( self._pendingMessageCount > 0){
+                  return
+                }
                 
-                NotificationCenter.default.post(name: Notification.Name(self.key), object: nil, userInfo: ["result": resultMessage!, "serviceKey": self.key])
- 
-                //self.dispatch(self.key, bubbles: false, data: resultMessage)
+                // (4). All messages have been processed (Single or Grouped)
+                if(self._isPendingGroupedMessageResponse){
+                    // (4.1) Grouped Message
+                    self.sendMessageGroup(rawMessageGroup: self._pendingMessagesRaw)
+                }
+                else{
+                    // (4.2) Single Message
+                    for rawMessage in self._pendingMessagesRaw {
+                        self.sendMessage(rawMessage: rawMessage)
+                    }
+                }
                 
-                //SwiftAMFRemoterManager.sharedInstance.dispatch("test", bubbles: false, data: message)
-                //self.dispatch("test", bubbles: false, data: resultMessage)
-                
-                //print("logged in successfully!")
-            } else {
+                // (5). Reset flags/data for grouped service call
+                self._isPendingGroupedMessageResponse = false
+                self._isPendingMessageResponse = false
+                self._pendingGroupRequest = nil
+                self._pendingMessagesRaw.removeAll()
+            }
+            else {
                 
                 // Do logic to handle errors here
                 print("there was an error:", resultMessage!)
             }
         }
-
     }
     
     private func isWaiting() -> Bool{
         
-        if(self.isPendingCallResponse==true){
+        if(self._isPendingMessageResponse==true){
             
             // Add to Batch
             return true
@@ -172,36 +221,80 @@ open class RemotingClient: INetConnection {
         
         return false
     }
-
  
-    //: For Flex RPC
-    open func call( _ message:IMessage, serviceDefinition:IAMFServiceDefinition, callback:IPendingServiceCallback?)
-    {
+    // Grouped Service Call
+    open func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
+        
         if (_netConnection.objectEncoding == ObjectEncoding.amf0){
             
             print("AMF0 not supported for Flex RPC")
-    
+            
             //throw new NotSupportedException("AMF0 not supported for Flex RPC")
-
+            
             return
         }
         
+        if(!self._isPendingMessageResponse && !_isPendingGroupedMessageResponse){
+            self._isPendingGroupedMessageResponse = true
+            self._isPendingMessageResponse = true
+            self._pendingGroupRequest = requestGroup
+            
+            // TODO: Create another property for pending Request Group
+            // Set for Group
+            self._pendingMessageCount = requestMessages.count
+        }
+        else{
+            
+            // TODO: Throw error
+            print("Must wait until single service has returned")
+            return
+        }
+        
+        for request in requestMessages{
+            executeCall(request.message, serviceDefinition: request.serviceDefinition)
+        }
+    }
+    
+    
+    //: For Flex RPC
+    open func call( request:IMessage, serviceDefinition:IAMFServiceDefinition)
+    {
+        if (_netConnection.objectEncoding == ObjectEncoding.amf0){
+            print("AMF0 not supported for Flex RPC")
+            //throw new NotSupportedException("AMF0 not supported for Flex RPC")
+            return
+        }
+        
+        if(!self._isPendingMessageResponse){
+            self._isPendingMessageResponse = true
+            self._pendingMessageCount = 1
+        }
+        else{
+            self._pendingMessageCount += 1
+        }
+        
+        executeCall( request, serviceDefinition: serviceDefinition)
+     
+    }
+    
+    func executeCall( _ message:IMessage, serviceDefinition:IAMFServiceDefinition){
+        
         // Add pending message for future retrieval
         addPendingMessageResult(message, serviceDefinition: serviceDefinition)
-
+        
         let responseString = (_requestCount == 0) ? "0" : String(_requestCount+1)
         
         _requestCount = _requestCount+1
         
-//        if(_requestCount == 0){
-//            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
-//            _requestCount = _requestCount+1
-//        }
-//        else{
-//            _requestCount = _requestCount+1
-//        }
-//        
-//        let responseString = String(_requestCount)
+        //        if(_requestCount == 0){
+        //            //message = CommandMessage.commandMessageFactory(destination: "fluorine", endpoint: _gatewayUrl)
+        //            _requestCount = _requestCount+1
+        //        }
+        //        else{
+        //            _requestCount = _requestCount+1
+        //        }
+        //
+        //        let responseString = String(_requestCount)
         
         let amfMessage:AMFMessage = AMFMessage(version:  _netConnection.objectEncoding)
         amfMessage.serviceDefinition = serviceDefinition
@@ -211,21 +304,20 @@ open class RemotingClient: INetConnection {
         amfMessage.addBody(amfMessageBody)
         
         
-        encodeAndSendMessage(requestMessage: amfMessage)
-
+        encodeAndSendMessage(message.messageId, requestMessage: amfMessage)
     }
     
-    fileprivate func invokeCall(_ endpoint:String, requestMessage:Data, completion: @escaping (_ success: Bool, _ resultMessage: AMFMessage?) -> ()) {
+    // Chang this to just bytes, too : bytes:[UInt8]?
+    fileprivate func invokeCall(_ endpoint:String, messageId:String, requestMessage:Data, completion: @escaping (_ success: Bool, _ resultMessage: AnyObject?) -> ()) {
         
-        //let loginObject = ["email": email, "password": password]
-        
-        post(clientAMFRequest(endpoint, requestAMFMessage: requestMessage)) { (success, result) -> () in
+      
+        post(clientAMFRequest(endpoint, messageId: messageId, requestAMFMessage: requestMessage)) { (success, result) -> () in
             
             // Thread on main queue
             DispatchQueue.main.async(execute: { () -> Void in
                 
                 if success {
-                    completion(true, result as? AMFMessage)
+                    completion(true, result )
                 
                 } else {
                     
@@ -236,7 +328,7 @@ open class RemotingClient: INetConnection {
                     }
                      
                     print(errorMessage)
-                    completion(true, result as? AMFMessage)
+                    completion(true, result)
                 }
             })
         }
@@ -244,7 +336,7 @@ open class RemotingClient: INetConnection {
     
     
     // TODO: Will need to add custom headers eventually
-    fileprivate func clientAMFRequest(_ endpoint:String, requestAMFMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
+    fileprivate func clientAMFRequest(_ endpoint:String, messageId:String, requestAMFMessage:Data, params: Dictionary<String, AnyObject>? = nil) -> URLRequest {
         
         var request = URLRequest(url: URL(string: endpoint)!)
         
@@ -264,6 +356,7 @@ open class RemotingClient: INetConnection {
         else{
             request.setValue("application/x-amf", forHTTPHeaderField: "Content-Type")
             request.setValue("BigMavAMF", forHTTPHeaderField: "User-Agent")
+            request.setValue(messageId, forHTTPHeaderField: "Message-ID")
             //request.setValue("", forHTTPHeaderField: "Accept-Encoding")
             //request.setValue("100-continue", forHTTPHeaderField: "Expect")
             request.httpBody = requestAMFMessage
@@ -307,15 +400,16 @@ open class RemotingClient: INetConnection {
                 // Need to update coder to have decode method that takes parameter
                 //let json = try? JSONSerialization.jsonObject(with: data, options: [])
                 
-                self.decoder.resetPosition()
+                // PREFIX
+                //self.decoder.resetPosition()
                 
                 if(bytes != nil || data.bytes.count > 0){
-                    let amfMessage:AMFMessage = try! self.decoder.decodeMessage(data.bytes)
+                    //let amfMessage:AMFMessage = try! self.decoder.decodeMessage(data.bytes)
                     
                     if let response = response as? HTTPURLResponse, 200...299 ~= response.statusCode {
-                        completion(true, amfMessage)
+                        completion(true, bytes! as AnyObject)
                     } else {
-                        completion(false, amfMessage)
+                        completion(false, bytes! as AnyObject)
                     }
                     
                     return
@@ -339,54 +433,6 @@ open class RemotingClient: INetConnection {
             }
         }) .resume()
     }
-    
-
 }
 
-
-//open class AmfRequestData
-//{
-//    internal var  _call:PendingCall
-//    //readonly HttpWebRequest _request
-//    fileprivate var _amfMessage:AMFMessage
-//    fileprivate var _callback:IPendingServiceCallback
-//    fileprivate var _responder:AnyObject
-//    
-//    init( amfMessage:AMFMessage,  call:PendingCall,  callback:IPendingServiceCallback,  responder:AnyObject?){
-//        
-//        //_request = request
-//        _call = call
-//        _responder = responder ?? "" as AnyObject
-//        _amfMessage = amfMessage
-//        _callback =  callback
-//        
-//    }
-//    
-//    internal var call:PendingCall
-//        {
-//        get { return _call }
-//    }
-//    
-//    //        public HttpWebRequest Request
-//    //        {
-//    //        get { return _request }
-//    //        }
-//    
-//    open var AmfMessage:AMFMessage
-//        {
-//        get { return _amfMessage }
-//    }
-//    
-//    open var callback:IPendingServiceCallback
-//        {
-//        get { return _callback }
-//    }
-//    
-//    open var responder:AnyObject
-//        {
-//        get { return _responder }
-//    }
-//    
-//    
-//}
 

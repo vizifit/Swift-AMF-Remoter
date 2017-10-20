@@ -283,54 +283,55 @@ public extension String {
         return Character(UnicodeScalar(code)!)
     }
     
-    // Decode the HTML character entity to the corresponding
-    // Unicode character, return `nil` for invalid input.
-    //     decode("&#64;")    --> "@"
-    //     decode("&#x20ac;") --> "€"
-    //     decode("&lt;")     --> "<"
-    //     decode("&foo;")    --> nil
-    fileprivate func decode(_ entity : String) -> Character? {
-        if entity.hasPrefix("&#x") || entity.hasPrefix("&#X"){
-            return decodeNumeric(entity.substring(from: entity.characters.index(entity.startIndex, offsetBy: 3)), base: 16)
-        } else if entity.hasPrefix("&#") {
-            return decodeNumeric(entity.substring(from: entity.characters.index(entity.startIndex, offsetBy: 2)), base: 10)
-        } else {
-            return HTMLEntities.characterEntities[entity]
-        }
-    }
-    
-    
-    /// Returns a new string made by replacing in the `String`
-    /// all HTML character entity references with the corresponding
-    /// character.
-    func decodeHTML() -> String {
-        var result = ""
-        var position = startIndex
-        
-        // Find the next '&' and copy the characters preceding it to `result`:
-        while let ampRange = self.range(of: "&", range: position ..< endIndex) {
-            result.append(String(self[position ..< ampRange.lowerBound]))
-            position = ampRange.lowerBound
-            
-            // Find the next ';' and copy everything from '&' to ';' into `entity`
-            if let semiRange = self.range(of: ";", range: position ..< endIndex) {
-                let entity = self[position ..< semiRange.upperBound]
-                position = semiRange.upperBound
-                
-                if let decoded = decode(String(entity)) {
-                    // Replace by decoded character:
-                    result.append(decoded)
-                } else {
-                    // Invalid entity, copy verbatim:
-                    result.append(entity)
-                }
-            } else {
-                // No matching ';'.
-                break
-            }
-        }
-        // Copy remaining characters to `result`:
-        result.append(String(self[position ..< endIndex]))
-        return result
-    }
+    // Broken for Swift 4
+//    // Decode the HTML character entity to the corresponding
+//    // Unicode character, return `nil` for invalid input.
+//    //     decode("&#64;")    --> "@"
+//    //     decode("&#x20ac;") --> "€"
+//    //     decode("&lt;")     --> "<"
+//    //     decode("&foo;")    --> nil
+//    fileprivate func decode(_ entity : String) -> Character? {
+//        if entity.hasPrefix("&#x") || entity.hasPrefix("&#X"){
+//            return decodeNumeric(entity.substring(from: entity.characters.index(entity.startIndex, offsetBy: 3)), base: 16)
+//        } else if entity.hasPrefix("&#") {
+//            return decodeNumeric(entity.substring(from: entity.characters.index(entity.startIndex, offsetBy: 2)), base: 10)
+//        } else {
+//            return HTMLEntities.characterEntities[entity]
+//        }
+//    }
+//
+//
+//    /// Returns a new string made by replacing in the `String`
+//    /// all HTML character entity references with the corresponding
+//    /// character.
+//    func decodeHTML() -> String {
+//        var result = ""
+//        var position = startIndex
+//
+//        // Find the next '&' and copy the characters preceding it to `result`:
+//        while let ampRange = self.range(of: "&", range: position ..< endIndex) {
+//            result.append(String(self[position ..< ampRange.lowerBound]))
+//            position = ampRange.lowerBound
+//
+//            // Find the next ';' and copy everything from '&' to ';' into `entity`
+//            if let semiRange = self.range(of: ";", range: position ..< endIndex) {
+//                let entity = self[position ..< semiRange.upperBound]
+//                position = semiRange.upperBound
+//
+//                if let decoded = decode(String(entity)) {
+//                    // Replace by decoded character:
+//                    result.append(decoded)
+//                } else {
+//                    // Invalid entity, copy verbatim:
+//                    result.append(entity)
+//                }
+//            } else {
+//                // No matching ';'.
+//                break
+//            }
+//        }
+//        // Copy remaining characters to `result`:
+//        result.append(String(self[position ..< endIndex]))
+//        return result
+//    }
 }

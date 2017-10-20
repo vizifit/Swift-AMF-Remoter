@@ -11,6 +11,15 @@ import SwiftAMFRemoter
 
 class ViewController: UIViewController, IServiceConnectorView {
     
+    
+    private let GROUP_NOTIFICATION_TEST:String = "GROUP_NOTIFICATION_TEST"
+    open func listNotificationInterests() -> [String]{
+        
+        return [UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!,
+                UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!,
+        GROUP_NOTIFICATION_TEST]
+    }
+    
     open func handleServiceNotification(_ notification: IServiceConnectorNotification) {
      
         print("NotificationID: " + notification.notificationId)
@@ -26,20 +35,20 @@ class ViewController: UIViewController, IServiceConnectorView {
             
             break
             
+        case GROUP_NOTIFICATION_TEST:
+            print("Received RESULT for:" + notification.notificationId)
+            break
+            
         default:
             print("Unregistered notification...")
             break
         }
     }
 
-    open func listNotificationInterests() -> [String]{
-        
-        return [UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!,
-                UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!]
-    }
+    
 
     private var _connectorId:String = ""
-     
+    
     
     /**
      Gets unique Id of connector
@@ -81,7 +90,7 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         DataTypeInitializer.registerClassAliases()
         
-        _mgr?.toggleDebugMode(true)
+        _mgr?.toggleDebugMode(false)
         
         _mgr?.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
                                                                destination: "fluorine",
@@ -91,46 +100,77 @@ class ViewController: UIViewController, IServiceConnectorView {
                                                                timeout: 3000,
                                                                modalWait: true,
                                                                isUpdateable: false))
+      
+        let max = 10
+        var counter=0
+        let startIdx = 1
+        let callType:Int = 0 // 0-Single, 1-Single Rapid, 2- Grouped
+
+        
+        switch callType {
+            case 0:
+                //--------------------------------------
+                // Single Call
+                //--------------------------------------
+                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+                
+                break
+            
+            case 1:
+                //--------------------------------------
+                // Parallel Single Call
+                //--------------------------------------
+                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+                
+                for i in startIdx..<max{
+                    _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
+                    counter = i
+                }
+                break
+            
+            case 2:
+                //--------------------------------------
+                // Grouped Call
+                //--------------------------------------
+                var requestGroup:[AMFServiceRequest] = []
+                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test.com", "Ahhender7215"))
+                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test1.com", "Ahhender7215"))
+                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test2.com", "Ahhender7215"))
+                
+                let serviceGroup:AMFServiceRequestGroup = AMFServiceRequestGroup(amfServiceRequests: requestGroup,
+                                                                                 notificationId: GROUP_NOTIFICATION_TEST)
+                
+                _mgr?.invokeGroupedServiceCall(ServiceConstants.SERVICE_KEY, requestGroup: serviceGroup)
+                break
+            default:
+                //
+                break
+        }
+        
+        _after = Date().timeIntervalSince1970
+        
+        //--------------------------------------
+        // OLD CODE
+        //--------------------------------------
+        //        let myPicture = UIImage(data: try! Data(contentsOf: URL(string:"http://i.stack.imgur.com/Xs4RX.jpg")!))!
+        //
+        //        // ADD IMAGE METHOD
+        //        //let myThumb1 = myPicture.resized(withPercentage: 0.1)
+        //        let myThumb2 = myPicture.resizeWithWidth(width: 10.0)
+        //        let imageData:Data = UIImagePNGRepresentation(myThumb2!)! as Data
+        //
+        //        AMFCoder.bypassUtf16Length = true
+        //
+        //        self.updateUserProfileImage(filedata: imageData.base64EncodedString())
         
         //mgr.addEventListener(RemoteServiceManagerConstants.SERVICE_RESPONSE_NOTIFICATION, selector: #selector(ViewController.onRemoteServiceEvent(_:)), observer: self)
         
         
-//        var values = self.form.values(includeHidden: true)
-//        let email = values["txtEmail"]
-//        let password = values["txtPassword"]
+        //        var values = self.form.values(includeHidden: true)
+        //        let email = values["txtEmail"]
+        //        let password = values["txtPassword"]
         
         //mgr.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: email!, password!)
-        
-        let max = 10
-        var counter=0
-        var startIdx = 0
-        
-//        let myPicture = UIImage(data: try! Data(contentsOf: URL(string:"http://i.stack.imgur.com/Xs4RX.jpg")!))!
-//        
-//        // ADD IMAGE METHOD
-//        //let myThumb1 = myPicture.resized(withPercentage: 0.1)
-//        let myThumb2 = myPicture.resizeWithWidth(width: 10.0)
-//        let imageData:Data = UIImagePNGRepresentation(myThumb2!)! as Data
-//        
-//        AMFCoder.bypassUtf16Length = true
-//        
-//        self.updateUserProfileImage(filedata: imageData.base64EncodedString())
-        
-        // LOGIN METHOD
-        _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
-        
-        
-        
-//        for i in startIdx..<max{
-//            mgr.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
-//            
-//
-//            counter = i
-//        }
-
-        
-        _after = Date().timeIntervalSince1970
-        
     }
     
     func updateUserProfileImage(filedata:String){

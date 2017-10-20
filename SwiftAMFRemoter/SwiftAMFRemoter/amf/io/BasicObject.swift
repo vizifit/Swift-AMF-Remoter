@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+@objcMembers
 open class BasicObject: NSObject, Object{
     
     required override public init() {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objcMembers
 open class CommandMessage : AsyncMessage{
     
     

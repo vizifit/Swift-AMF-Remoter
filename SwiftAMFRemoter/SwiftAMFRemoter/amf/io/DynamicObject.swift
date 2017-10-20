@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+@objcMembers
 open class DynamicObject: BasicObject{
     
     required public init() {

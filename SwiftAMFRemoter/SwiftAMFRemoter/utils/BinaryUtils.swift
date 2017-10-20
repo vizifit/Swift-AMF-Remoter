@@ -39,8 +39,7 @@ open class BinaryUtils{
             return UnsafeRawPointer($0.baseAddress!).load(as: T.self)
         }
     }
-
-    
+ 
     open static func swiftByteArray(_ data:Data)->[UInt8]
     {
         var bytes = [UInt8](repeating: 0, count: data.count)

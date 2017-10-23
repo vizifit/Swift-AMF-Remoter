@@ -196,6 +196,16 @@ open class ReferenceData {
         return nil
     }
     
+    func indexOf(_ value:Date) -> Int? {
+
+        for (index, object) in _objects {
+            if let object:Date = object as? Date , String(format: "Date- %.2f", (object as Date).timeIntervalSince1970) == String(format: "Date- %.2f", value.timeIntervalSince1970) {
+                return index
+            }
+        }
+
+        return nil
+    }
     
     func indexOf<T:Equatable>(_ value: T) -> Int? {
         for (index, object) in _objects {

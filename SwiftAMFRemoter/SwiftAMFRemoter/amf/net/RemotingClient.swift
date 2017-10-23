@@ -172,6 +172,8 @@ open class RemotingClient: INetConnection {
                 if(self._pendingMessageCount == 1 && self._pendingMessagesRaw.count == 0){
                     self.sendMessage(rawMessage: resultMessage as! [UInt8])
                     self._pendingMessageCount = 0 // Reset pending message(s) count
+                    self._isPendingMessageResponse = false
+                    self._pendingMessagesRaw.removeAll()
                     return
                 }
                 

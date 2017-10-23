@@ -34,7 +34,7 @@ import SwiftAMFRemoter
 
 	public var Tagline:String = String()
 
-	public var User:VzUser = VzUser()
+	public var User:VzUser?
 
 	public var UserId:Int = -1
 }

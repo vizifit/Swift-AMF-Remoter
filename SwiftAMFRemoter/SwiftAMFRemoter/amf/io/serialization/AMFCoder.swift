@@ -20,7 +20,7 @@ open class AMFCoder: AMFByteArray, IAMFCoder {
     
     open static var bypassUtf16Length:Bool = false
     
-    func encodeValue(_ value:Any?) {
+    public func encodeValue(_ value:Any?) {
         
         clear()
         encode(value)

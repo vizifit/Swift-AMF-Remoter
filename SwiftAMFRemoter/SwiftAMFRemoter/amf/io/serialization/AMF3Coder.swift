@@ -66,7 +66,7 @@ open class AMF3Coder : AMFCoder{
     
     open static var verboseDebug:Bool = false
     
-    override init(){
+    override public init(){
 
          _referenceData = ReferenceData()
         
@@ -394,7 +394,15 @@ open class AMF3Coder : AMFCoder{
         
         // Check for reference
         if let referenceIndex:Int = referenceData.indexOf(value) {
-            return encodeReference(index: referenceIndex)
+            
+            let action = "Encoding:"
+            
+            if(AMF3Coder.verboseDebug){
+                print("\(action) Date (Ref) at index:\(referenceIndex)")
+            }
+            
+            let zeroBasedIndex = referenceIndex // For zero based array
+            return encodeReference(index: zeroBasedIndex)
         }
 
         // Add Reference
@@ -416,7 +424,7 @@ open class AMF3Coder : AMFCoder{
             let action = "Decoding:"
             
             if(AMF3Coder.verboseDebug){
-               print("\(action) Object (Ref) at index:\(header.value)")
+               print("\(action) Date (Ref) at index:\(header.value)")
             }
             
             
@@ -885,11 +893,12 @@ open class AMF3Coder : AMFCoder{
             }
             
             for (key, value) in clsDict {
-                encode(value!)
+                 
+                encode((value == nil) ? nil : value!)
                 
                 if(AMF3Coder.verboseDebug){
                     print("Key Value: \(key)")
-                    print("Property Value: \(value!)")
+                    print("Property Value: \((value == nil) ? "nil" : value!)")
                 }
             }
 
@@ -941,8 +950,8 @@ open class AMF3Coder : AMFCoder{
         var members:[String]=[]
         var memberName:String
         for index in 0..<clsMemberCount {
-            memberName = try decodeString()
             
+            memberName = try decodeString()
             
             if(AMF3Coder.verboseDebug) { print("Member: \(memberName) at Index: \(index)") }
             members.append(memberName)
@@ -994,26 +1003,12 @@ open class AMF3Coder : AMFCoder{
                  
                 if(clsDef.isTyped){
                     
-                    
-                    // Do logic to determine if class propertie, if not go down to super
-                    
-//                    if(member == "body"){
-//                        anyValue=nil
-//                    }
-                    
-//                    if(clsMap?.className == "VzUserType"){
-//                        
-//                        continue
-//                    }
-                    
                     if(anyValue == nil){
                         continue
                     }
                     
                     clsInstance.setValue(anyValue, forKey: member)
                     //try clsInstance.set(value: anyValue!, key: member)
-                    
-                    
                 }
                
                 // Use ASObject if not typed
@@ -1095,7 +1090,7 @@ open class AMF3Coder : AMFCoder{
 
     fileprivate func encodeStringReference(_ index:Int) -> Self{
         
-        let oneBasedIndex = index+1 // 1 Based array values for References
+        let oneBasedIndex = index// + 1 // 1 Based array values for References
         
         if(AMF3Coder.verboseDebug){
             let action = "Encoding:"

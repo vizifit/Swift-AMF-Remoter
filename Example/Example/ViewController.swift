@@ -43,6 +43,15 @@ class ViewController: UIViewController, IServiceConnectorView {
     
     @IBAction func encodeDecodeComplexValue(_ sender: AnyObject) {
         
+        testPersistSaveAndRetrieveEncodedData()
+    }
+    
+    
+    //------------------------------------
+    // Persist Encoded values
+    //------------------------------------
+    @IBAction func persistSaveAndRetrieveEncodedValue(_ sender: AnyObject) {
+        
         //executeServiceCommand(type: CallExecutionType.singleParallelCall)
     }
     
@@ -227,57 +236,135 @@ class ViewController: UIViewController, IServiceConnectorView {
         return value
     }
     
+   
+    func testPersistSaveAndRetrieveEncodedData(){
+        
+        
+        // We first of all create a class that can be initialized using an NSCoder instance and encode itself into an instance of NSCoder. And once we have this functionality, which is required by the NSCoding protocol, it is possible to create an instance that can be archived
+        
+//        let book = Book(title: "MyBook", author: "Me", pageCount: 10, categories: ["Fabulousness"], available: true)
+//        let filePath = try! FileSave.buildPath(path: "bookdata", inDirectory: FileManager.SearchPathDirectory.cachesDirectory, subdirectory: "archive")
+//
+//
+//        NSKeyedArchiver.archiveRootObject(book, toFile: filePath)
+//        //
+        //
+        // and de-archived.
+//        if let bookData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Book  {
+//            bookData.available // true
+//            bookData.author // Me
+//
+//            print(bookData.available)
+//            print(bookData.author)
+//        }
+        
+    }
+    
     func testEncodeDecode() {
         
         _encoder.resetPosition()
         _decoder.resetPosition()
         
-        let value:UserContext = returnUserContext()
+//        let value:UserContext = returnUserContext()
+//        var pCache:AMFPersistantCache =  AMFPersistantCache
+//
+//
+//        let result = PersistantStorage.encodeItemToCache(cacheKey: "TestCacheItem", cache: pCache, object: value)
+//
+//        do {
+//            PersistantStorage.store(cache, to: .caches, as: pCache.cacheId)
+//        }
+//            //            // 4
+//        catch let e as Error {
+//            print(e.localizedDescription)
+//        }
+//        let getPCache = PersistantStorage.retrieve(pCache.cacheId, from: .documents, as: AMFPersistantCache.self)
+//        let decodedValue = PersistantStorage.decodeItemFromCache(cache: getPCache, cacheKey: "TestCacheItem", isFromClassName: false) as? UserContext
+//
+//        print((decodedValue?.User.FirstName)!)
+//        print((decodedValue?.User.LastName)!)
+//        print((decodedValue?.Account.Password)!)
+//        print((decodedValue?.Profile.Tagline)!)
+
         
-        
-  
-        
-        //return
-        print("\n-------------------------")
-        print("- AMF Encoder - START")
-        print("-------------------------\n")
-        
-        var decodedValue:UserContext? = nil
-        
-        _encoder.encodeValue(value)
-        
-        print("Encoded Bytes: \(_encoder.bytes.count)\n")
-        
-        do {
-           
-             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? UserContext
-            
-            print((decodedValue?.User.FirstName)!)
-            print((decodedValue?.User.LastName)!)
-            print((decodedValue?.Account.Password)!)
-            print((decodedValue?.Profile.Tagline)!)
-            
-            print((decodedValue?.Membership.BrandId)!)
-            
-            print("\nDecoded Bytes: \(_decoder.bytes.count)")
-        }
-            //            // 4
-        catch let e as Error {
-            print(e.localizedDescription)
-        }
-        
-        print("\n-------------------------")
-        print("- AMF Encoder - END")
-        print("-------------------------\n")
-        //print(coder.description)
-        
-        //bytesCount += _decoder.bytes.count
-        
-        print("")
-        print("")
+//        //return
+//        print("\n-------------------------")
+//        print("- AMF Encoder - START")
+//        print("-------------------------\n")
+//
+//        var decodedValue:UserContext? = nil
+//
+//        _encoder.encodeValue(value)
+//
+//        print("Encoded Bytes: \(_encoder.bytes.count)\n")
+//
+//        do {
+//
+//             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? UserContext
+//
+//            print((decodedValue?.User.FirstName)!)
+//            print((decodedValue?.User.LastName)!)
+//            print((decodedValue?.Account.Password)!)
+//            print((decodedValue?.Profile.Tagline)!)
+//
+//            print((decodedValue?.Membership.BrandId)!)
+//
+//            print("\nDecoded Bytes: \(_decoder.bytes.count)")
+//        }
+//            //            // 4
+//        catch let e as Error {
+//            print(e.localizedDescription)
+//        }
+//
+//        print("\n-------------------------")
+//        print("- AMF Encoder - END")
+//        print("-------------------------\n")
+//        //print(coder.description)
+//
+//        //bytesCount += _decoder.bytes.count
+//
+//        print("")
+//        print("")
     }
 }
 
+
+// MARK: Test Data
+class Book: NSObject, NSCoding {
+    var title: String
+    var author: String
+    var pageCount: Int
+    var categories: [String]
+    var available: Bool
+    
+    init(title:String, author: String, pageCount:Int, categories:[String],available:Bool) {
+        self.title = title
+        self.author = author
+        self.pageCount = pageCount
+        self.categories = categories
+        self.available = available
+    }
+    
+    // MARK: NSCoding
+    public convenience required init?(coder aDecoder: NSCoder) {
+        
+        let title = aDecoder.decodeObject(forKey: "title") as! String
+        let author = aDecoder.decodeObject(forKey: "author") as! String
+        let categories = aDecoder.decodeObject(forKey: "categories") as! [String]
+        let available = aDecoder.decodeBool(forKey: "available")
+        let pageCount = aDecoder.decodeInteger(forKey: "pageCount")
+        
+        self.init(title:title, author:author,pageCount:pageCount,categories: categories,available:available)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(title, forKey: "title")
+        aCoder.encode(author, forKey: "author")
+        aCoder.encodeCInt(Int32(pageCount), forKey: "pageCount")
+        aCoder.encode(categories, forKey: "categories")
+        aCoder.encode(available, forKey: "available")
+    }
+}
 //    func onRemoteServiceEvent(_ notification: Notification) {
 //
 //        do {

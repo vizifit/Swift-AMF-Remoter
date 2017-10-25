@@ -35,6 +35,8 @@
 		261C8DE31F78AED800126056 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C8DCC1F78AED700126056 /* Storage.swift */; };
 		261C8DE41F78AED800126056 /* UnsafePointer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C8DCD1F78AED700126056 /* UnsafePointer+Extensions.swift */; };
 		261C8DE51F78AED800126056 /* ValueWitnessTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261C8DCE1F78AED700126056 /* ValueWitnessTable.swift */; };
+		26375BE81FA000570003C942 /* PersistantStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26375BE71FA000570003C942 /* PersistantStorage.swift */; };
+		26375BEB1FA0017D0003C942 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26375BEA1FA0017D0003C942 /* FileStorage.swift */; };
 		268F7BC11EDA1A9D0087203B /* SwiftAMFRemoterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BC01EDA1A9D0087203B /* SwiftAMFRemoterTests.swift */; };
 		268F7BC31EDA1A9D0087203B /* SwiftAMFRemoter.h in Headers */ = {isa = PBXBuildFile; fileRef = 268F7BB51EDA1A9D0087203B /* SwiftAMFRemoter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		268F7C261EDA1F3A0087203B /* BinaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268F7BCD1EDA1F3A0087203B /* BinaryUtils.swift */; };
@@ -132,6 +134,8 @@
 		261C8DCC1F78AED700126056 /* Storage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		261C8DCD1F78AED700126056 /* UnsafePointer+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UnsafePointer+Extensions.swift"; sourceTree = "<group>"; };
 		261C8DCE1F78AED700126056 /* ValueWitnessTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueWitnessTable.swift; sourceTree = "<group>"; };
+		26375BE71FA000570003C942 /* PersistantStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantStorage.swift; sourceTree = "<group>"; };
+		26375BEA1FA0017D0003C942 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		268F7BB21EDA1A9D0087203B /* SwiftAMFRemoter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftAMFRemoter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		268F7BB51EDA1A9D0087203B /* SwiftAMFRemoter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftAMFRemoter.h; sourceTree = "<group>"; };
 		268F7BB61EDA1A9D0087203B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -261,6 +265,14 @@
 			path = Reflection;
 			sourceTree = "<group>";
 		};
+		26375BE91FA001590003C942 /* storage */ = {
+			isa = PBXGroup;
+			children = (
+				26375BEA1FA0017D0003C942 /* FileStorage.swift */,
+			);
+			path = storage;
+			sourceTree = "<group>";
+		};
 		268F7BA81EDA1A9D0087203B = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +330,7 @@
 				268F7BD01EDA1F3A0087203B /* ObjectUtils.swift */,
 				268F7BD11EDA1F3A0087203B /* Protocol.swift */,
 				268F7BD21EDA1F3A0087203B /* SwiftKVC.swift */,
+				26375BE71FA000570003C942 /* PersistantStorage.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -412,6 +425,7 @@
 		268F7C021EDA1F3A0087203B /* io */ = {
 			isa = PBXGroup;
 			children = (
+				26375BE91FA001590003C942 /* storage */,
 				268F7C031EDA1F3A0087203B /* ASArray.swift */,
 				268F7C041EDA1F3A0087203B /* ASObject.swift */,
 				268F7C051EDA1F3A0087203B /* BasicObject.swift */,
@@ -704,6 +718,7 @@
 				26A4EE891F16F983008038A9 /* AMFServiceRequest.swift in Sources */,
 				261C8DD61F78AED700126056 /* Metadata+Class.swift in Sources */,
 				268F7C451EDA1F3A0087203B /* Foundation+Extension.swift in Sources */,
+				26375BEB1FA0017D0003C942 /* FileStorage.swift in Sources */,
 				268F7C661EDA1F3A0087203B /* NetConnection.swift in Sources */,
 				268F7C281EDA1F3A0087203B /* MessageUtil.swift in Sources */,
 				268F7C491EDA1F3A0087203B /* InvocationException.swift in Sources */,
@@ -711,6 +726,7 @@
 				268F7C4B1EDA1F3A0087203B /* GeneralErrors.swift in Sources */,
 				268F7C3C1EDA1F3A0087203B /* INetConnection.swift in Sources */,
 				26A4EEBE1F1D8D40008038A9 /* IRemoteServiceManager.swift in Sources */,
+				26375BE81FA000570003C942 /* PersistantStorage.swift in Sources */,
 				260ACD371EF5288F0066231C /* IServiceConnector.swift in Sources */,
 				268F7C371EDA1F3A0087203B /* IDictionaryBuilder.swift in Sources */,
 				268F7C631EDA1F3A0087203B /* FlexMessage.swift in Sources */,

@@ -500,6 +500,7 @@
 		261E1ABF1EE8C4D600A0D2B5 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				26375BE41F9EA6490003C942 /* Utilities */,
 				26A4EE5B1F04E9EC008038A9 /* Extensions */,
 				260ACC9C1EE997010066231C /* Constants */,
 				260ACC9E1EE997010066231C /* Service */,
@@ -512,6 +513,13 @@
 				261E1ACC1EE8C4D600A0D2B5 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		26375BE41F9EA6490003C942 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		266EAE5D1F5B493C00667BB8 /* Frameworks */ = {

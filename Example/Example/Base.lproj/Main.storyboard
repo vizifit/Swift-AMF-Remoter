@@ -53,6 +53,14 @@
                                     <action selector="encodeDecodeSimpleValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7W-VN-OoE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHH-7C-dv9">
+                                <rect key="frame" x="93" y="271" width="202" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Persist Encode/Decode Value"/>
+                                <connections>
+                                    <action selector="persistSaveAndRetrieveEncodedValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pXZ-hx-V3s"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

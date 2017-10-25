@@ -9,6 +9,8 @@
 import Foundation
 
 open class ServiceConnectorNotification: IServiceConnectorNotification{
+    
+    
  
     private var _serviceKey:String
     private var _result:Any?
@@ -16,11 +18,10 @@ open class ServiceConnectorNotification: IServiceConnectorNotification{
     private var _hasGroupedResultErrors:Bool = false
     private var _groupedResultErrorCount:Int = 0
     private var _errorMessage:ErrorMessage?
-    private var _resultMessage:IResultMessage?
     private var _resultMessageGroup:[String:Any?]?
     private var _isGroupedResult:Bool = false
     private var _notificationKey:String
-    
+    private var _resultMessage: IResultMessage?
     
     public init(_ messageGroup:[AMFMessage], resultMessageGroupKey:String, serviceKey:String) throws {
         
@@ -71,19 +72,13 @@ open class ServiceConnectorNotification: IServiceConnectorNotification{
         }
         
         // Result notification if success
-        //_resultMessage = _result as? IResultMessage
         _notificationKey = (message.serviceDefinition?.resultNotificationId)!
     }
     
-    open var serviceKey:String { get {return self.serviceKey} }
-    
-    open var notificationId:String { get {return self._notificationKey} }
-    
-    open var isError:Bool { get {return self._isError} }
-    
+   
     open var errorMessage:ErrorMessage? { get {return self._errorMessage} }
     
-    open var resultMessage:IResultMessage? { get {return self._resultMessage} }
+    open var isError:Bool { get {return self._isError} }
     
     open var isGroupedResult:Bool { get {return self._isGroupedResult} }
     
@@ -91,9 +86,14 @@ open class ServiceConnectorNotification: IServiceConnectorNotification{
     
     open var groupedResultErrorCount:Int { get {return self._groupedResultErrorCount} }
     
+    open var notificationId:String { get {return self._notificationKey} }
+    
     open var result:Any? { get {return self._result} }
     
+    open var resultMessage:IResultMessage? { get {return self._resultMessage} }
+    
     open var resultMessageGroup:[String:Any?]? { get {return self._resultMessageGroup} }
-     
+    
+    open var serviceKey:String { get {return self.serviceKey} }
     
 }

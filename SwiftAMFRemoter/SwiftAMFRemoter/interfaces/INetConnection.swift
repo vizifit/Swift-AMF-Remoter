@@ -10,10 +10,11 @@ import Foundation
 
 
 public protocol INetConnection  {
-    // protocol definition goe
+ 
     
     var key:String {get}
-
+ 
+    var connected:Bool {get}
     
     func connect(_ command:String, params arguments:[AnyObject]?  )
     
@@ -23,10 +24,7 @@ public protocol INetConnection  {
     
     func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage] )
    
-    var connected:Bool {get}
     
-    //var coder:IAMFCoder {get}
-    //func write(messge:IRtmpEvent)
-    //var connection:IConnection {get}
+ 
     
 }

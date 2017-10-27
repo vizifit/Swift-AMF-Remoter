@@ -18,7 +18,8 @@ class ViewController: UIViewController, IServiceConnectorView {
     private var _after:Double = 0
     private var _mgr:IRemoteServiceManager? = nil
     private var _connectorId:String = ""
-    
+    private var _encoder:IAMFCoder =  AMF3Coder()
+    private var _decoder:IAMFCoder =  AMF3Coder()
     
     open func listNotificationInterests() -> [String]{
         
@@ -31,8 +32,7 @@ class ViewController: UIViewController, IServiceConnectorView {
      Gets unique Id of connector
      */
     open var connectorId:String { get { return self._connectorId} }
-  
-    
+   
     //------------------------------------
     // Encode/Decode Values
     //------------------------------------
@@ -43,18 +43,15 @@ class ViewController: UIViewController, IServiceConnectorView {
     
     @IBAction func encodeDecodeComplexValue(_ sender: AnyObject) {
         
-        testPersistSaveAndRetrieveEncodedData()
     }
-    
     
     //------------------------------------
     // Persist Encoded values
     //------------------------------------
     @IBAction func persistSaveAndRetrieveEncodedValue(_ sender: AnyObject) {
         
-        //executeServiceCommand(type: CallExecutionType.singleParallelCall)
+         testPersistSaveAndRetrieveEncodedData()
     }
-    
     
     //------------------------------------
     // Service Calls
@@ -78,93 +75,6 @@ class ViewController: UIViewController, IServiceConnectorView {
         case singleCall = 1
         case singleParallelCall = 2
         case groupedCall = 3
-    }
-    
-    private func executeServiceCommand(type: CallExecutionType, maxRows:Int = 10){
-        
-        _before = Date().timeIntervalSince1970
-        
-        _mgr?.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
-                                                                 destination: "fluorine",
-                                                                 endpoint: "http://vizifitdev.cloudapp.net/Gateway.aspx",
-                                                                 securityPolicyUrl: "securityPolicyUrl",
-                                                                 source: "ServiceLibrary.MyDataService",
-                                                                 timeout: 3000,
-                                                                 modalWait: true,
-                                                                 isUpdateable: false))
-        
-        let max = maxRows
-        var counter=0
-        let startIdx = 1
-        
-        switch type {
-            case .singleCall:
-                //--------------------------------------
-                // Single Call
-                //--------------------------------------
-                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
-                
-                break
-            
-            case .singleParallelCall:
-                //--------------------------------------
-                // Parallel Single Call
-                //--------------------------------------
-                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
-                
-                for i in startIdx..<max{
-                    _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
-                    counter = i
-                }
-                break
-            
-            case .groupedCall:
-                //--------------------------------------
-                // Grouped Call
-                //--------------------------------------
-                var requestGroup:[AMFServiceRequest] = []
-                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test.com", "Ahhender7215"))
-                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test1.com", "Ahhender7215"))
-                requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test2.com", "Ahhender7215"))
-                
-                let serviceGroup:AMFServiceRequestGroup = AMFServiceRequestGroup(amfServiceRequests: requestGroup,
-                                                                                 notificationId: GROUP_NOTIFICATION_TEST)
-                
-                _mgr?.invokeGroupedServiceCall(ServiceConstants.SERVICE_KEY, requestGroup: serviceGroup)
-                break
-            default:
-                //
-                break
-        }
-        
-        _after = Date().timeIntervalSince1970
-        
-    }
-    
-    
-    open func handleServiceNotification(_ notification: IServiceConnectorNotification) {
-        
-        print("NotificationID: " + notification.notificationId)
-        
-        switch(notification.notificationId){
-            
-        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!:
-            print("Received RESULT for:" + notification.notificationId)
-            break
-            
-        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!:
-            print("Received FAULT for:" + notification.notificationId)
-            
-            break
-            
-        case GROUP_NOTIFICATION_TEST:
-            print("Received RESULT for:" + notification.notificationId)
-            break
-            
-        default:
-            print("Unregistered notification...")
-            break
-        }
     }
     
     override func viewDidLoad() {
@@ -193,9 +103,68 @@ class ViewController: UIViewController, IServiceConnectorView {
         
     }
     
-    fileprivate var _encoder:IAMFCoder =  AMF3Coder()
-    fileprivate var _decoder:IAMFCoder =  AMF3Coder()
+    func testPersistSaveAndRetrieveEncodedData(){
+         
+        let value:UserContext = returnUserContext()
+        
+        do {
+            
+            let pCache:AMFPersistantCache = try AMFPersistantCache(cacheId: "TestCacheItem", cacheData: [])
+            let result = try PersistantStorage.encodeItemToCache(cacheKey: pCache.cacheId, cache: pCache, object: value)
+            
+            print(result)
+            
+            PersistantStorage.store(pCache, to: .caches, as: pCache.cacheId)
+            
+            // Retreive
+            let getPCache = PersistantStorage.retrieve(pCache.cacheId, from: .caches, as: AMFPersistantCache.self)
+            let decodedValue = try PersistantStorage.decodeItemFromCache(cache: getPCache, cacheKey: pCache.cacheId, isFromClassName: false) as? UserContext
+            
+            print((decodedValue?.User.FirstName)!)
+            print((decodedValue?.User.LastName)!)
+            print((decodedValue?.Account.Password)!)
+            print((decodedValue?.Profile.Tagline)!)
+            
+        }
+        catch {
+            print("testPersistSaveAndRetrieveEncodedData: Failed")
+        }
+    }
     
+    func testEncodeDecode() {
+        
+        _encoder.resetPosition()
+        _decoder.resetPosition()
+        
+        print("AMF Encoder - START\n")
+ 
+         let value:UserContext = returnUserContext()
+        _encoder.encodeValue(value)
+
+        print("> Encoded Bytes: \(_encoder.bytes.count)\n")
+
+        var decodedValue:UserContext? = nil
+        
+        do {
+
+             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? UserContext
+
+            print((decodedValue?.User.FirstName)!)
+            print((decodedValue?.User.LastName)!)
+            print((decodedValue?.Account.Password)!)
+            print((decodedValue?.Profile.Tagline)!)
+
+            print((decodedValue?.Membership.BrandId)!)
+
+            print("> \nDecoded Bytes: \(_decoder.bytes.count)")
+        }
+            //            // 4
+        catch {
+             print("testEncodeDecode: Failed")
+        }
+        
+        print("AMF Encoder - END")
+    }
     
     func returnUser()-> VzUser{
         
@@ -236,135 +205,94 @@ class ViewController: UIViewController, IServiceConnectorView {
         return value
     }
     
-   
-    func testPersistSaveAndRetrieveEncodedData(){
+    private func executeServiceCommand(type: CallExecutionType, maxRows:Int = 10){
         
+        _before = Date().timeIntervalSince1970
         
-        // We first of all create a class that can be initialized using an NSCoder instance and encode itself into an instance of NSCoder. And once we have this functionality, which is required by the NSCoding protocol, it is possible to create an instance that can be archived
+        _mgr?.addServiceConfiguration(RemoteServiceConfiguration(key: ServiceConstants.SERVICE_KEY,
+                                                                 destination: "fluorine",
+                                                                 endpoint: "http://vizifitdev.cloudapp.net/Gateway.aspx",
+                                                                 securityPolicyUrl: "securityPolicyUrl",
+                                                                 source: "ServiceLibrary.MyDataService",
+                                                                 timeout: 3000,
+                                                                 modalWait: true,
+                                                                 isUpdateable: false))
         
-//        let book = Book(title: "MyBook", author: "Me", pageCount: 10, categories: ["Fabulousness"], available: true)
-//        let filePath = try! FileSave.buildPath(path: "bookdata", inDirectory: FileManager.SearchPathDirectory.cachesDirectory, subdirectory: "archive")
-//
-//
-//        NSKeyedArchiver.archiveRootObject(book, toFile: filePath)
-//        //
-        //
-        // and de-archived.
-//        if let bookData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? Book  {
-//            bookData.available // true
-//            bookData.author // Me
-//
-//            print(bookData.available)
-//            print(bookData.author)
-//        }
+        let max = maxRows
+        var counter=0
+        let startIdx = 1
         
+        switch type {
+        case .singleCall:
+            //--------------------------------------
+            // Single Call
+            //--------------------------------------
+            _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+            
+            break
+            
+        case .singleParallelCall:
+            //--------------------------------------
+            // Parallel Single Call
+            //--------------------------------------
+            _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
+            
+            for i in startIdx..<max{
+                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
+                counter = i
+            }
+            break
+            
+        case .groupedCall:
+            //--------------------------------------
+            // Grouped Call
+            //--------------------------------------
+            var requestGroup:[AMFServiceRequest] = []
+            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test.com", "Ahhender7215"))
+            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test1.com", "Ahhender7215"))
+            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test2.com", "Ahhender7215"))
+            
+            let serviceGroup:AMFServiceRequestGroup = AMFServiceRequestGroup(amfServiceRequests: requestGroup,
+                                                                             notificationId: GROUP_NOTIFICATION_TEST)
+            
+            _mgr?.invokeGroupedServiceCall(ServiceConstants.SERVICE_KEY, requestGroup: serviceGroup)
+            break
+        default:
+            //
+            break
+        }
+        
+        _after = Date().timeIntervalSince1970
     }
     
-    func testEncodeDecode() {
+    
+    open func handleServiceNotification(_ notification: IServiceConnectorNotification) {
         
-        _encoder.resetPosition()
-        _decoder.resetPosition()
+        print("NotificationID: " + notification.notificationId)
         
-//        let value:UserContext = returnUserContext()
-//        var pCache:AMFPersistantCache =  AMFPersistantCache
-//
-//
-//        let result = PersistantStorage.encodeItemToCache(cacheKey: "TestCacheItem", cache: pCache, object: value)
-//
-//        do {
-//            PersistantStorage.store(cache, to: .caches, as: pCache.cacheId)
-//        }
-//            //            // 4
-//        catch let e as Error {
-//            print(e.localizedDescription)
-//        }
-//        let getPCache = PersistantStorage.retrieve(pCache.cacheId, from: .documents, as: AMFPersistantCache.self)
-//        let decodedValue = PersistantStorage.decodeItemFromCache(cache: getPCache, cacheKey: "TestCacheItem", isFromClassName: false) as? UserContext
-//
-//        print((decodedValue?.User.FirstName)!)
-//        print((decodedValue?.User.LastName)!)
-//        print((decodedValue?.Account.Password)!)
-//        print((decodedValue?.Profile.Tagline)!)
-
-        
-//        //return
-//        print("\n-------------------------")
-//        print("- AMF Encoder - START")
-//        print("-------------------------\n")
-//
-//        var decodedValue:UserContext? = nil
-//
-//        _encoder.encodeValue(value)
-//
-//        print("Encoded Bytes: \(_encoder.bytes.count)\n")
-//
-//        do {
-//
-//             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? UserContext
-//
-//            print((decodedValue?.User.FirstName)!)
-//            print((decodedValue?.User.LastName)!)
-//            print((decodedValue?.Account.Password)!)
-//            print((decodedValue?.Profile.Tagline)!)
-//
-//            print((decodedValue?.Membership.BrandId)!)
-//
-//            print("\nDecoded Bytes: \(_decoder.bytes.count)")
-//        }
-//            //            // 4
-//        catch let e as Error {
-//            print(e.localizedDescription)
-//        }
-//
-//        print("\n-------------------------")
-//        print("- AMF Encoder - END")
-//        print("-------------------------\n")
-//        //print(coder.description)
-//
-//        //bytesCount += _decoder.bytes.count
-//
-//        print("")
-//        print("")
+        switch(notification.notificationId){
+            
+        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!:
+            print("Received RESULT for:" + notification.notificationId)
+            break
+            
+        case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!:
+            print("Received FAULT for:" + notification.notificationId)
+            
+            break
+            
+        case GROUP_NOTIFICATION_TEST:
+            print("Received RESULT for:" + notification.notificationId)
+            break
+            
+        default:
+            print("Unregistered notification...")
+            break
+        }
     }
+    
 }
 
-
-// MARK: Test Data
-class Book: NSObject, NSCoding {
-    var title: String
-    var author: String
-    var pageCount: Int
-    var categories: [String]
-    var available: Bool
-    
-    init(title:String, author: String, pageCount:Int, categories:[String],available:Bool) {
-        self.title = title
-        self.author = author
-        self.pageCount = pageCount
-        self.categories = categories
-        self.available = available
-    }
-    
-    // MARK: NSCoding
-    public convenience required init?(coder aDecoder: NSCoder) {
-        
-        let title = aDecoder.decodeObject(forKey: "title") as! String
-        let author = aDecoder.decodeObject(forKey: "author") as! String
-        let categories = aDecoder.decodeObject(forKey: "categories") as! [String]
-        let available = aDecoder.decodeBool(forKey: "available")
-        let pageCount = aDecoder.decodeInteger(forKey: "pageCount")
-        
-        self.init(title:title, author:author,pageCount:pageCount,categories: categories,available:available)
-    }
-    
-    func encode(with aCoder: NSCoder) {
-        aCoder.encode(title, forKey: "title")
-        aCoder.encode(author, forKey: "author")
-        aCoder.encodeCInt(Int32(pageCount), forKey: "pageCount")
-        aCoder.encode(categories, forKey: "categories")
-        aCoder.encode(available, forKey: "available")
-    }
-}
 //    func onRemoteServiceEvent(_ notification: Notification) {
 //
 //        do {

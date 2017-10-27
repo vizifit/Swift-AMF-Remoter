@@ -58,7 +58,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Persist Encode/Decode Value"/>
                                 <connections>
-                                    <action selector="persistSaveAndRetrieveEncodedValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pXZ-hx-V3s"/>
+                                    <action selector="persistSaveAndRetrieveEncodedValue:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4u9-bK-kxu"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -24,19 +24,19 @@ import SwiftAMFRemoter
 
 	public var Id:Int = -1
 
-	public var ItemGuid:Any? = nil
+	public var ItemGuid:Any?
 
-	public var CreatedDateUtc:Date = Date()
+	public var CreatedDateUtc:Date?
 
-	public var LastModifiedDateUtc:Date = Date()
+	public var LastModifiedDateUtc:Date?
 
 	public var CreatedBy:Int = -1
 
 	public var ModifiedBy:Int = -1
 
-	public var Exception:VzServiceError = VzServiceError()
+	public var Exception:VzServiceError?
 
-	public var CreatedDate:Date = Date()
+	public var CreatedDate:Date?
 
-	public var LastModifiedDate:Date = Date()
+	public var LastModifiedDate:Date?
 }

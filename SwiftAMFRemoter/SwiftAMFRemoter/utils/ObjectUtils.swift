@@ -65,7 +65,7 @@ open class ObjectUtils{
                     } else if let dataPropValue = propValue as? Data {
                         dict[propName] = dataPropValue.base64EncodedString(options: .lineLength64Characters) as AnyObject?
                     } else if let datePropValue = propValue as? Date {
-                        dict[propName] = datePropValue.timeIntervalSince1970 as AnyObject?
+                        dict[propName] = datePropValue as AnyObject?
                         //setValue(propertiesDictionary, value: datePropValue.timeIntervalSince1970 as AnyObject?, forKey: propName)
                     } else {
                         dict[propName] = propValue
@@ -89,6 +89,10 @@ open class ObjectUtils{
                     dict[propName!] = NSNumber(value: propValue as UInt64)
                 } else if ObjectUtils.isEnum(propValue) {
                     dict[propName!] = "\(propValue)" as AnyObject?
+                }
+                else{
+                    // nil value
+                    dict[propName!] = nil as Any?
                 }
             }
             

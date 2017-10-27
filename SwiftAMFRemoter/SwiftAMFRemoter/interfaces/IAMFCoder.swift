@@ -18,8 +18,9 @@ public protocol IAMFCoder {
     
     @discardableResult
     func encode(_ value:Any?) -> Self
-    func decode() throws -> Any?
+    func encodeValue(_ value:Any?)
     
+    func decode() throws -> Any?
     func decodeMessage(_ bytes:[UInt8]?) throws -> AMFMessage
     func decodeValue(_ bytes:[UInt8]?) throws -> Any?
     

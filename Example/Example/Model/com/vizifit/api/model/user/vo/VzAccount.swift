@@ -24,7 +24,7 @@ import SwiftAMFRemoter
 
 	public var UserId:Int = -1
 
-	public var User:VzUser = VzUser()
+	public var User:VzUser?
 
 	public var Password:String = String()
 }

@@ -32,5 +32,5 @@ import SwiftAMFRemoter
 
 	public var UserTypeId:Int = -1
 
-	public var UserType:VzUserType = VzUserType()
+	public var UserType:VzUserType?
 }

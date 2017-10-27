@@ -9,7 +9,7 @@
 import Foundation
 
 open class RemoteServiceManager: IRemoteServiceManager  {
-    
+    fileprivate var _clientId:String?
     fileprivate var _amfCoder:IAMFCoder
     fileprivate var _debugMode:Bool = false
     fileprivate var _registeredServiceConfigurations:DictionaryBuilder
@@ -54,6 +54,16 @@ open class RemoteServiceManager: IRemoteServiceManager  {
     public var debugMode:Bool {
         get{
             return _debugMode
+        }
+    }
+    
+    private var clientId:String {
+        get{
+            if(_clientId == nil){
+                _clientId = UUID().uuidString
+            }
+            
+            return _clientId!
         }
     }
     
@@ -459,6 +469,7 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         return serviceConfig
     }
     
+    
     fileprivate func packageRemoteMessage(config:RemoteServiceConfiguration,
                                           serviceDefinition: IAMFServiceDefinition,
                                           requestId:String? = nil,
@@ -476,8 +487,9 @@ open class RemoteServiceManager: IRemoteServiceManager  {
         
         //TODO: Not sure if we want unique or per session
         // Update Unique messageId
-        //config.remoteMessage?.clientId = UUID().uuidString
+         
         
+        remoteMessage.clientId = self.clientId // Constant throughout session
         remoteMessage.messageId = UUID().uuidString
         remoteMessage.destination = destination
         remoteMessage.source = source

@@ -118,7 +118,7 @@ class ViewController: UIViewController, IServiceConnectorView {
             
             // Retreive
             let getPCache = PersistantStorage.retrieve(pCache.cacheId, from: .caches, as: AMFPersistantCache.self)
-            let decodedValue = try PersistantStorage.decodeItemFromCache(cache: getPCache, cacheKey: pCache.cacheId, isFromClassName: false) as? UserContext
+            let decodedValue = try PersistantStorage.decodeItemFromCache(cache: getPCache, cacheItemKey: pCache.cacheId, isFromClassName: false) as? UserContext
             
             print((decodedValue?.User.FirstName)!)
             print((decodedValue?.User.LastName)!)

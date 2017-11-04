@@ -57,7 +57,7 @@ extension AMFPersistantCache{
         return nil
     }
     
-    func indexOf(_ value:String, isFromClassName:Bool=true) -> Int? {
+    func indexOf(_ value:String, isFromClassName:Bool=false) -> Int? {
 
         for (index, cacheItem) in self.cacheData.enumerated() {
             

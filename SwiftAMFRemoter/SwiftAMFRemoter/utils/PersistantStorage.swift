@@ -38,7 +38,7 @@ public class PersistantStorage {
         }
     }
     
-    static public func encodeItemToCache(cacheKey:String, cache:AMFPersistantCache, object: Any?  ) throws -> Bool{
+    static public func encodeItemToCache(cacheItemKey:String, cache:AMFPersistantCache, object: Any?  ) throws -> Bool{
         
        
         let mutableCache = cache
@@ -49,7 +49,7 @@ public class PersistantStorage {
         
         let encodedObject = _amfEncoder.bytes
   
-        let cacheIndex:Int? = mutableCache.indexOf(cacheKey, isFromClassName: true)
+        let cacheIndex:Int? = mutableCache.indexOf(cacheItemKey, isFromClassName: false)
         
         if(cacheIndex != nil){
             // Remove value
@@ -59,18 +59,46 @@ public class PersistantStorage {
         }
         
         let objectId =   String(describing: type(of: object))
-        let item = try AMFPersistantCacheItem(cacheKey: cacheKey, objectId: objectId, objectData: encodedObject)
+        let item = try AMFPersistantCacheItem(cacheKey: cacheItemKey, objectId: objectId, objectData: encodedObject)
         
         mutableCache.cacheData.append(item)
        
         return true
     }
     
-    static public func decodeItemFromCache(cache:AMFPersistantCache, cacheKey:String, isFromClassName:Bool=true) throws -> Any? {
+    static public func encodeItemToCache(cacheItemKey:String, cache:AMFPersistantCache, object: Any?, isFromClassName:Bool  ) throws -> Bool{
+        
+        
+        let mutableCache = cache
+        
+        // Encoder value
+        _amfEncoder.resetPosition()
+        _amfEncoder.encodeValue(object)
+        
+        let encodedObject = _amfEncoder.bytes
+        
+        let cacheIndex:Int? = mutableCache.indexOf(cacheItemKey, isFromClassName: isFromClassName)
+        
+        if(cacheIndex != nil){
+            // Remove value
+            let valueRemoved =  mutableCache.cacheData.remove(at: cacheIndex!)
+            print("Removed")
+            print(valueRemoved.cacheKey )
+        }
+        
+        let objectId =   String(describing: type(of: object))
+        let item = try AMFPersistantCacheItem(cacheKey: cacheItemKey, objectId: objectId, objectData: encodedObject)
+        
+        mutableCache.cacheData.append(item)
+        
+        return true
+    }
+    
+    static public func decodeItemFromCache(cache:AMFPersistantCache, cacheItemKey:String, isFromClassName:Bool = false) throws -> Any? {
         
       
         do{
-            guard let index = cache.indexOf(cacheKey, isFromClassName: isFromClassName) else{
+            guard let index = cache.indexOf(cacheItemKey, isFromClassName: isFromClassName) else{
                 return nil
             }
             

@@ -110,7 +110,7 @@ class ViewController: UIViewController, IServiceConnectorView {
         do {
             
             let pCache:AMFPersistantCache = try AMFPersistantCache(cacheId: "TestCacheItem", cacheData: [])
-            let result = try PersistantStorage.encodeItemToCache(cacheKey: pCache.cacheId, cache: pCache, object: value)
+            let result = try PersistantStorage.encodeItemToCache(cacheItemKey: pCache.cacheId, cache: pCache, object: value)
             
             print(result)
             
@@ -200,8 +200,14 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         value.Membership.BrandId = 45
         //userContext.Account.User = nil
-        //value.Networks = []
+        value.Networks = []
         
+        let netAcct:VzNetworkAccount = VzNetworkAccount()
+        
+        netAcct.DateRegistered = Date()
+        netAcct.NetworkTypeId = 1
+        netAcct.UserId = value.User.Id
+        value.Networks?.append(netAcct)
         return value
     }
     

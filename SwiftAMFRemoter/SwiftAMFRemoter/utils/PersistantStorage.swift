@@ -38,7 +38,7 @@ public class PersistantStorage {
         }
     }
     
-    static public func encodeItemToCache(cacheKey:String, cache:AMFPersistantCache, object: Any?  ) throws -> Bool{
+    static public func encodeItemToCache(cacheItemKey:String, cache:AMFPersistantCache, object: Any?  ) throws -> Bool{
         
        
         let mutableCache = cache
@@ -49,7 +49,7 @@ public class PersistantStorage {
         
         let encodedObject = _amfEncoder.bytes
   
-        let cacheIndex:Int? = mutableCache.indexOf(cacheKey, isFromClassName: true)
+        let cacheIndex:Int? = mutableCache.indexOf(cacheItemKey, isFromClassName: true)
         
         if(cacheIndex != nil){
             // Remove value
@@ -59,7 +59,7 @@ public class PersistantStorage {
         }
         
         let objectId =   String(describing: type(of: object))
-        let item = try AMFPersistantCacheItem(cacheKey: cacheKey, objectId: objectId, objectData: encodedObject)
+        let item = try AMFPersistantCacheItem(cacheKey: cacheItemKey, objectId: objectId, objectData: encodedObject)
         
         mutableCache.cacheData.append(item)
        

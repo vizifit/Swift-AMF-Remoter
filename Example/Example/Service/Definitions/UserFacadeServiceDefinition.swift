@@ -8,7 +8,9 @@
 //
 
 import Foundation
-import SwiftAMFRemoter 
+import SwiftAMFRemoter
+//@testable import SwiftAMFRemoter
+import SwiftAMFRemoter
  
 class UserFacadeServiceDefinition : BaseRemoteServiceDefinition
 {
@@ -264,6 +266,20 @@ open static let  UPDATE_PROFILE:UserFacadeServiceDefinition = UserFacadeServiceD
 
 /**
 
+UpdateProfileImageById Service method
+
+Arguments:
+(0) token: String
+ (1) profileId: int
+ (2) thumbnailImageUrl: String
+ (3) imageUrl: String
+
+Service Returns: Please refer to services for return type
+*/
+open static let  UPDATE_PROFILE_IMAGE_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PROFILE_IMAGE_BY_ID","UpdateProfileImageById","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 UpdateUser Service method
 
 Arguments:
@@ -288,6 +304,19 @@ Arguments:
 Service Returns: Please refer to services for return type
 */
 open static let  USER_EXISTS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS","UserExists","com.vizifit.API.Facade.UserFacade")
+
+/**
+
+UserExistsForNetwork Service method
+
+Arguments:
+(0) email: String
+ (1) networkTypeId: int
+ (2) networkAccountId: String
+
+Service Returns: Please refer to services for return type
+*/
+open static let  USER_EXISTS_FOR_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS_FOR_NETWORK","UserExistsForNetwork","com.vizifit.API.Facade.UserFacade")
 
 
  

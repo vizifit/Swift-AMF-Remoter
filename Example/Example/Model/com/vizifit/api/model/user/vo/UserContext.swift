@@ -2,13 +2,13 @@
 //  UserContext.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( UserContext ) open class UserContext  : BasicObject{
  
  	required public init() {
@@ -22,17 +22,17 @@ import SwiftAMFRemoter
 
     
 
-	public var User:VzUser = VzUser()
+	public var User:VzUser?
 
-	public var Profile:VzProfile = VzProfile()
+	public var Profile:VzProfile?
 
-	public var Networks:[Any]? = nil
+	public var Networks:[Any]?
 
-	public var Account:VzAccount = VzAccount()
+	public var Account:VzAccount?
 
-	public var Membership:VzBrandMembership = VzBrandMembership()
+	public var Membership:VzBrandMembership?
 
-	public var Session:VzSession = VzSession()
+	public var Session:VzSession?
 
-	public var Exception:VzServiceError = VzServiceError()
+	public var Exception:VzServiceError?
 }

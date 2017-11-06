@@ -2,13 +2,13 @@
 //  ActivityFacadeModel.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:6.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( ActivityFacadeModel ) open class ActivityFacadeModel  : BasicObject{
  
  	required public init() {
@@ -22,15 +22,29 @@ import SwiftAMFRemoter
 
     
 
-	public var GetActivityConfigurationDataResult:ActivityConfigurationData = ActivityConfigurationData()
+	public var AddUserProgramActivityScheduleResult:[Any]?
 
-	public var GetAllActivitiesResult:[Any]? = nil
+	public var GetActivityConfigurationDataResult:ActivityConfigurationData?
 
-	public var GetAllActivityItemsResult:[Any]? = nil
+	public var GetActivityItemsByActivityIdResult:[Any]?
 
-	public var GetAllActivitySchedulesResult:[Any]? = nil
+	public var GetActivityItemsByActivityItemListIdResult:[Any]?
 
-	public var GetAllProgramActivitiesResult:[Any]? = nil
+	public var GetAllActivitiesResult:[Any]?
 
-	public var GetAllProgramsResult:[Any]? = nil
+	public var GetAllActivityItemsResult:[Any]?
+
+	public var GetAllActivitySchedulesResult:[Any]?
+
+	public var GetAllProgramActivitiesResult:[Any]?
+
+	public var GetAllProgramsResult:[Any]?
+
+	public var GetProgramActivitiesByProgramIdResult:[Any]?
+
+	public var GetUserProgramActivityScheduleResult:[Any]?
+
+	public var GetUserProgramsByUserIdResult:[Any]?
+
+	public var UpdateUserProgramActivityScheduleResult:[Any]?
 }

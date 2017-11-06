@@ -75,7 +75,7 @@ open class ReferenceData {
     func add(_ value:BasicObject) {
         
         if(indexOf(value) != nil){
-            if(AMF3Coder.verboseDebug){ print("Reference Object already exists ") }
+            if(AMF3Coder.verboseDebug){ print("Reference BasicObject already exists ") }
             
             return
         }
@@ -117,11 +117,12 @@ open class ReferenceData {
     
     func add(_ value:ASArray) {
         
-        if(indexOf(value) != nil){
-            if(AMF3Coder.verboseDebug){ print("Reference ClassMap already exists ") }
-            
-            return
-        }
+        // TODO: Support caching references of array
+//        if(indexOf(value) != nil){
+//            if(AMF3Coder.verboseDebug){ print("Reference ASArray already exists ") }
+//
+//            return
+//        }
         
         _objects[_objects.count] = value
 

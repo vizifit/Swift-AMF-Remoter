@@ -25,6 +25,8 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         return [UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!,
                 UserFacadeServiceDefinition.LOGIN_BY_EMAIL.faultNotificationId!,
+                ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA.resultNotificationId!,
+                ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA.faultNotificationId!,
         GROUP_NOTIFICATION_TEST]
     }
     
@@ -82,8 +84,8 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         
         _mgr = UIViewController.getRemoteServiceManager()
-        _mgr?.toggleDebugMode(false)
-        AMF3Coder.verboseDebug = false
+        _mgr?.toggleDebugMode(true)
+        AMF3Coder.verboseDebug = true
         
         DataTypeInitializer.registerClassAliases()
         
@@ -120,10 +122,10 @@ class ViewController: UIViewController, IServiceConnectorView {
             let getPCache = PersistantStorage.retrieve(pCache.cacheId, from: .caches, as: AMFPersistantCache.self)
             let decodedValue = try PersistantStorage.decodeItemFromCache(cache: getPCache, cacheItemKey: pCache.cacheId, isFromClassName: false) as? UserContext
             
-            print((decodedValue?.User.FirstName)!)
-            print((decodedValue?.User.LastName)!)
-            print((decodedValue?.Account.Password)!)
-            print((decodedValue?.Profile.Tagline)!)
+            print((decodedValue?.User?.FirstName)!)
+            print((decodedValue?.User?.LastName)!)
+            print((decodedValue?.Account?.Password)!)
+            print((decodedValue?.Profile?.Tagline)!)
             
         }
         catch {
@@ -138,23 +140,25 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         print("AMF Encoder - START\n")
  
-         let value:UserContext = returnUserContext()
+         //let value:UserContext = returnUserContext()
+        let value:ActivityConfigurationData = returnActivityConfigData()
         _encoder.encodeValue(value)
 
         print("> Encoded Bytes: \(_encoder.bytes.count)\n")
 
-        var decodedValue:UserContext? = nil
+        var decodedValue:ActivityConfigurationData? = nil
         
         do {
 
-             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? UserContext
+             decodedValue = try _decoder.decodeValue(_encoder.bytes) as? ActivityConfigurationData
 
-            print((decodedValue?.User.FirstName)!)
-            print((decodedValue?.User.LastName)!)
-            print((decodedValue?.Account.Password)!)
-            print((decodedValue?.Profile.Tagline)!)
-
-            print((decodedValue?.Membership.BrandId)!)
+            print(decodedValue?.ActivityAttributeTypes?.count)
+//            print((decodedValue?.User?.FirstName)!)
+//            print((decodedValue?.User?.LastName)!)
+//            print((decodedValue?.Account?.Password)!)
+//            print((decodedValue?.Profile?.Tagline)!)
+//
+//            print((decodedValue?.Membership?.BrandId)!)
 
             print("> \nDecoded Bytes: \(_decoder.bytes.count)")
         }
@@ -180,33 +184,103 @@ class ViewController: UIViewController, IServiceConnectorView {
         return value
     }
     
+    func returnActivityConfigData() -> ActivityConfigurationData{
+        
+        let value:ActivityConfigurationData = ActivityConfigurationData()
+        
+        value.ActivityAttributeTypes = []
+        
+        
+        let sameDate:Date = Date()
+        var index = 0
+        let attrType:VzActivityAttributeType = VzActivityAttributeType()
+        let attrType2:VzActivityAttributeType = VzActivityAttributeType()
+        index+=1
+        setBaseContent(value: attrType , index: index , sameDate: sameDate)
+        index+=1
+        setBaseContent(value: attrType2, index: index , sameDate: sameDate)
+        value.ActivityAttributeTypes?.append(attrType)
+        value.ActivityAttributeTypes?.append(attrType2)
+        
+        value.ActivityGoalTypes = []
+        let goalType:VzActivityGoalType = VzActivityGoalType()
+        let goalType2:VzActivityGoalType = VzActivityGoalType()
+        index+=1
+        setBaseContent(value: goalType , index: index , sameDate: sameDate)
+        index+=1
+        setBaseContent(value: goalType2, index: index , sameDate: sameDate)
+        value.ActivityGoalTypes?.append(goalType)
+        value.ActivityGoalTypes?.append(goalType2)
+        
+        value.ActivityEquipmentTypes = []
+        let equipType:VzActivityEquipmentType = VzActivityEquipmentType()
+        let equipType2:VzActivityEquipmentType = VzActivityEquipmentType()
+        index+=1
+        setBaseContent(value: equipType , index: index , sameDate: sameDate)
+        index+=1
+        setBaseContent(value: equipType2, index: index , sameDate: sameDate)
+        value.ActivityEquipmentTypes?.append(equipType)
+        value.ActivityEquipmentTypes?.append(equipType2)
+        
+        
+        value.ActivityTypes = []
+        let actType:VzActivityType = VzActivityType()
+        let actType2:VzActivityType = VzActivityType()
+        index+=1
+        setBaseContent(value: actType , index: index , sameDate: sameDate)
+        index+=1
+        setBaseContent(value: actType2, index: index , sameDate: sameDate)
+        value.ActivityTypes?.append(actType)
+        value.ActivityTypes?.append(actType2)
+        
+        return value
+        
+    }
+    
+    func setBaseContent(value:BaseContentType, index:Int, sameDate:Date){
+        
+        let uniqueValue = String(index) + "Test"
+        value.Code = uniqueValue
+        value.Id = index
+        value.Name = uniqueValue
+        value.Description = uniqueValue + " Description"
+        value.CreatedDate = sameDate
+        value.CreatedDateUtc = sameDate
+        value.LastModifiedDate = sameDate
+        value.LastModifiedDateUtc = sameDate
+    }
     func returnUserContext()-> UserContext{
         
         let value:UserContext = UserContext()
         
+        value.User = VzUser()
+        value.User?.ItemGuid = "82c3fd1b-9157-4df2-a43c-05790e2f1ce8"
+        value.User?.Id = 1
+        value.User?.UserTypeId = 1
+        value.User?.FirstName = "Tony"
+        value.User?.LastName = "Henderson"
         
-        value.User.ItemGuid = "82c3fd1b-9157-4df2-a43c-05790e2f1ce8"
-        value.User.Id = 1
-        value.User.UserTypeId = 1
-        value.User.FirstName = "Tony"
-        value.User.LastName = "Henderson"
-        
-        value.User.UserType = VzUserType()
-        value.User.UserType?.ItemGuid = "82c3fd1b-9157-4df2-a43c-05790e2f1ce8"
+        value.User?.UserType = VzUserType()
+        value.User?.UserType?.ItemGuid = "82c3fd1b-9157-4df2-a43c-05790e2f1ce8"
         
         //userContext.Profile.User = nil
-        value.Profile.Tagline = "IRock"
-        value.Account.Password = "FADSFADSDS"
         
-        value.Membership.BrandId = 45
+        value.Profile = VzProfile()
+        value.Profile?.Tagline = "IRock"
+        
+        value.Account = VzAccount()
+        value.Account?.Password = "FADSFADSDS"
+        
+        value.Membership = VzBrandMembership()
+        value.Membership?.BrandId = 45
         //userContext.Account.User = nil
         value.Networks = []
         
         let netAcct:VzNetworkAccount = VzNetworkAccount()
-        
+    
         netAcct.DateRegistered = Date()
         netAcct.NetworkTypeId = 1
-        netAcct.UserId = value.User.Id
+        netAcct.UserId = (value.User?.Id)!
         value.Networks?.append(netAcct)
         return value
     }
@@ -233,8 +307,8 @@ class ViewController: UIViewController, IServiceConnectorView {
             //--------------------------------------
             // Single Call
             //--------------------------------------
-            _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
-            
+            //_mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Password1")
+            _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA)
             break
             
         case .singleParallelCall:
@@ -244,7 +318,7 @@ class ViewController: UIViewController, IServiceConnectorView {
             _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: "test@test.com", "Ahhender7215")
             
             for i in startIdx..<max{
-                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Ahhender7215")
+                _mgr?.invokeServiceCall(ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL , args: String(counter) +  "test@test.com", "Password1")
                 counter = i
             }
             break
@@ -254,9 +328,9 @@ class ViewController: UIViewController, IServiceConnectorView {
             // Grouped Call
             //--------------------------------------
             var requestGroup:[AMFServiceRequest] = []
+            //requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA))
             requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test.com", "Ahhender7215"))
-            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test1.com", "Ahhender7215"))
-            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: UserFacadeServiceDefinition.LOGIN_BY_EMAIL, args: "test@test2.com", "Ahhender7215"))
+            requestGroup.append(AMFServiceRequest(serviceConfigKey:ServiceConstants.SERVICE_KEY, serviceDefinition: ActivityFacadeServiceDefinition.GET_ALL_PROGRAMS))
             
             let serviceGroup:AMFServiceRequestGroup = AMFServiceRequestGroup(amfServiceRequests: requestGroup,
                                                                              notificationId: GROUP_NOTIFICATION_TEST)
@@ -278,6 +352,14 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         switch(notification.notificationId){
             
+        case ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA.resultNotificationId!:
+            print("Received RESULT for:" + notification.notificationId)
+            break
+            
+        case ActivityFacadeServiceDefinition.GET_ACTIVITY_CONFIGURATION_DATA.faultNotificationId!:
+            print("Received FAULT for:" + notification.notificationId)
+            
+            break
         case UserFacadeServiceDefinition.LOGIN_BY_EMAIL.resultNotificationId!:
             print("Received RESULT for:" + notification.notificationId)
             break

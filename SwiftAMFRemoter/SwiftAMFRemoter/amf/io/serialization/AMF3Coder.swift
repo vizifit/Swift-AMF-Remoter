@@ -430,8 +430,8 @@ open class AMF3Coder : AMFCoder{
             
             let zeroBasedIndex = header.value
             
-             //            if(zeroBasedIndex < 0){
-//                return ""
+//            if(zeroBasedIndex < 0){
+//                 return ""
 //            }
             return try referenceData.getObject(zeroBasedIndex) as! Date
         }
@@ -605,6 +605,10 @@ open class AMF3Coder : AMFCoder{
         encodeAmfInlineHeader(value.count)
         encodeUTFBytes( "")
         
+        let refPlaceHolder:BasicObject = BasicObject()
+        refPlaceHolder.remoteClassAlias = UUID().uuidString
+        referenceData.add(refPlaceHolder)
+        
         return encodeDenseArray(value)
     }
 
@@ -618,6 +622,10 @@ open class AMF3Coder : AMFCoder{
         encodeMarker( .arrayType )
         encodeAmfInlineHeader(value.count)
         encodeUTFBytes( "")
+        
+        let refPlaceHolder:BasicObject = BasicObject()
+        refPlaceHolder.remoteClassAlias = UUID().uuidString
+        referenceData.add(refPlaceHolder)
         
         return encodeDenseArray(value)
     }
@@ -639,11 +647,15 @@ open class AMF3Coder : AMFCoder{
         //        // Add Reference
         //        addReferenceData(value)
         
+       
         
-        // Inline header of content len
         encodeAmfInlineHeader(value.length)
         
         encodeAssociativeArray(value.dict)
+        
+//        let refPlaceHolder:BasicObject = BasicObject()
+//        refPlaceHolder.remoteClassAlias = UUID().uuidString
+//        referenceData.add(refPlaceHolder)        // Inline header of content len
         
         encodeDenseArray(value.data)
     }
@@ -1008,6 +1020,7 @@ open class AMF3Coder : AMFCoder{
                     }
                     
                     clsInstance.setValue(anyValue, forKey: member)
+                    continue
                     //try clsInstance.set(value: anyValue!, key: member)
                 }
                

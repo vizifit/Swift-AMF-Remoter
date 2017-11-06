@@ -1,5 +1,5 @@
 //
-//  VzAccount.swift
+//  VzUserProgramStatusType.swift
 //  SwiftAMFRemoter
 //
 //  Created by SwiftAMFManager on 11-5-2017 1:7.
@@ -9,22 +9,16 @@
 import Foundation
 import SwiftAMFRemoter 
 @objcMembers
-@objc( VzAccount ) open class VzAccount  : EntityBase{
+@objc( VzUserProgramStatusType ) open class VzUserProgramStatusType  : BaseContentType{
  
  	required public init() {
  
  		super.init()
         
-        self.remoteClassAlias = "com.vizifit.API.Model.User.VzAccount"
+        self.remoteClassAlias = "com.vizifit.API.Model.User.VzUserProgramStatusType"
   
         
     }
 
     
-
-	public var UserId:Int = -1
-
-	public var User:VzUser?
-
-	public var Password:String = String()
 }

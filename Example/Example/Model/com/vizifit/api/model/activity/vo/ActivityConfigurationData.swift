@@ -2,13 +2,13 @@
 //  ActivityConfigurationData.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:6.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( ActivityConfigurationData ) open class ActivityConfigurationData  : BasicObject{
  
  	required public init() {
@@ -22,21 +22,21 @@ import SwiftAMFRemoter
 
     
 
-	public var ActivityAttributeTypes:[Any]? = nil
+	public var ActivityAttributeTypes:[Any]?
 
-	public var ActivityEquipmentTypes:[Any]? = nil
+	public var ActivityEquipmentTypes:[Any]?
 
-	public var ActivityGoalTypes:[Any]? = nil
+	public var ActivityGoalTypes:[Any]?
 
-	public var ActivityItemThemeTypes:[Any]? = nil
+	public var ActivityItemThemeTypes:[Any]?
 
-	public var ActivityLevelTypes:[Any]? = nil
+	public var ActivityLevelTypes:[Any]?
 
-	public var ActivityThemeTypes:[Any]? = nil
+	public var ActivityThemeTypes:[Any]?
 
-	public var ActivityTypes:[Any]? = nil
+	public var ActivityTypes:[Any]?
 
-	public var ScheduleDayTypes:[Any]? = nil
+	public var ScheduleDayTypes:[Any]?
 
-	public var ScheduleTimeTypes:[Any]? = nil
+	public var ScheduleTimeTypes:[Any]?
 }

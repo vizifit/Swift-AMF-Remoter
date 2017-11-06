@@ -2,13 +2,13 @@
 //  VzSession.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:28.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzSession ) open class VzSession  : EntityBase{
  
  	required public init() {
@@ -26,9 +26,9 @@ import SwiftAMFRemoter
 
 	public var User:VzUser?
 
-	public var SessionStarted:Any? = nil
+	public var SessionStarted:Any?
 
-	public var SessionEnded:Any? = nil
+	public var SessionEnded:Any?
 
 	public var SessionActive:Bool = false
 

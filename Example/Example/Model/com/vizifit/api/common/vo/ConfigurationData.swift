@@ -2,13 +2,13 @@
 //  ConfigurationData.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:6.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( ConfigurationData ) open class ConfigurationData  : BasicObject{
  
  	required public init() {
@@ -22,13 +22,13 @@ import SwiftAMFRemoter
 
     
 
-	public var BrandTypes:[Any]? = nil
+	public var BrandTypes:[Any]?
 
-	public var NetworkTypes:[Any]? = nil
+	public var NetworkTypes:[Any]?
 
-	public var UserTypes:[Any]? = nil
+	public var UserTypes:[Any]?
 
-	public var MediaAssetTypes:[Any]? = nil
+	public var MediaAssetTypes:[Any]?
 
-	public var MediaContentTypes:[Any]? = nil
+	public var MediaContentTypes:[Any]?
 }

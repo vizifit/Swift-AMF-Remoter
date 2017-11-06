@@ -2,13 +2,13 @@
 //  VzActivityItemListAssignment.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:6.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzActivityItemListAssignment ) open class VzActivityItemListAssignment  : EntityBase{
  
  	required public init() {
@@ -24,11 +24,11 @@ import SwiftAMFRemoter
 
 	public var ItemOrder:Int = -1
 
-	public var ActivityItemList:VzActivityItemList = VzActivityItemList()
+	public var ActivityItemList:VzActivityItemList?
 
 	public var ActivityItemListId:Int = -1
 
-	public var ActivityItem:VzActivityItem = VzActivityItem()
+	public var ActivityItem:VzActivityItem?
 
 	public var ActivityItemId:Int = -1
 }

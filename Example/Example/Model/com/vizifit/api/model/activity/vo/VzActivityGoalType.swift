@@ -2,13 +2,13 @@
 //  VzActivityGoalType.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:6.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzActivityGoalType ) open class VzActivityGoalType  : BaseContentType{
  
  	required public init() {

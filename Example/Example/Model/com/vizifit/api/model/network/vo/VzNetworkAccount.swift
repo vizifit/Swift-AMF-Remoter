@@ -2,13 +2,13 @@
 //  VzNetworkAccount.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzNetworkAccount ) open class VzNetworkAccount  : EntityBase{
  
  	required public init() {
@@ -24,21 +24,21 @@ import SwiftAMFRemoter
 
 	public var AuthToken:String = String()
 
-	public var DateRegistered:Any? = nil
+	public var DateRegistered:Any?
 
-	public var DateRemoved:Any? = nil
+	public var DateRemoved:Any?
 
 	public var UserNetworkAccountId:String = String()
 
-	public var NetworkMessages:[Any]? = nil
+	public var NetworkMessages:[Any]?
 
-	public var NetworkRelationships:[Any]? = nil
+	public var NetworkRelationships:[Any]?
 
-	public var NetworkType:VzNetworkType = VzNetworkType()
+	public var NetworkType:VzNetworkType?
 
 	public var NetworkTypeId:Int = -1
 
-	public var User:VzUser = VzUser()
+	public var User:VzUser?
 
 	public var UserId:Int = -1
 }

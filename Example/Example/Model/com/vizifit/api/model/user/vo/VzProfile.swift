@@ -2,13 +2,13 @@
 //  VzProfile.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:28.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzProfile ) open class VzProfile  : BaseMedia{
  
  	required public init() {
@@ -22,7 +22,7 @@ import SwiftAMFRemoter
 
     
 
-	public var DOB:Any? = nil
+	public var DOB:Any?
 
 	public var Gender:String = String()
 

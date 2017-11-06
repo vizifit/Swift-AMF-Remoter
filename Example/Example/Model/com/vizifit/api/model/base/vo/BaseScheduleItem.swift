@@ -2,13 +2,13 @@
 //  BaseScheduleItem.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( BaseScheduleItem ) open class BaseScheduleItem  : EntityBase{
  
  	required public init() {
@@ -22,13 +22,13 @@ import SwiftAMFRemoter
 
     
 
-	public var ExplicitDate:Any? = nil
+	public var ExplicitDate:Any?
 
-	public var ScheduleDayType:VzScheduleDayType = VzScheduleDayType()
+	public var ScheduleDayType:VzScheduleDayType?
 
 	public var ScheduleDayTypeId:Int = -1
 
-	public var ScheduleTimeType:VzScheduleTimeType = VzScheduleTimeType()
+	public var ScheduleTimeType:VzScheduleTimeType?
 
 	public var ScheduleTimeTypeId:Int = -1
 }

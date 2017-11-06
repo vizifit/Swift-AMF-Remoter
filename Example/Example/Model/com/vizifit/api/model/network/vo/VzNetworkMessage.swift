@@ -2,13 +2,13 @@
 //  VzNetworkMessage.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzNetworkMessage ) open class VzNetworkMessage  : EntityBase{
  
  	required public init() {
@@ -22,7 +22,7 @@ import SwiftAMFRemoter
 
     
 
-	public var MessageSent:Date = Date()
+	public var MessageSent:Date?
 
 	public var MessageContent:String = String()
 
@@ -30,9 +30,9 @@ import SwiftAMFRemoter
 
 	public var NetworkAccountId:Int = -1
 
-	public var NetworkAccount:VzNetworkAccount = VzNetworkAccount()
+	public var NetworkAccount:VzNetworkAccount?
 
 	public var NetworkMessageTypeId:Int = -1
 
-	public var NetworkMessageType:VzNetworkMessageType = VzNetworkMessageType()
+	public var NetworkMessageType:VzNetworkMessageType?
 }

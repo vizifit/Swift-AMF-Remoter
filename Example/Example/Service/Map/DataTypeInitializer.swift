@@ -8,14 +8,15 @@
 
 import Foundation
 import SwiftAMFRemoter
+@testable import SwiftAMFRemoter
 
 
 open class DataTypeInitializer  {
  
  	open static func registerClassAliases(){
  	
-        let mgr = RemoteServiceManager.getInstance() { RemoteServiceManager() }
-        
+ 		 let mgr:IRemoteServiceManager = RemoteServiceManager.getInstance() { RemoteServiceManager() }
+ 		
 		mgr.addClassMap( ClassMap(className: "ConfigurationData", classAlias: "com.vizifit.API.Common.ConfigurationData"))
 
 		mgr.addClassMap( ClassMap(className: "VzException", classAlias: "com.vizifit.API.Common.VzException"))
@@ -92,6 +93,10 @@ open class DataTypeInitializer  {
 
 		mgr.addClassMap( ClassMap(className: "VzNetworkType", classAlias: "com.vizifit.API.Model.Network.VzNetworkType"))
 
+		mgr.addClassMap( ClassMap(className: "VzNmScheduledUserProgramActivity", classAlias: "com.vizifit.API.Model.Program.VzNmScheduledUserProgramActivity"))
+
+		mgr.addClassMap( ClassMap(className: "VzNmUserProgramActivity", classAlias: "com.vizifit.API.Model.Program.VzNmUserProgramActivity"))
+
 		mgr.addClassMap( ClassMap(className: "VzProgram", classAlias: "com.vizifit.API.Model.Program.VzProgram"))
 
 		mgr.addClassMap( ClassMap(className: "VzProgramActivityAssignment", classAlias: "com.vizifit.API.Model.Program.VzProgramActivityAssignment"))
@@ -111,6 +116,10 @@ open class DataTypeInitializer  {
 		mgr.addClassMap( ClassMap(className: "VzSession", classAlias: "com.vizifit.API.Model.User.VzSession"))
 
 		mgr.addClassMap( ClassMap(className: "VzUser", classAlias: "com.vizifit.API.Model.User.VzUser"))
+
+		mgr.addClassMap( ClassMap(className: "VzUserProgram", classAlias: "com.vizifit.API.Model.User.VzUserProgram"))
+
+		mgr.addClassMap( ClassMap(className: "VzUserProgramStatusType", classAlias: "com.vizifit.API.Model.User.VzUserProgramStatusType"))
 
 		mgr.addClassMap( ClassMap(className: "VzUserType", classAlias: "com.vizifit.API.Model.User.VzUserType"))
 

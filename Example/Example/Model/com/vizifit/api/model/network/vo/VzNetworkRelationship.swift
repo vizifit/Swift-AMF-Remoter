@@ -2,13 +2,13 @@
 //  VzNetworkRelationship.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzNetworkRelationship ) open class VzNetworkRelationship  : EntityBase{
  
  	required public init() {
@@ -28,7 +28,7 @@ import SwiftAMFRemoter
 
 	public var NetworkRelationshipTypeId:Int = -1
 
-	public var NetworkAccount:VzNetworkAccount = VzNetworkAccount()
+	public var NetworkAccount:VzNetworkAccount?
 
-	public var NetworkRelationshipType:VzNetworkRelationshipType = VzNetworkRelationshipType()
+	public var NetworkRelationshipType:VzNetworkRelationshipType?
 }

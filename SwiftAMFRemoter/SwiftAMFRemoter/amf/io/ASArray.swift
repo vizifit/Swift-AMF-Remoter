@@ -71,6 +71,7 @@ extension ASArray: CustomStringConvertible {
     public var description:String {
         return data.description
     }
+    
 }
 
 extension ASArray: Equatable {
@@ -78,5 +79,8 @@ extension ASArray: Equatable {
 }
 
 public func ==(lhs: ASArray, rhs: ASArray) -> Bool {
+    print("Description")
+    print (lhs.data.description)
+    print (rhs.data.description)
     return (lhs.data.description == rhs.data.description) && (lhs.dict.description == rhs.dict.description)
 }

@@ -2,13 +2,13 @@
 //  VzBrandMembership.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 6-1-2017 8:27.
+//  Created by SwiftAMFManager on 11-5-2017 1:7.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
 import Foundation
 import SwiftAMFRemoter 
-
+@objcMembers
 @objc( VzBrandMembership ) open class VzBrandMembership  : EntityBase{
  
  	required public init() {
@@ -24,11 +24,11 @@ import SwiftAMFRemoter
 
 	public var IsLockedOut:Bool = false
 
-	public var LastLoginDate:Any? = nil
+	public var LastLoginDate:Any?
 
-	public var LastPasswordChange:Any? = nil
+	public var LastPasswordChange:Any?
 
-	public var LastLockoutDate:Any? = nil
+	public var LastLockoutDate:Any?
 
 	public var FailedPasswordAttemptCount:Int = -1
 
@@ -38,7 +38,7 @@ import SwiftAMFRemoter
 
 	public var BrandId:Int = -1
 
-	public var Brand:VzBrand = VzBrand()
+	public var Brand:VzBrand?
 
-	public var User:VzUser = VzUser()
+	public var User:VzUser?
 }

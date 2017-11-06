@@ -8,7 +8,9 @@
 //
 
 import Foundation
-import SwiftAMFRemoter 
+import SwiftAMFRemoter
+//@testable import SwiftAMFRemoter
+import SwiftAMFRemoter
  
 class CloudStorageFacadeServiceDefinition : BaseRemoteServiceDefinition
 {

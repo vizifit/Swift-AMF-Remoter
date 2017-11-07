@@ -49,7 +49,7 @@ open class ServiceConnectorNotification: IServiceConnectorNotification{
                 key += "_" + serviceResult.2!
             }
             
-            _resultMessageGroup![key] = serviceResult.0
+            _resultMessageGroup![key] = serviceResult.1
         }
         
         _notificationKey = resultMessageGroupKey

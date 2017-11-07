@@ -370,6 +370,11 @@ class ViewController: UIViewController, IServiceConnectorView {
             break
             
         case GROUP_NOTIFICATION_TEST:
+            
+            for (resultKey, resultValue) in  (notification.resultMessageGroup)!   {
+                print("Airport code: \(resultKey)")
+            }
+            // notification.resultMessageGroup?.index(forKey: ActivityFacadeServiceDefinition.GET_ALL_PROGRAMS.value) as? [Any]
             print("Received RESULT for:" + notification.notificationId)
             break
             

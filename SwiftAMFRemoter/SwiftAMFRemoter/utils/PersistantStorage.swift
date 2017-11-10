@@ -208,6 +208,23 @@ public class PersistantStorage {
         }
     }
     
+    static public func remove(_ fileNameList: [String], from directory: Directory) {
+        
+        for fileUrl in fileNameList {
+            let url = getURL(for: directory).appendingPathComponent(fileUrl, isDirectory: false)
+            
+            if FileManager.default.fileExists(atPath: url.path) {
+                do {
+                    try FileManager.default.removeItem(at: url)
+                } catch {
+                    
+                    print("Error" + error.localizedDescription)
+                    //fatalError(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     /// Remove specified file from specified directory
     static public func remove(_ fileName: String, from directory: Directory) {
         let url = getURL(for: directory).appendingPathComponent(fileName, isDirectory: false)

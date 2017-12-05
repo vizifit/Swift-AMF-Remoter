@@ -2,7 +2,7 @@
 //  UserFacadeModel.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:6.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -22,49 +22,63 @@ import SwiftAMFRemoter
 
     
 
-	public var CreateNetworkResult:UserContext?
+	public var _generateDependenciesResult:UserFacadeManifest?
 
-	public var CreateUserByEmailResult:UserContext?
+	public var CreateNetworkResult:VzServiceResult?
 
-	public var CreateUserByNetworkResult:UserContext?
+	public var CreateUserByEmailResult:VzServiceResult?
 
-	public var GetAppConfigurationDataResult:ConfigurationData?
+	public var CreateUserByNetworkResult:VzServiceResult?
 
-	public var GetBrandsResult:[Any]?
+	public var GenerateSessionContextKeyResult:VzServiceResult?
+
+	public var GenerateSessionNonceResult:VzServiceResult?
+
+	public var GetAppConfigurationDataResult:VzServiceResult?
+
+	public var GetAppConfigurationDataWithUserIdResult:VzServiceResult?
+
+	public var GetBrandsResult:VzServiceResult?
+
+	public var GetCurrentSessionResult:VzServiceResult?
 
 	public var GetExceptionResult:VzException?
 
-	public var GetInstructorsResult:[Any]?
+	public var GetInstructorsResult:VzServiceResult?
 
-	public var GetNetworkTypesResult:[Any]?
+	public var GetNetworkTypesResult:VzServiceResult?
 
-	public var GetUserByEmailResult:UserContext?
+	public var GetUserByEmailResult:VzServiceResult?
 
-	public var GetUserByIdResult:UserContext?
+	public var GetUserByEmailWithRequestorIdResult:VzServiceResult?
 
-	public var GetUserTypesResult:[Any]?
+	public var GetUserByIdResult:VzServiceResult?
 
-	public var LoginByEmailResult:UserContext?
+	public var GetUserTypesResult:VzServiceResult?
 
-	public var LoginByNetworkResult:UserContext?
+	public var LoginByEmailResult:VzServiceResult?
 
-	public var NetworkUserExistsResult:Bool = false
+	public var LoginByNetworkResult:VzServiceResult?
 
-	public var RemoveNetworkResult:UserContext?
+	public var NetworkUserExistsResult:VzServiceResult?
 
-	public var ResetPasswordResult:Bool = false
+	public var RemoveNetworkResult:VzServiceResult?
 
-	public var UpdateNetworkResult:UserContext?
+	public var ResetPasswordResult:VzServiceResult?
 
-	public var UpdatePasswordResult:Bool = false
+	public var ResetPasswordWithConfirmResult:VzServiceResult?
 
-	public var UpdateProfileResult:UserContext?
+	public var UpdateNetworkResult:VzServiceResult?
 
-	public var UpdateProfileImageByIdResult:UserContext?
+	public var UpdatePasswordResult:VzServiceResult?
 
-	public var UpdateUserResult:UserContext?
+	public var UpdateProfileResult:VzServiceResult?
 
-	public var UserExistsResult:Bool = false
+	public var UpdateProfileImageByIdResult:VzServiceResult?
 
-	public var UserExistsForNetworkResult:Bool = false
+	public var UpdateUserResult:VzServiceResult?
+
+	public var UserExistsResult:VzServiceResult?
+
+	public var UserExistsForNetworkResult:VzServiceResult?
 }

@@ -15,63 +15,76 @@
 		261E1AC61EE8C4D600A0D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC41EE8C4D600A0D2B5 /* Main.storyboard */; };
 		261E1AC81EE8C4D600A0D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */; };
 		261E1ACB1EE8C4D600A0D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 261E1AC91EE8C4D600A0D2B5 /* LaunchScreen.storyboard */; };
-		2690E77F1FAEFF37000657FE /* ConfigurationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7341FAEFF36000657FE /* ConfigurationData.swift */; };
-		2690E7801FAEFF37000657FE /* VzException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7351FAEFF36000657FE /* VzException.swift */; };
-		2690E7811FAEFF37000657FE /* ActivityFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7371FAEFF36000657FE /* ActivityFacadeModel.swift */; };
-		2690E7821FAEFF37000657FE /* CloudStorageFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7381FAEFF36000657FE /* CloudStorageFacadeModel.swift */; };
-		2690E7831FAEFF37000657FE /* UserFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7391FAEFF36000657FE /* UserFacadeModel.swift */; };
-		2690E7841FAEFF37000657FE /* ActivityConfigurationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E73D1FAEFF36000657FE /* ActivityConfigurationData.swift */; };
-		2690E7851FAEFF37000657FE /* VzActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E73E1FAEFF36000657FE /* VzActivity.swift */; };
-		2690E7861FAEFF37000657FE /* VzActivityAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E73F1FAEFF36000657FE /* VzActivityAttributeType.swift */; };
-		2690E7871FAEFF37000657FE /* VzActivityEquipmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7401FAEFF36000657FE /* VzActivityEquipmentType.swift */; };
-		2690E7881FAEFF37000657FE /* VzActivityGoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7411FAEFF36000657FE /* VzActivityGoalType.swift */; };
-		2690E7891FAEFF37000657FE /* VzActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7421FAEFF36000657FE /* VzActivityItem.swift */; };
-		2690E78A1FAEFF37000657FE /* VzActivityItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7431FAEFF36000657FE /* VzActivityItemList.swift */; };
-		2690E78B1FAEFF37000657FE /* VzActivityItemListAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7441FAEFF36000657FE /* VzActivityItemListAssignment.swift */; };
-		2690E78C1FAEFF37000657FE /* VzActivityItemThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7451FAEFF36000657FE /* VzActivityItemThemeType.swift */; };
-		2690E78D1FAEFF37000657FE /* VzActivityLevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7461FAEFF36000657FE /* VzActivityLevelType.swift */; };
-		2690E78E1FAEFF37000657FE /* VzActivityScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7471FAEFF36000657FE /* VzActivityScheduleItem.swift */; };
-		2690E78F1FAEFF37000657FE /* VzActivityThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7481FAEFF36000657FE /* VzActivityThemeType.swift */; };
-		2690E7901FAEFF37000657FE /* VzActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7491FAEFF36000657FE /* VzActivityType.swift */; };
-		2690E7911FAEFF37000657FE /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E74C1FAEFF36000657FE /* BaseContent.swift */; };
-		2690E7921FAEFF37000657FE /* BaseContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E74D1FAEFF36000657FE /* BaseContentType.swift */; };
-		2690E7931FAEFF37000657FE /* BaseMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E74E1FAEFF36000657FE /* BaseMedia.swift */; };
-		2690E7941FAEFF37000657FE /* BaseMediaContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E74F1FAEFF36000657FE /* BaseMediaContent.swift */; };
-		2690E7951FAEFF37000657FE /* BaseScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7501FAEFF36000657FE /* BaseScheduleItem.swift */; };
-		2690E7961FAEFF37000657FE /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7511FAEFF36000657FE /* EntityBase.swift */; };
-		2690E7971FAEFF37000657FE /* VzBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7541FAEFF36000657FE /* VzBrand.swift */; };
-		2690E7981FAEFF37000657FE /* VzBrandMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7551FAEFF36000657FE /* VzBrandMembership.swift */; };
-		2690E7991FAEFF37000657FE /* UnitMetricEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7591FAEFF36000657FE /* UnitMetricEnum.swift */; };
-		2690E79A1FAEFF37000657FE /* VzServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E75B1FAEFF36000657FE /* VzServiceError.swift */; };
-		2690E79B1FAEFF37000657FE /* VzMediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E75E1FAEFF36000657FE /* VzMediaAsset.swift */; };
-		2690E79C1FAEFF37000657FE /* VzMediaAssetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E75F1FAEFF36000657FE /* VzMediaAssetType.swift */; };
-		2690E79D1FAEFF37000657FE /* VzMediaCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7601FAEFF36000657FE /* VzMediaCategoryType.swift */; };
-		2690E79E1FAEFF37000657FE /* VzMediaContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7611FAEFF36000657FE /* VzMediaContentType.swift */; };
-		2690E79F1FAEFF37000657FE /* VzNetworkAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7641FAEFF36000657FE /* VzNetworkAccount.swift */; };
-		2690E7A01FAEFF37000657FE /* VzNetworkMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7651FAEFF36000657FE /* VzNetworkMessage.swift */; };
-		2690E7A11FAEFF37000657FE /* VzNetworkMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7661FAEFF36000657FE /* VzNetworkMessageType.swift */; };
-		2690E7A21FAEFF37000657FE /* VzNetworkRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7671FAEFF36000657FE /* VzNetworkRelationship.swift */; };
-		2690E7A31FAEFF37000657FE /* VzNetworkRelationshipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7681FAEFF36000657FE /* VzNetworkRelationshipType.swift */; };
-		2690E7A41FAEFF37000657FE /* VzNetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7691FAEFF36000657FE /* VzNetworkType.swift */; };
-		2690E7A51FAEFF37000657FE /* VzNmScheduledUserProgramActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E76C1FAEFF36000657FE /* VzNmScheduledUserProgramActivity.swift */; };
-		2690E7A61FAEFF37000657FE /* VzNmUserProgramActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E76D1FAEFF36000657FE /* VzNmUserProgramActivity.swift */; };
-		2690E7A71FAEFF37000657FE /* VzProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E76E1FAEFF36000657FE /* VzProgram.swift */; };
-		2690E7A81FAEFF37000657FE /* VzProgramActivityAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E76F1FAEFF36000657FE /* VzProgramActivityAssignment.swift */; };
-		2690E7A91FAEFF37000657FE /* VzProgramStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7701FAEFF36000657FE /* VzProgramStatusType.swift */; };
-		2690E7AA1FAEFF37000657FE /* VzScheduleDayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7731FAEFF36000657FE /* VzScheduleDayType.swift */; };
-		2690E7AB1FAEFF37000657FE /* VzScheduleTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7741FAEFF36000657FE /* VzScheduleTimeType.swift */; };
-		2690E7AC1FAEFF37000657FE /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7771FAEFF36000657FE /* UserContext.swift */; };
-		2690E7AD1FAEFF37000657FE /* VzAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7781FAEFF36000657FE /* VzAccount.swift */; };
-		2690E7AE1FAEFF37000657FE /* VzProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7791FAEFF36000657FE /* VzProfile.swift */; };
-		2690E7AF1FAEFF37000657FE /* VzSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E77A1FAEFF36000657FE /* VzSession.swift */; };
-		2690E7B01FAEFF37000657FE /* VzUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E77B1FAEFF36000657FE /* VzUser.swift */; };
-		2690E7B11FAEFF37000657FE /* VzUserProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E77C1FAEFF36000657FE /* VzUserProgram.swift */; };
-		2690E7B21FAEFF37000657FE /* VzUserProgramStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E77D1FAEFF36000657FE /* VzUserProgramStatusType.swift */; };
-		2690E7B31FAEFF37000657FE /* VzUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E77E1FAEFF36000657FE /* VzUserType.swift */; };
-		2690E7BA1FAEFF53000657FE /* DataTypeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7B51FAEFF52000657FE /* DataTypeInitializer.swift */; };
-		2690E7BB1FAEFF53000657FE /* ActivityFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7B71FAEFF53000657FE /* ActivityFacadeServiceDefinition.swift */; };
-		2690E7BC1FAEFF53000657FE /* CloudStorageFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7B81FAEFF53000657FE /* CloudStorageFacadeServiceDefinition.swift */; };
-		2690E7BD1FAEFF53000657FE /* UserFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2690E7B91FAEFF53000657FE /* UserFacadeServiceDefinition.swift */; };
+		264111E61FD146570045965A /* ConfigurationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641118D1FD146570045965A /* ConfigurationData.swift */; };
+		264111E71FD146570045965A /* VzException.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641118E1FD146570045965A /* VzException.swift */; };
+		264111E81FD146570045965A /* ActivityFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111901FD146570045965A /* ActivityFacadeModel.swift */; };
+		264111E91FD146570045965A /* CloudStorageFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111911FD146570045965A /* CloudStorageFacadeModel.swift */; };
+		264111EA1FD146570045965A /* UserFacadeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111921FD146570045965A /* UserFacadeModel.swift */; };
+		264111EB1FD146570045965A /* ActivityFacadeManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111941FD146570045965A /* ActivityFacadeManifest.swift */; };
+		264111EC1FD146570045965A /* CloudStorageFacadeManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111951FD146570045965A /* CloudStorageFacadeManifest.swift */; };
+		264111ED1FD146570045965A /* UserFacadeManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111961FD146570045965A /* UserFacadeManifest.swift */; };
+		264111EE1FD146570045965A /* ActivityConfigurationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119A1FD146570045965A /* ActivityConfigurationData.swift */; };
+		264111EF1FD146570045965A /* VzActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119B1FD146570045965A /* VzActivity.swift */; };
+		264111F01FD146570045965A /* VzActivityAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119C1FD146570045965A /* VzActivityAttributeType.swift */; };
+		264111F11FD146570045965A /* VzActivityEquipmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119D1FD146570045965A /* VzActivityEquipmentType.swift */; };
+		264111F21FD146570045965A /* VzActivityGoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119E1FD146570045965A /* VzActivityGoalType.swift */; };
+		264111F31FD146570045965A /* VzActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641119F1FD146570045965A /* VzActivityItem.swift */; };
+		264111F41FD146570045965A /* VzActivityItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A01FD146570045965A /* VzActivityItemList.swift */; };
+		264111F51FD146570045965A /* VzActivityItemListAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A11FD146570045965A /* VzActivityItemListAssignment.swift */; };
+		264111F61FD146570045965A /* VzActivityItemThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A21FD146570045965A /* VzActivityItemThemeType.swift */; };
+		264111F71FD146570045965A /* VzActivityLevelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A31FD146570045965A /* VzActivityLevelType.swift */; };
+		264111F81FD146570045965A /* VzActivityScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A41FD146570045965A /* VzActivityScheduleItem.swift */; };
+		264111F91FD146570045965A /* VzActivityThemeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A51FD146570045965A /* VzActivityThemeType.swift */; };
+		264111FA1FD146570045965A /* VzActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A61FD146570045965A /* VzActivityType.swift */; };
+		264111FB1FD146570045965A /* BaseContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111A91FD146570045965A /* BaseContent.swift */; };
+		264111FC1FD146570045965A /* BaseContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AA1FD146570045965A /* BaseContentType.swift */; };
+		264111FD1FD146570045965A /* BaseMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AB1FD146570045965A /* BaseMedia.swift */; };
+		264111FE1FD146570045965A /* BaseMediaContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AC1FD146570045965A /* BaseMediaContent.swift */; };
+		264111FF1FD146570045965A /* BaseResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AD1FD146570045965A /* BaseResult.swift */; };
+		264112001FD146570045965A /* BaseScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AE1FD146570045965A /* BaseScheduleItem.swift */; };
+		264112011FD146570045965A /* EntityBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111AF1FD146570045965A /* EntityBase.swift */; };
+		264112021FD146570045965A /* VzBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111B21FD146570045965A /* VzBrand.swift */; };
+		264112031FD146570045965A /* VzBrandMembership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111B31FD146570045965A /* VzBrandMembership.swift */; };
+		264112041FD146570045965A /* UnitMetricEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111B71FD146570045965A /* UnitMetricEnum.swift */; };
+		264112051FD146570045965A /* VzServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111B91FD146570045965A /* VzServiceError.swift */; };
+		264112061FD146570045965A /* VzMediaAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111BC1FD146570045965A /* VzMediaAsset.swift */; };
+		264112071FD146570045965A /* VzMediaAssetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111BD1FD146570045965A /* VzMediaAssetType.swift */; };
+		264112081FD146570045965A /* VzMediaCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111BE1FD146570045965A /* VzMediaCategoryType.swift */; };
+		264112091FD146570045965A /* VzMediaContentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111BF1FD146570045965A /* VzMediaContentType.swift */; };
+		2641120A1FD146570045965A /* VzNetworkAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C21FD146570045965A /* VzNetworkAccount.swift */; };
+		2641120B1FD146570045965A /* VzNetworkMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C31FD146570045965A /* VzNetworkMessage.swift */; };
+		2641120C1FD146570045965A /* VzNetworkMessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C41FD146570045965A /* VzNetworkMessageType.swift */; };
+		2641120D1FD146570045965A /* VzNetworkRelationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C51FD146570045965A /* VzNetworkRelationship.swift */; };
+		2641120E1FD146570045965A /* VzNetworkRelationshipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C61FD146570045965A /* VzNetworkRelationshipType.swift */; };
+		2641120F1FD146570045965A /* VzNetworkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111C71FD146570045965A /* VzNetworkType.swift */; };
+		264112101FD146570045965A /* VzNmScheduledUserProgramActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CA1FD146570045965A /* VzNmScheduledUserProgramActivity.swift */; };
+		264112111FD146570045965A /* VzNmUserProgramActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CB1FD146570045965A /* VzNmUserProgramActivity.swift */; };
+		264112121FD146570045965A /* VzProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CC1FD146570045965A /* VzProgram.swift */; };
+		264112131FD146570045965A /* VzProgramAccessType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CD1FD146570045965A /* VzProgramAccessType.swift */; };
+		264112141FD146570045965A /* VzProgramActivityAssignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CE1FD146570045965A /* VzProgramActivityAssignment.swift */; };
+		264112151FD146570045965A /* VzProgramCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111CF1FD146570045965A /* VzProgramCategoryType.swift */; };
+		264112161FD146570045965A /* VzProgramStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111D01FD146570045965A /* VzProgramStatusType.swift */; };
+		264112171FD146570045965A /* VzServiceResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111D31FD146570045965A /* VzServiceResult.swift */; };
+		264112181FD146570045965A /* VzScheduleDayType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111D61FD146570045965A /* VzScheduleDayType.swift */; };
+		264112191FD146570045965A /* VzScheduleTimeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111D71FD146570045965A /* VzScheduleTimeType.swift */; };
+		2641121A1FD146570045965A /* VzMetricUnitAttributeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111DA1FD146570045965A /* VzMetricUnitAttributeType.swift */; };
+		2641121B1FD146570045965A /* VzMetricUnitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111DB1FD146570045965A /* VzMetricUnitType.swift */; };
+		2641121C1FD146570045965A /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111DE1FD146570045965A /* UserContext.swift */; };
+		2641121D1FD146570045965A /* VzAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111DF1FD146570045965A /* VzAccount.swift */; };
+		2641121E1FD146570045965A /* VzProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E01FD146570045965A /* VzProfile.swift */; };
+		2641121F1FD146570045965A /* VzSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E11FD146570045965A /* VzSession.swift */; };
+		264112201FD146570045965A /* VzUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E21FD146570045965A /* VzUser.swift */; };
+		264112211FD146570045965A /* VzUserProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E31FD146570045965A /* VzUserProgram.swift */; };
+		264112221FD146570045965A /* VzUserProgramStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E41FD146570045965A /* VzUserProgramStatusType.swift */; };
+		264112231FD146570045965A /* VzUserType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264111E51FD146570045965A /* VzUserType.swift */; };
+		2641122D1FD146690045965A /* DataTypeInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264112251FD146680045965A /* DataTypeInitializer.swift */; };
+		2641122E1FD146690045965A /* ActivityFacadeManifestServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264112271FD146690045965A /* ActivityFacadeManifestServiceDefinition.swift */; };
+		2641122F1FD146690045965A /* ActivityFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264112281FD146690045965A /* ActivityFacadeServiceDefinition.swift */; };
+		264112301FD146690045965A /* CloudStorageFacadeManifestServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264112291FD146690045965A /* CloudStorageFacadeManifestServiceDefinition.swift */; };
+		264112311FD146690045965A /* CloudStorageFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641122A1FD146690045965A /* CloudStorageFacadeServiceDefinition.swift */; };
+		264112321FD146690045965A /* UserFacadeManifestServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641122B1FD146690045965A /* UserFacadeManifestServiceDefinition.swift */; };
+		264112331FD146690045965A /* UserFacadeServiceDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641122C1FD146690045965A /* UserFacadeServiceDefinition.swift */; };
+		264A67D41FB6B6B000771E47 /* SwiftAMFRemoter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 261C8D851F78AB7D00126056 /* SwiftAMFRemoter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		26A4EE5D1F04EA1B008038A9 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +95,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				264A67D41FB6B6B000771E47 /* SwiftAMFRemoter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 1;
@@ -108,63 +122,75 @@
 		261E1AC71EE8C4D600A0D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		261E1ACA1EE8C4D600A0D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		261E1ACC1EE8C4D600A0D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2690E7341FAEFF36000657FE /* ConfigurationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationData.swift; sourceTree = "<group>"; };
-		2690E7351FAEFF36000657FE /* VzException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzException.swift; sourceTree = "<group>"; };
-		2690E7371FAEFF36000657FE /* ActivityFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeModel.swift; sourceTree = "<group>"; };
-		2690E7381FAEFF36000657FE /* CloudStorageFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeModel.swift; sourceTree = "<group>"; };
-		2690E7391FAEFF36000657FE /* UserFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeModel.swift; sourceTree = "<group>"; };
-		2690E73D1FAEFF36000657FE /* ActivityConfigurationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityConfigurationData.swift; sourceTree = "<group>"; };
-		2690E73E1FAEFF36000657FE /* VzActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivity.swift; sourceTree = "<group>"; };
-		2690E73F1FAEFF36000657FE /* VzActivityAttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityAttributeType.swift; sourceTree = "<group>"; };
-		2690E7401FAEFF36000657FE /* VzActivityEquipmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityEquipmentType.swift; sourceTree = "<group>"; };
-		2690E7411FAEFF36000657FE /* VzActivityGoalType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityGoalType.swift; sourceTree = "<group>"; };
-		2690E7421FAEFF36000657FE /* VzActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItem.swift; sourceTree = "<group>"; };
-		2690E7431FAEFF36000657FE /* VzActivityItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemList.swift; sourceTree = "<group>"; };
-		2690E7441FAEFF36000657FE /* VzActivityItemListAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemListAssignment.swift; sourceTree = "<group>"; };
-		2690E7451FAEFF36000657FE /* VzActivityItemThemeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemThemeType.swift; sourceTree = "<group>"; };
-		2690E7461FAEFF36000657FE /* VzActivityLevelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityLevelType.swift; sourceTree = "<group>"; };
-		2690E7471FAEFF36000657FE /* VzActivityScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityScheduleItem.swift; sourceTree = "<group>"; };
-		2690E7481FAEFF36000657FE /* VzActivityThemeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityThemeType.swift; sourceTree = "<group>"; };
-		2690E7491FAEFF36000657FE /* VzActivityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityType.swift; sourceTree = "<group>"; };
-		2690E74C1FAEFF36000657FE /* BaseContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
-		2690E74D1FAEFF36000657FE /* BaseContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentType.swift; sourceTree = "<group>"; };
-		2690E74E1FAEFF36000657FE /* BaseMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMedia.swift; sourceTree = "<group>"; };
-		2690E74F1FAEFF36000657FE /* BaseMediaContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMediaContent.swift; sourceTree = "<group>"; };
-		2690E7501FAEFF36000657FE /* BaseScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScheduleItem.swift; sourceTree = "<group>"; };
-		2690E7511FAEFF36000657FE /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
-		2690E7541FAEFF36000657FE /* VzBrand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzBrand.swift; sourceTree = "<group>"; };
-		2690E7551FAEFF36000657FE /* VzBrandMembership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzBrandMembership.swift; sourceTree = "<group>"; };
-		2690E7591FAEFF36000657FE /* UnitMetricEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitMetricEnum.swift; sourceTree = "<group>"; };
-		2690E75B1FAEFF36000657FE /* VzServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzServiceError.swift; sourceTree = "<group>"; };
-		2690E75E1FAEFF36000657FE /* VzMediaAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaAsset.swift; sourceTree = "<group>"; };
-		2690E75F1FAEFF36000657FE /* VzMediaAssetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaAssetType.swift; sourceTree = "<group>"; };
-		2690E7601FAEFF36000657FE /* VzMediaCategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaCategoryType.swift; sourceTree = "<group>"; };
-		2690E7611FAEFF36000657FE /* VzMediaContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaContentType.swift; sourceTree = "<group>"; };
-		2690E7641FAEFF36000657FE /* VzNetworkAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkAccount.swift; sourceTree = "<group>"; };
-		2690E7651FAEFF36000657FE /* VzNetworkMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkMessage.swift; sourceTree = "<group>"; };
-		2690E7661FAEFF36000657FE /* VzNetworkMessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkMessageType.swift; sourceTree = "<group>"; };
-		2690E7671FAEFF36000657FE /* VzNetworkRelationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkRelationship.swift; sourceTree = "<group>"; };
-		2690E7681FAEFF36000657FE /* VzNetworkRelationshipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkRelationshipType.swift; sourceTree = "<group>"; };
-		2690E7691FAEFF36000657FE /* VzNetworkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkType.swift; sourceTree = "<group>"; };
-		2690E76C1FAEFF36000657FE /* VzNmScheduledUserProgramActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNmScheduledUserProgramActivity.swift; sourceTree = "<group>"; };
-		2690E76D1FAEFF36000657FE /* VzNmUserProgramActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNmUserProgramActivity.swift; sourceTree = "<group>"; };
-		2690E76E1FAEFF36000657FE /* VzProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgram.swift; sourceTree = "<group>"; };
-		2690E76F1FAEFF36000657FE /* VzProgramActivityAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramActivityAssignment.swift; sourceTree = "<group>"; };
-		2690E7701FAEFF36000657FE /* VzProgramStatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramStatusType.swift; sourceTree = "<group>"; };
-		2690E7731FAEFF36000657FE /* VzScheduleDayType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzScheduleDayType.swift; sourceTree = "<group>"; };
-		2690E7741FAEFF36000657FE /* VzScheduleTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzScheduleTimeType.swift; sourceTree = "<group>"; };
-		2690E7771FAEFF36000657FE /* UserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
-		2690E7781FAEFF36000657FE /* VzAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzAccount.swift; sourceTree = "<group>"; };
-		2690E7791FAEFF36000657FE /* VzProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProfile.swift; sourceTree = "<group>"; };
-		2690E77A1FAEFF36000657FE /* VzSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzSession.swift; sourceTree = "<group>"; };
-		2690E77B1FAEFF36000657FE /* VzUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUser.swift; sourceTree = "<group>"; };
-		2690E77C1FAEFF36000657FE /* VzUserProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserProgram.swift; sourceTree = "<group>"; };
-		2690E77D1FAEFF36000657FE /* VzUserProgramStatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserProgramStatusType.swift; sourceTree = "<group>"; };
-		2690E77E1FAEFF36000657FE /* VzUserType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserType.swift; sourceTree = "<group>"; };
-		2690E7B51FAEFF52000657FE /* DataTypeInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTypeInitializer.swift; sourceTree = "<group>"; };
-		2690E7B71FAEFF53000657FE /* ActivityFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeServiceDefinition.swift; sourceTree = "<group>"; };
-		2690E7B81FAEFF53000657FE /* CloudStorageFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeServiceDefinition.swift; sourceTree = "<group>"; };
-		2690E7B91FAEFF53000657FE /* UserFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeServiceDefinition.swift; sourceTree = "<group>"; };
+		2641118D1FD146570045965A /* ConfigurationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationData.swift; sourceTree = "<group>"; };
+		2641118E1FD146570045965A /* VzException.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzException.swift; sourceTree = "<group>"; };
+		264111901FD146570045965A /* ActivityFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeModel.swift; sourceTree = "<group>"; };
+		264111911FD146570045965A /* CloudStorageFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeModel.swift; sourceTree = "<group>"; };
+		264111921FD146570045965A /* UserFacadeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeModel.swift; sourceTree = "<group>"; };
+		264111941FD146570045965A /* ActivityFacadeManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeManifest.swift; sourceTree = "<group>"; };
+		264111951FD146570045965A /* CloudStorageFacadeManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeManifest.swift; sourceTree = "<group>"; };
+		264111961FD146570045965A /* UserFacadeManifest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeManifest.swift; sourceTree = "<group>"; };
+		2641119A1FD146570045965A /* ActivityConfigurationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityConfigurationData.swift; sourceTree = "<group>"; };
+		2641119B1FD146570045965A /* VzActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivity.swift; sourceTree = "<group>"; };
+		2641119C1FD146570045965A /* VzActivityAttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityAttributeType.swift; sourceTree = "<group>"; };
+		2641119D1FD146570045965A /* VzActivityEquipmentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityEquipmentType.swift; sourceTree = "<group>"; };
+		2641119E1FD146570045965A /* VzActivityGoalType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityGoalType.swift; sourceTree = "<group>"; };
+		2641119F1FD146570045965A /* VzActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItem.swift; sourceTree = "<group>"; };
+		264111A01FD146570045965A /* VzActivityItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemList.swift; sourceTree = "<group>"; };
+		264111A11FD146570045965A /* VzActivityItemListAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemListAssignment.swift; sourceTree = "<group>"; };
+		264111A21FD146570045965A /* VzActivityItemThemeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityItemThemeType.swift; sourceTree = "<group>"; };
+		264111A31FD146570045965A /* VzActivityLevelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityLevelType.swift; sourceTree = "<group>"; };
+		264111A41FD146570045965A /* VzActivityScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityScheduleItem.swift; sourceTree = "<group>"; };
+		264111A51FD146570045965A /* VzActivityThemeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityThemeType.swift; sourceTree = "<group>"; };
+		264111A61FD146570045965A /* VzActivityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzActivityType.swift; sourceTree = "<group>"; };
+		264111A91FD146570045965A /* BaseContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContent.swift; sourceTree = "<group>"; };
+		264111AA1FD146570045965A /* BaseContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentType.swift; sourceTree = "<group>"; };
+		264111AB1FD146570045965A /* BaseMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMedia.swift; sourceTree = "<group>"; };
+		264111AC1FD146570045965A /* BaseMediaContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMediaContent.swift; sourceTree = "<group>"; };
+		264111AD1FD146570045965A /* BaseResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseResult.swift; sourceTree = "<group>"; };
+		264111AE1FD146570045965A /* BaseScheduleItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScheduleItem.swift; sourceTree = "<group>"; };
+		264111AF1FD146570045965A /* EntityBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityBase.swift; sourceTree = "<group>"; };
+		264111B21FD146570045965A /* VzBrand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzBrand.swift; sourceTree = "<group>"; };
+		264111B31FD146570045965A /* VzBrandMembership.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzBrandMembership.swift; sourceTree = "<group>"; };
+		264111B71FD146570045965A /* UnitMetricEnum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnitMetricEnum.swift; sourceTree = "<group>"; };
+		264111B91FD146570045965A /* VzServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzServiceError.swift; sourceTree = "<group>"; };
+		264111BC1FD146570045965A /* VzMediaAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaAsset.swift; sourceTree = "<group>"; };
+		264111BD1FD146570045965A /* VzMediaAssetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaAssetType.swift; sourceTree = "<group>"; };
+		264111BE1FD146570045965A /* VzMediaCategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaCategoryType.swift; sourceTree = "<group>"; };
+		264111BF1FD146570045965A /* VzMediaContentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMediaContentType.swift; sourceTree = "<group>"; };
+		264111C21FD146570045965A /* VzNetworkAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkAccount.swift; sourceTree = "<group>"; };
+		264111C31FD146570045965A /* VzNetworkMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkMessage.swift; sourceTree = "<group>"; };
+		264111C41FD146570045965A /* VzNetworkMessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkMessageType.swift; sourceTree = "<group>"; };
+		264111C51FD146570045965A /* VzNetworkRelationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkRelationship.swift; sourceTree = "<group>"; };
+		264111C61FD146570045965A /* VzNetworkRelationshipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkRelationshipType.swift; sourceTree = "<group>"; };
+		264111C71FD146570045965A /* VzNetworkType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNetworkType.swift; sourceTree = "<group>"; };
+		264111CA1FD146570045965A /* VzNmScheduledUserProgramActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNmScheduledUserProgramActivity.swift; sourceTree = "<group>"; };
+		264111CB1FD146570045965A /* VzNmUserProgramActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzNmUserProgramActivity.swift; sourceTree = "<group>"; };
+		264111CC1FD146570045965A /* VzProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgram.swift; sourceTree = "<group>"; };
+		264111CD1FD146570045965A /* VzProgramAccessType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramAccessType.swift; sourceTree = "<group>"; };
+		264111CE1FD146570045965A /* VzProgramActivityAssignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramActivityAssignment.swift; sourceTree = "<group>"; };
+		264111CF1FD146570045965A /* VzProgramCategoryType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramCategoryType.swift; sourceTree = "<group>"; };
+		264111D01FD146570045965A /* VzProgramStatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProgramStatusType.swift; sourceTree = "<group>"; };
+		264111D31FD146570045965A /* VzServiceResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzServiceResult.swift; sourceTree = "<group>"; };
+		264111D61FD146570045965A /* VzScheduleDayType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzScheduleDayType.swift; sourceTree = "<group>"; };
+		264111D71FD146570045965A /* VzScheduleTimeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzScheduleTimeType.swift; sourceTree = "<group>"; };
+		264111DA1FD146570045965A /* VzMetricUnitAttributeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMetricUnitAttributeType.swift; sourceTree = "<group>"; };
+		264111DB1FD146570045965A /* VzMetricUnitType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzMetricUnitType.swift; sourceTree = "<group>"; };
+		264111DE1FD146570045965A /* UserContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
+		264111DF1FD146570045965A /* VzAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzAccount.swift; sourceTree = "<group>"; };
+		264111E01FD146570045965A /* VzProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzProfile.swift; sourceTree = "<group>"; };
+		264111E11FD146570045965A /* VzSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzSession.swift; sourceTree = "<group>"; };
+		264111E21FD146570045965A /* VzUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUser.swift; sourceTree = "<group>"; };
+		264111E31FD146570045965A /* VzUserProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserProgram.swift; sourceTree = "<group>"; };
+		264111E41FD146570045965A /* VzUserProgramStatusType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserProgramStatusType.swift; sourceTree = "<group>"; };
+		264111E51FD146570045965A /* VzUserType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VzUserType.swift; sourceTree = "<group>"; };
+		264112251FD146680045965A /* DataTypeInitializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTypeInitializer.swift; sourceTree = "<group>"; };
+		264112271FD146690045965A /* ActivityFacadeManifestServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeManifestServiceDefinition.swift; sourceTree = "<group>"; };
+		264112281FD146690045965A /* ActivityFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityFacadeServiceDefinition.swift; sourceTree = "<group>"; };
+		264112291FD146690045965A /* CloudStorageFacadeManifestServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeManifestServiceDefinition.swift; sourceTree = "<group>"; };
+		2641122A1FD146690045965A /* CloudStorageFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudStorageFacadeServiceDefinition.swift; sourceTree = "<group>"; };
+		2641122B1FD146690045965A /* UserFacadeManifestServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeManifestServiceDefinition.swift; sourceTree = "<group>"; };
+		2641122C1FD146690045965A /* UserFacadeServiceDefinition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFacadeServiceDefinition.swift; sourceTree = "<group>"; };
 		26A4EE5C1F04EA1B008038A9 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,8 +217,8 @@
 		260ACC9E1EE997010066231C /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				2690E7B61FAEFF53000657FE /* definitions */,
-				2690E7B41FAEFF52000657FE /* map */,
+				264112261FD146690045965A /* definitions */,
+				264112241FD146680045965A /* map */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -200,7 +226,7 @@
 		260ACCA51EE997010066231C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2690E72F1FAEFF36000657FE /* com */,
+				264111881FD146570045965A /* com */,
 				260ACCF21EE997010066231C /* PunchJunkieModel.swift */,
 			);
 			path = Model;
@@ -248,298 +274,350 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		264111881FD146570045965A /* com */ = {
+			isa = PBXGroup;
+			children = (
+				264111891FD146570045965A /* vizifit */,
+			);
+			path = com;
+			sourceTree = "<group>";
+		};
+		264111891FD146570045965A /* vizifit */ = {
+			isa = PBXGroup;
+			children = (
+				2641118A1FD146570045965A /* api */,
+			);
+			path = vizifit;
+			sourceTree = "<group>";
+		};
+		2641118A1FD146570045965A /* api */ = {
+			isa = PBXGroup;
+			children = (
+				2641118B1FD146570045965A /* common */,
+				2641118F1FD146570045965A /* facade */,
+				264111971FD146570045965A /* model */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		2641118B1FD146570045965A /* common */ = {
+			isa = PBXGroup;
+			children = (
+				2641118C1FD146570045965A /* vo */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		2641118C1FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				2641118D1FD146570045965A /* ConfigurationData.swift */,
+				2641118E1FD146570045965A /* VzException.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		2641118F1FD146570045965A /* facade */ = {
+			isa = PBXGroup;
+			children = (
+				264111901FD146570045965A /* ActivityFacadeModel.swift */,
+				264111911FD146570045965A /* CloudStorageFacadeModel.swift */,
+				264111921FD146570045965A /* UserFacadeModel.swift */,
+				264111931FD146570045965A /* vo */,
+			);
+			path = facade;
+			sourceTree = "<group>";
+		};
+		264111931FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111941FD146570045965A /* ActivityFacadeManifest.swift */,
+				264111951FD146570045965A /* CloudStorageFacadeManifest.swift */,
+				264111961FD146570045965A /* UserFacadeManifest.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111971FD146570045965A /* model */ = {
+			isa = PBXGroup;
+			children = (
+				264111981FD146570045965A /* activity */,
+				264111A71FD146570045965A /* base */,
+				264111B01FD146570045965A /* brand */,
+				264111B41FD146570045965A /* common */,
+				264111BA1FD146570045965A /* media */,
+				264111C01FD146570045965A /* network */,
+				264111C81FD146570045965A /* program */,
+				264111D11FD146570045965A /* result */,
+				264111D41FD146570045965A /* schedule */,
+				264111D81FD146570045965A /* system */,
+				264111DC1FD146570045965A /* user */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		264111981FD146570045965A /* activity */ = {
+			isa = PBXGroup;
+			children = (
+				264111991FD146570045965A /* vo */,
+			);
+			path = activity;
+			sourceTree = "<group>";
+		};
+		264111991FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				2641119A1FD146570045965A /* ActivityConfigurationData.swift */,
+				2641119B1FD146570045965A /* VzActivity.swift */,
+				2641119C1FD146570045965A /* VzActivityAttributeType.swift */,
+				2641119D1FD146570045965A /* VzActivityEquipmentType.swift */,
+				2641119E1FD146570045965A /* VzActivityGoalType.swift */,
+				2641119F1FD146570045965A /* VzActivityItem.swift */,
+				264111A01FD146570045965A /* VzActivityItemList.swift */,
+				264111A11FD146570045965A /* VzActivityItemListAssignment.swift */,
+				264111A21FD146570045965A /* VzActivityItemThemeType.swift */,
+				264111A31FD146570045965A /* VzActivityLevelType.swift */,
+				264111A41FD146570045965A /* VzActivityScheduleItem.swift */,
+				264111A51FD146570045965A /* VzActivityThemeType.swift */,
+				264111A61FD146570045965A /* VzActivityType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111A71FD146570045965A /* base */ = {
+			isa = PBXGroup;
+			children = (
+				264111A81FD146570045965A /* vo */,
+			);
+			path = base;
+			sourceTree = "<group>";
+		};
+		264111A81FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111A91FD146570045965A /* BaseContent.swift */,
+				264111AA1FD146570045965A /* BaseContentType.swift */,
+				264111AB1FD146570045965A /* BaseMedia.swift */,
+				264111AC1FD146570045965A /* BaseMediaContent.swift */,
+				264111AD1FD146570045965A /* BaseResult.swift */,
+				264111AE1FD146570045965A /* BaseScheduleItem.swift */,
+				264111AF1FD146570045965A /* EntityBase.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111B01FD146570045965A /* brand */ = {
+			isa = PBXGroup;
+			children = (
+				264111B11FD146570045965A /* vo */,
+			);
+			path = brand;
+			sourceTree = "<group>";
+		};
+		264111B11FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111B21FD146570045965A /* VzBrand.swift */,
+				264111B31FD146570045965A /* VzBrandMembership.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111B41FD146570045965A /* common */ = {
+			isa = PBXGroup;
+			children = (
+				264111B51FD146570045965A /* enum */,
+				264111B81FD146570045965A /* vo */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		264111B51FD146570045965A /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				264111B61FD146570045965A /* enum */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		264111B61FD146570045965A /* enum */ = {
+			isa = PBXGroup;
+			children = (
+				264111B71FD146570045965A /* UnitMetricEnum.swift */,
+			);
+			path = enum;
+			sourceTree = "<group>";
+		};
+		264111B81FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111B91FD146570045965A /* VzServiceError.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111BA1FD146570045965A /* media */ = {
+			isa = PBXGroup;
+			children = (
+				264111BB1FD146570045965A /* vo */,
+			);
+			path = media;
+			sourceTree = "<group>";
+		};
+		264111BB1FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111BC1FD146570045965A /* VzMediaAsset.swift */,
+				264111BD1FD146570045965A /* VzMediaAssetType.swift */,
+				264111BE1FD146570045965A /* VzMediaCategoryType.swift */,
+				264111BF1FD146570045965A /* VzMediaContentType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111C01FD146570045965A /* network */ = {
+			isa = PBXGroup;
+			children = (
+				264111C11FD146570045965A /* vo */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		264111C11FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111C21FD146570045965A /* VzNetworkAccount.swift */,
+				264111C31FD146570045965A /* VzNetworkMessage.swift */,
+				264111C41FD146570045965A /* VzNetworkMessageType.swift */,
+				264111C51FD146570045965A /* VzNetworkRelationship.swift */,
+				264111C61FD146570045965A /* VzNetworkRelationshipType.swift */,
+				264111C71FD146570045965A /* VzNetworkType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111C81FD146570045965A /* program */ = {
+			isa = PBXGroup;
+			children = (
+				264111C91FD146570045965A /* vo */,
+			);
+			path = program;
+			sourceTree = "<group>";
+		};
+		264111C91FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111CA1FD146570045965A /* VzNmScheduledUserProgramActivity.swift */,
+				264111CB1FD146570045965A /* VzNmUserProgramActivity.swift */,
+				264111CC1FD146570045965A /* VzProgram.swift */,
+				264111CD1FD146570045965A /* VzProgramAccessType.swift */,
+				264111CE1FD146570045965A /* VzProgramActivityAssignment.swift */,
+				264111CF1FD146570045965A /* VzProgramCategoryType.swift */,
+				264111D01FD146570045965A /* VzProgramStatusType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111D11FD146570045965A /* result */ = {
+			isa = PBXGroup;
+			children = (
+				264111D21FD146570045965A /* vo */,
+			);
+			path = result;
+			sourceTree = "<group>";
+		};
+		264111D21FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111D31FD146570045965A /* VzServiceResult.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111D41FD146570045965A /* schedule */ = {
+			isa = PBXGroup;
+			children = (
+				264111D51FD146570045965A /* vo */,
+			);
+			path = schedule;
+			sourceTree = "<group>";
+		};
+		264111D51FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111D61FD146570045965A /* VzScheduleDayType.swift */,
+				264111D71FD146570045965A /* VzScheduleTimeType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111D81FD146570045965A /* system */ = {
+			isa = PBXGroup;
+			children = (
+				264111D91FD146570045965A /* vo */,
+			);
+			path = system;
+			sourceTree = "<group>";
+		};
+		264111D91FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111DA1FD146570045965A /* VzMetricUnitAttributeType.swift */,
+				264111DB1FD146570045965A /* VzMetricUnitType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264111DC1FD146570045965A /* user */ = {
+			isa = PBXGroup;
+			children = (
+				264111DD1FD146570045965A /* vo */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		264111DD1FD146570045965A /* vo */ = {
+			isa = PBXGroup;
+			children = (
+				264111DE1FD146570045965A /* UserContext.swift */,
+				264111DF1FD146570045965A /* VzAccount.swift */,
+				264111E01FD146570045965A /* VzProfile.swift */,
+				264111E11FD146570045965A /* VzSession.swift */,
+				264111E21FD146570045965A /* VzUser.swift */,
+				264111E31FD146570045965A /* VzUserProgram.swift */,
+				264111E41FD146570045965A /* VzUserProgramStatusType.swift */,
+				264111E51FD146570045965A /* VzUserType.swift */,
+			);
+			path = vo;
+			sourceTree = "<group>";
+		};
+		264112241FD146680045965A /* map */ = {
+			isa = PBXGroup;
+			children = (
+				264112251FD146680045965A /* DataTypeInitializer.swift */,
+			);
+			path = map;
+			sourceTree = "<group>";
+		};
+		264112261FD146690045965A /* definitions */ = {
+			isa = PBXGroup;
+			children = (
+				264112271FD146690045965A /* ActivityFacadeManifestServiceDefinition.swift */,
+				264112281FD146690045965A /* ActivityFacadeServiceDefinition.swift */,
+				264112291FD146690045965A /* CloudStorageFacadeManifestServiceDefinition.swift */,
+				2641122A1FD146690045965A /* CloudStorageFacadeServiceDefinition.swift */,
+				2641122B1FD146690045965A /* UserFacadeManifestServiceDefinition.swift */,
+				2641122C1FD146690045965A /* UserFacadeServiceDefinition.swift */,
+			);
+			path = definitions;
+			sourceTree = "<group>";
+		};
 		266EAE5D1F5B493C00667BB8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				261C8D851F78AB7D00126056 /* SwiftAMFRemoter.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		2690E72F1FAEFF36000657FE /* com */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7301FAEFF36000657FE /* vizifit */,
-			);
-			path = com;
-			sourceTree = "<group>";
-		};
-		2690E7301FAEFF36000657FE /* vizifit */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7311FAEFF36000657FE /* api */,
-			);
-			path = vizifit;
-			sourceTree = "<group>";
-		};
-		2690E7311FAEFF36000657FE /* api */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7321FAEFF36000657FE /* common */,
-				2690E7361FAEFF36000657FE /* facade */,
-				2690E73A1FAEFF36000657FE /* model */,
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
-		2690E7321FAEFF36000657FE /* common */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7331FAEFF36000657FE /* vo */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		2690E7331FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7341FAEFF36000657FE /* ConfigurationData.swift */,
-				2690E7351FAEFF36000657FE /* VzException.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7361FAEFF36000657FE /* facade */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7371FAEFF36000657FE /* ActivityFacadeModel.swift */,
-				2690E7381FAEFF36000657FE /* CloudStorageFacadeModel.swift */,
-				2690E7391FAEFF36000657FE /* UserFacadeModel.swift */,
-			);
-			path = facade;
-			sourceTree = "<group>";
-		};
-		2690E73A1FAEFF36000657FE /* model */ = {
-			isa = PBXGroup;
-			children = (
-				2690E73B1FAEFF36000657FE /* activity */,
-				2690E74A1FAEFF36000657FE /* base */,
-				2690E7521FAEFF36000657FE /* brand */,
-				2690E7561FAEFF36000657FE /* common */,
-				2690E75C1FAEFF36000657FE /* media */,
-				2690E7621FAEFF36000657FE /* network */,
-				2690E76A1FAEFF36000657FE /* program */,
-				2690E7711FAEFF36000657FE /* schedule */,
-				2690E7751FAEFF36000657FE /* user */,
-			);
-			path = model;
-			sourceTree = "<group>";
-		};
-		2690E73B1FAEFF36000657FE /* activity */ = {
-			isa = PBXGroup;
-			children = (
-				2690E73C1FAEFF36000657FE /* vo */,
-			);
-			path = activity;
-			sourceTree = "<group>";
-		};
-		2690E73C1FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E73D1FAEFF36000657FE /* ActivityConfigurationData.swift */,
-				2690E73E1FAEFF36000657FE /* VzActivity.swift */,
-				2690E73F1FAEFF36000657FE /* VzActivityAttributeType.swift */,
-				2690E7401FAEFF36000657FE /* VzActivityEquipmentType.swift */,
-				2690E7411FAEFF36000657FE /* VzActivityGoalType.swift */,
-				2690E7421FAEFF36000657FE /* VzActivityItem.swift */,
-				2690E7431FAEFF36000657FE /* VzActivityItemList.swift */,
-				2690E7441FAEFF36000657FE /* VzActivityItemListAssignment.swift */,
-				2690E7451FAEFF36000657FE /* VzActivityItemThemeType.swift */,
-				2690E7461FAEFF36000657FE /* VzActivityLevelType.swift */,
-				2690E7471FAEFF36000657FE /* VzActivityScheduleItem.swift */,
-				2690E7481FAEFF36000657FE /* VzActivityThemeType.swift */,
-				2690E7491FAEFF36000657FE /* VzActivityType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E74A1FAEFF36000657FE /* base */ = {
-			isa = PBXGroup;
-			children = (
-				2690E74B1FAEFF36000657FE /* vo */,
-			);
-			path = base;
-			sourceTree = "<group>";
-		};
-		2690E74B1FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E74C1FAEFF36000657FE /* BaseContent.swift */,
-				2690E74D1FAEFF36000657FE /* BaseContentType.swift */,
-				2690E74E1FAEFF36000657FE /* BaseMedia.swift */,
-				2690E74F1FAEFF36000657FE /* BaseMediaContent.swift */,
-				2690E7501FAEFF36000657FE /* BaseScheduleItem.swift */,
-				2690E7511FAEFF36000657FE /* EntityBase.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7521FAEFF36000657FE /* brand */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7531FAEFF36000657FE /* vo */,
-			);
-			path = brand;
-			sourceTree = "<group>";
-		};
-		2690E7531FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7541FAEFF36000657FE /* VzBrand.swift */,
-				2690E7551FAEFF36000657FE /* VzBrandMembership.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7561FAEFF36000657FE /* common */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7571FAEFF36000657FE /* enum */,
-				2690E75A1FAEFF36000657FE /* vo */,
-			);
-			path = common;
-			sourceTree = "<group>";
-		};
-		2690E7571FAEFF36000657FE /* enum */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7581FAEFF36000657FE /* enum */,
-			);
-			path = enum;
-			sourceTree = "<group>";
-		};
-		2690E7581FAEFF36000657FE /* enum */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7591FAEFF36000657FE /* UnitMetricEnum.swift */,
-			);
-			path = enum;
-			sourceTree = "<group>";
-		};
-		2690E75A1FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E75B1FAEFF36000657FE /* VzServiceError.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E75C1FAEFF36000657FE /* media */ = {
-			isa = PBXGroup;
-			children = (
-				2690E75D1FAEFF36000657FE /* vo */,
-			);
-			path = media;
-			sourceTree = "<group>";
-		};
-		2690E75D1FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E75E1FAEFF36000657FE /* VzMediaAsset.swift */,
-				2690E75F1FAEFF36000657FE /* VzMediaAssetType.swift */,
-				2690E7601FAEFF36000657FE /* VzMediaCategoryType.swift */,
-				2690E7611FAEFF36000657FE /* VzMediaContentType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7621FAEFF36000657FE /* network */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7631FAEFF36000657FE /* vo */,
-			);
-			path = network;
-			sourceTree = "<group>";
-		};
-		2690E7631FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7641FAEFF36000657FE /* VzNetworkAccount.swift */,
-				2690E7651FAEFF36000657FE /* VzNetworkMessage.swift */,
-				2690E7661FAEFF36000657FE /* VzNetworkMessageType.swift */,
-				2690E7671FAEFF36000657FE /* VzNetworkRelationship.swift */,
-				2690E7681FAEFF36000657FE /* VzNetworkRelationshipType.swift */,
-				2690E7691FAEFF36000657FE /* VzNetworkType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E76A1FAEFF36000657FE /* program */ = {
-			isa = PBXGroup;
-			children = (
-				2690E76B1FAEFF36000657FE /* vo */,
-			);
-			path = program;
-			sourceTree = "<group>";
-		};
-		2690E76B1FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E76C1FAEFF36000657FE /* VzNmScheduledUserProgramActivity.swift */,
-				2690E76D1FAEFF36000657FE /* VzNmUserProgramActivity.swift */,
-				2690E76E1FAEFF36000657FE /* VzProgram.swift */,
-				2690E76F1FAEFF36000657FE /* VzProgramActivityAssignment.swift */,
-				2690E7701FAEFF36000657FE /* VzProgramStatusType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7711FAEFF36000657FE /* schedule */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7721FAEFF36000657FE /* vo */,
-			);
-			path = schedule;
-			sourceTree = "<group>";
-		};
-		2690E7721FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7731FAEFF36000657FE /* VzScheduleDayType.swift */,
-				2690E7741FAEFF36000657FE /* VzScheduleTimeType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7751FAEFF36000657FE /* user */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7761FAEFF36000657FE /* vo */,
-			);
-			path = user;
-			sourceTree = "<group>";
-		};
-		2690E7761FAEFF36000657FE /* vo */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7771FAEFF36000657FE /* UserContext.swift */,
-				2690E7781FAEFF36000657FE /* VzAccount.swift */,
-				2690E7791FAEFF36000657FE /* VzProfile.swift */,
-				2690E77A1FAEFF36000657FE /* VzSession.swift */,
-				2690E77B1FAEFF36000657FE /* VzUser.swift */,
-				2690E77C1FAEFF36000657FE /* VzUserProgram.swift */,
-				2690E77D1FAEFF36000657FE /* VzUserProgramStatusType.swift */,
-				2690E77E1FAEFF36000657FE /* VzUserType.swift */,
-			);
-			path = vo;
-			sourceTree = "<group>";
-		};
-		2690E7B41FAEFF52000657FE /* map */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7B51FAEFF52000657FE /* DataTypeInitializer.swift */,
-			);
-			path = map;
-			sourceTree = "<group>";
-		};
-		2690E7B61FAEFF53000657FE /* definitions */ = {
-			isa = PBXGroup;
-			children = (
-				2690E7B71FAEFF53000657FE /* ActivityFacadeServiceDefinition.swift */,
-				2690E7B81FAEFF53000657FE /* CloudStorageFacadeServiceDefinition.swift */,
-				2690E7B91FAEFF53000657FE /* UserFacadeServiceDefinition.swift */,
-			);
-			path = definitions;
 			sourceTree = "<group>";
 		};
 		26A4EE5B1F04E9EC008038A9 /* Extensions */ = {
@@ -625,68 +703,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				264112041FD146570045965A /* UnitMetricEnum.swift in Sources */,
+				264112101FD146570045965A /* VzNmScheduledUserProgramActivity.swift in Sources */,
+				264112231FD146570045965A /* VzUserType.swift in Sources */,
 				260ACCF31EE997010066231C /* ServiceConstants.swift in Sources */,
-				2690E7931FAEFF37000657FE /* BaseMedia.swift in Sources */,
-				2690E7A91FAEFF37000657FE /* VzProgramStatusType.swift in Sources */,
-				2690E7AE1FAEFF37000657FE /* VzProfile.swift in Sources */,
-				2690E7BC1FAEFF53000657FE /* CloudStorageFacadeServiceDefinition.swift in Sources */,
-				2690E7801FAEFF37000657FE /* VzException.swift in Sources */,
-				2690E7A01FAEFF37000657FE /* VzNetworkMessage.swift in Sources */,
+				264111FF1FD146570045965A /* BaseResult.swift in Sources */,
+				264111FD1FD146570045965A /* BaseMedia.swift in Sources */,
+				264112081FD146570045965A /* VzMediaCategoryType.swift in Sources */,
+				264112141FD146570045965A /* VzProgramActivityAssignment.swift in Sources */,
+				264112221FD146570045965A /* VzUserProgramStatusType.swift in Sources */,
+				264112021FD146570045965A /* VzBrand.swift in Sources */,
+				264112161FD146570045965A /* VzProgramStatusType.swift in Sources */,
+				264111EF1FD146570045965A /* VzActivity.swift in Sources */,
+				264111F91FD146570045965A /* VzActivityThemeType.swift in Sources */,
+				264111E71FD146570045965A /* VzException.swift in Sources */,
+				264111FE1FD146570045965A /* BaseMediaContent.swift in Sources */,
+				2641120C1FD146570045965A /* VzNetworkMessageType.swift in Sources */,
+				264112121FD146570045965A /* VzProgram.swift in Sources */,
+				264112011FD146570045965A /* EntityBase.swift in Sources */,
 				260ACD291EE997010066231C /* PunchJunkieModel.swift in Sources */,
-				2690E7951FAEFF37000657FE /* BaseScheduleItem.swift in Sources */,
-				2690E7AB1FAEFF37000657FE /* VzScheduleTimeType.swift in Sources */,
-				2690E77F1FAEFF37000657FE /* ConfigurationData.swift in Sources */,
-				2690E7861FAEFF37000657FE /* VzActivityAttributeType.swift in Sources */,
-				2690E7A31FAEFF37000657FE /* VzNetworkRelationshipType.swift in Sources */,
-				2690E7A41FAEFF37000657FE /* VzNetworkType.swift in Sources */,
-				2690E7A81FAEFF37000657FE /* VzProgramActivityAssignment.swift in Sources */,
-				2690E7AF1FAEFF37000657FE /* VzSession.swift in Sources */,
-				2690E7BB1FAEFF53000657FE /* ActivityFacadeServiceDefinition.swift in Sources */,
-				2690E7851FAEFF37000657FE /* VzActivity.swift in Sources */,
-				2690E7A61FAEFF37000657FE /* VzNmUserProgramActivity.swift in Sources */,
-				2690E7991FAEFF37000657FE /* UnitMetricEnum.swift in Sources */,
-				2690E7831FAEFF37000657FE /* UserFacadeModel.swift in Sources */,
-				2690E7881FAEFF37000657FE /* VzActivityGoalType.swift in Sources */,
+				264112001FD146570045965A /* BaseScheduleItem.swift in Sources */,
+				264112131FD146570045965A /* VzProgramAccessType.swift in Sources */,
+				264112191FD146570045965A /* VzScheduleTimeType.swift in Sources */,
+				264112311FD146690045965A /* CloudStorageFacadeServiceDefinition.swift in Sources */,
+				264111EE1FD146570045965A /* ActivityConfigurationData.swift in Sources */,
+				264111F31FD146570045965A /* VzActivityItem.swift in Sources */,
+				2641122E1FD146690045965A /* ActivityFacadeManifestServiceDefinition.swift in Sources */,
+				2641122F1FD146690045965A /* ActivityFacadeServiceDefinition.swift in Sources */,
+				264112201FD146570045965A /* VzUser.swift in Sources */,
+				264112031FD146570045965A /* VzBrandMembership.swift in Sources */,
+				264112321FD146690045965A /* UserFacadeManifestServiceDefinition.swift in Sources */,
+				264111FB1FD146570045965A /* BaseContent.swift in Sources */,
+				264111E61FD146570045965A /* ConfigurationData.swift in Sources */,
+				2641122D1FD146690045965A /* DataTypeInitializer.swift in Sources */,
+				264111F61FD146570045965A /* VzActivityItemThemeType.swift in Sources */,
+				264111F81FD146570045965A /* VzActivityScheduleItem.swift in Sources */,
+				264111F11FD146570045965A /* VzActivityEquipmentType.swift in Sources */,
+				264112211FD146570045965A /* VzUserProgram.swift in Sources */,
+				2641121A1FD146570045965A /* VzMetricUnitAttributeType.swift in Sources */,
+				264111F21FD146570045965A /* VzActivityGoalType.swift in Sources */,
+				264111EA1FD146570045965A /* UserFacadeModel.swift in Sources */,
 				261E1AC31EE8C4D600A0D2B5 /* ViewController.swift in Sources */,
-				2690E7B01FAEFF37000657FE /* VzUser.swift in Sources */,
-				2690E7A21FAEFF37000657FE /* VzNetworkRelationship.swift in Sources */,
-				2690E7BD1FAEFF53000657FE /* UserFacadeServiceDefinition.swift in Sources */,
-				2690E7961FAEFF37000657FE /* EntityBase.swift in Sources */,
-				2690E7AA1FAEFF37000657FE /* VzScheduleDayType.swift in Sources */,
-				2690E7A11FAEFF37000657FE /* VzNetworkMessageType.swift in Sources */,
-				2690E7981FAEFF37000657FE /* VzBrandMembership.swift in Sources */,
-				2690E79F1FAEFF37000657FE /* VzNetworkAccount.swift in Sources */,
+				2641121F1FD146570045965A /* VzSession.swift in Sources */,
+				2641121B1FD146570045965A /* VzMetricUnitType.swift in Sources */,
+				264111EB1FD146570045965A /* ActivityFacadeManifest.swift in Sources */,
+				264112301FD146690045965A /* CloudStorageFacadeManifestServiceDefinition.swift in Sources */,
+				264111F71FD146570045965A /* VzActivityLevelType.swift in Sources */,
+				264112151FD146570045965A /* VzProgramCategoryType.swift in Sources */,
 				261E1AC11EE8C4D600A0D2B5 /* AppDelegate.swift in Sources */,
-				2690E7A51FAEFF37000657FE /* VzNmScheduledUserProgramActivity.swift in Sources */,
-				2690E7971FAEFF37000657FE /* VzBrand.swift in Sources */,
-				2690E7911FAEFF37000657FE /* BaseContent.swift in Sources */,
-				2690E7871FAEFF37000657FE /* VzActivityEquipmentType.swift in Sources */,
-				2690E79C1FAEFF37000657FE /* VzMediaAssetType.swift in Sources */,
-				2690E79A1FAEFF37000657FE /* VzServiceError.swift in Sources */,
-				2690E7891FAEFF37000657FE /* VzActivityItem.swift in Sources */,
-				2690E78A1FAEFF37000657FE /* VzActivityItemList.swift in Sources */,
-				2690E78C1FAEFF37000657FE /* VzActivityItemThemeType.swift in Sources */,
-				2690E7921FAEFF37000657FE /* BaseContentType.swift in Sources */,
-				2690E7811FAEFF37000657FE /* ActivityFacadeModel.swift in Sources */,
-				2690E7BA1FAEFF53000657FE /* DataTypeInitializer.swift in Sources */,
-				2690E78D1FAEFF37000657FE /* VzActivityLevelType.swift in Sources */,
-				2690E7A71FAEFF37000657FE /* VzProgram.swift in Sources */,
-				2690E78F1FAEFF37000657FE /* VzActivityThemeType.swift in Sources */,
-				2690E7941FAEFF37000657FE /* BaseMediaContent.swift in Sources */,
-				2690E79D1FAEFF37000657FE /* VzMediaCategoryType.swift in Sources */,
-				2690E78B1FAEFF37000657FE /* VzActivityItemListAssignment.swift in Sources */,
-				2690E7B31FAEFF37000657FE /* VzUserType.swift in Sources */,
-				2690E7B21FAEFF37000657FE /* VzUserProgramStatusType.swift in Sources */,
-				2690E7AD1FAEFF37000657FE /* VzAccount.swift in Sources */,
-				2690E7821FAEFF37000657FE /* CloudStorageFacadeModel.swift in Sources */,
-				2690E79B1FAEFF37000657FE /* VzMediaAsset.swift in Sources */,
+				264111EC1FD146570045965A /* CloudStorageFacadeManifest.swift in Sources */,
+				2641121D1FD146570045965A /* VzAccount.swift in Sources */,
+				2641121E1FD146570045965A /* VzProfile.swift in Sources */,
+				264112071FD146570045965A /* VzMediaAssetType.swift in Sources */,
+				264112061FD146570045965A /* VzMediaAsset.swift in Sources */,
+				2641121C1FD146570045965A /* UserContext.swift in Sources */,
+				2641120A1FD146570045965A /* VzNetworkAccount.swift in Sources */,
+				264111F51FD146570045965A /* VzActivityItemListAssignment.swift in Sources */,
+				2641120F1FD146570045965A /* VzNetworkType.swift in Sources */,
+				264112171FD146570045965A /* VzServiceResult.swift in Sources */,
+				264111F01FD146570045965A /* VzActivityAttributeType.swift in Sources */,
+				264112091FD146570045965A /* VzMediaContentType.swift in Sources */,
+				264111F41FD146570045965A /* VzActivityItemList.swift in Sources */,
+				264112331FD146690045965A /* UserFacadeServiceDefinition.swift in Sources */,
+				2641120D1FD146570045965A /* VzNetworkRelationship.swift in Sources */,
+				264111E81FD146570045965A /* ActivityFacadeModel.swift in Sources */,
+				2641120B1FD146570045965A /* VzNetworkMessage.swift in Sources */,
+				264111E91FD146570045965A /* CloudStorageFacadeModel.swift in Sources */,
+				264112051FD146570045965A /* VzServiceError.swift in Sources */,
+				264111FC1FD146570045965A /* BaseContentType.swift in Sources */,
+				2641120E1FD146570045965A /* VzNetworkRelationshipType.swift in Sources */,
+				264111ED1FD146570045965A /* UserFacadeManifest.swift in Sources */,
+				264111FA1FD146570045965A /* VzActivityType.swift in Sources */,
+				264112111FD146570045965A /* VzNmUserProgramActivity.swift in Sources */,
 				26A4EE5D1F04EA1B008038A9 /* UIViewController+Extensions.swift in Sources */,
-				2690E7841FAEFF37000657FE /* ActivityConfigurationData.swift in Sources */,
-				2690E7901FAEFF37000657FE /* VzActivityType.swift in Sources */,
-				2690E78E1FAEFF37000657FE /* VzActivityScheduleItem.swift in Sources */,
-				2690E7B11FAEFF37000657FE /* VzUserProgram.swift in Sources */,
-				2690E7AC1FAEFF37000657FE /* UserContext.swift in Sources */,
-				2690E79E1FAEFF37000657FE /* VzMediaContentType.swift in Sources */,
+				264112181FD146570045965A /* VzScheduleDayType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  CloudStorageFacadeModel.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:6.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -22,7 +22,9 @@ import SwiftAMFRemoter
 
     
 
-	public var GetAllMediaAssetsByUserResult:[Any]?
+	public var _generateDependenciesResult:CloudStorageFacadeManifest?
 
-	public var SaveMediaAssetByUserIdResult:VzMediaAsset?
+	public var GetAllMediaAssetsByUserResult:VzServiceResult?
+
+	public var SaveMediaAssetByUserIdResult:VzServiceResult?
 }

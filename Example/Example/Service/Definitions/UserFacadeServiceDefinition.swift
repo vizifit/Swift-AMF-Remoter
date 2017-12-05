@@ -18,14 +18,25 @@ class UserFacadeServiceDefinition : BaseRemoteServiceDefinition
 	
 	/**
 
+_generateDependencies Service method
+
+Arguments:
+ none: There are no parameters for this service.
+
+Service Returns: Please refer to services for return type
+*/
+open static let  _GENERATE_DEPENDENCIES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 CreateNetwork Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) networkTypeId: int
- (3) networkAccountId: String
- (4) networkAuthToken: String
+(0) userId: int
+ (1) networkTypeId: int
+ (2) networkAccountId: String
+ (3) networkAuthToken: String
+ (4) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -68,6 +79,28 @@ open static let  CREATE_USER_BY_NETWORK:UserFacadeServiceDefinition = UserFacade
 
 /**
 
+GenerateSessionContextKey Service method
+
+Arguments:
+(0) userId: int
+
+Service Returns: Please refer to services for return type
+*/
+open static let  GENERATE_SESSION_CONTEXT_KEY:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_CONTEXT_KEY","GenerateSessionContextKey","com.vizifit.API.Facade.UserFacade")
+
+/**
+
+GenerateSessionNonce Service method
+
+Arguments:
+(0) userId: int
+
+Service Returns: Please refer to services for return type
+*/
+open static let  GENERATE_SESSION_NONCE:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_NONCE","GenerateSessionNonce","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 GetAppConfigurationData Service method
 
 Arguments:
@@ -79,14 +112,36 @@ open static let  GET_APP_CONFIGURATION_DATA:UserFacadeServiceDefinition = UserFa
 
 /**
 
+GetAppConfigurationDataWithUserId Service method
+
+Arguments:
+(0) userId: int
+
+Service Returns: Please refer to services for return type
+*/
+open static let  GET_APP_CONFIGURATION_DATA_WITH_USER_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_APP_CONFIGURATION_DATA_WITH_USER_ID","GetAppConfigurationDataWithUserId","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 GetBrands Service method
 
 Arguments:
-(0) token: String
+(0) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
 open static let  GET_BRANDS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_BRANDS","GetBrands","com.vizifit.API.Facade.UserFacade")
+
+/**
+
+GetCurrentSession Service method
+
+Arguments:
+(0) userId: int
+
+Service Returns: Please refer to services for return type
+*/
+open static let  GET_CURRENT_SESSION:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_CURRENT_SESSION","GetCurrentSession","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -104,7 +159,7 @@ open static let  GET_EXCEPTION:UserFacadeServiceDefinition = UserFacadeServiceDe
 GetInstructors Service method
 
 Arguments:
-(0) token: String
+(0) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -115,7 +170,7 @@ open static let  GET_INSTRUCTORS:UserFacadeServiceDefinition = UserFacadeService
 GetNetworkTypes Service method
 
 Arguments:
-(0) token: String
+(0) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -126,8 +181,8 @@ open static let  GET_NETWORK_TYPES:UserFacadeServiceDefinition = UserFacadeServi
 GetUserByEmail Service method
 
 Arguments:
-(0) token: String
- (1) email: String
+(0) email: String
+ (1) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -135,11 +190,24 @@ open static let  GET_USER_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServi
 
 /**
 
+GetUserByEmailWithRequestorId Service method
+
+Arguments:
+(0) requestorId: int
+ (1) email: String
+ (2) sessionContextKey: String
+
+Service Returns: Please refer to services for return type
+*/
+open static let  GET_USER_BY_EMAIL_WITH_REQUESTOR_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_EMAIL_WITH_REQUESTOR_ID","GetUserByEmailWithRequestorId","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 GetUserById Service method
 
 Arguments:
-(0) token: String
- (1) id: int
+(0) userId: int
+ (1) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -150,7 +218,7 @@ open static let  GET_USER_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceD
 GetUserTypes Service method
 
 Arguments:
-(0) token: String
+(0) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -199,10 +267,10 @@ open static let  NETWORK_USER_EXISTS:UserFacadeServiceDefinition = UserFacadeSer
 RemoveNetwork Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) networkId: int
- (3) networkAuthToken: String
+(0) userId: int
+ (1) networkId: int
+ (2) networkAuthToken: String
+ (3) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -214,6 +282,7 @@ ResetPassword Service method
 
 Arguments:
 (0) email: String
+ (1) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -221,13 +290,26 @@ open static let  RESET_PASSWORD:UserFacadeServiceDefinition = UserFacadeServiceD
 
 /**
 
+ResetPasswordWithConfirm Service method
+
+Arguments:
+(0) email: String
+ (1) oldPassword: String
+ (2) sessionContextKey: String
+
+Service Returns: Please refer to services for return type
+*/
+open static let  RESET_PASSWORD_WITH_CONFIRM:UserFacadeServiceDefinition = UserFacadeServiceDefinition("RESET_PASSWORD_WITH_CONFIRM","ResetPasswordWithConfirm","com.vizifit.API.Facade.UserFacade")
+
+/**
+
 UpdateNetwork Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) networkId: int
- (3) networkAuthToken: String
+(0) userId: int
+ (1) networkId: int
+ (2) networkAuthToken: String
+ (3) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -238,9 +320,9 @@ open static let  UPDATE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceD
 UpdatePassword Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) password: String
+(0) userId: int
+ (1) password: String
+ (2) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -251,14 +333,14 @@ open static let  UPDATE_PASSWORD:UserFacadeServiceDefinition = UserFacadeService
 UpdateProfile Service method
 
 Arguments:
-(0) token: String
- (1) profileId: int
- (2) dob: Date
- (3) gender: String
- (4) height: int
- (5) weight: int
- (6) unitOfMeasure: String
- (7) tagline: String
+(0) profileId: int
+ (1) dob: Date
+ (2) gender: String
+ (3) height: int
+ (4) weight: int
+ (5) metricUnitTypeId: int
+ (6) tagline: String
+ (7) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -269,10 +351,10 @@ open static let  UPDATE_PROFILE:UserFacadeServiceDefinition = UserFacadeServiceD
 UpdateProfileImageById Service method
 
 Arguments:
-(0) token: String
- (1) profileId: int
- (2) thumbnailImageUrl: String
- (3) imageUrl: String
+(0) profileId: int
+ (1) thumbnailImageUrl: String
+ (2) imageUrl: String
+ (3) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -283,12 +365,12 @@ open static let  UPDATE_PROFILE_IMAGE_BY_ID:UserFacadeServiceDefinition = UserFa
 UpdateUser Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) firstname: String
- (3) lastname: String
- (4) username: String
- (5) email: String
+(0) userId: int
+ (1) firstname: String
+ (2) lastname: String
+ (3) username: String
+ (4) email: String
+ (5) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */

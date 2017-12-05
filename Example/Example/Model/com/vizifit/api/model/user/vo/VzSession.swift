@@ -2,7 +2,7 @@
 //  VzSession.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:7.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -32,7 +32,11 @@ import SwiftAMFRemoter
 
 	public var SessionActive:Bool = false
 
+	public var SessionNonce:Any?
+
 	public var Device:String = String()
 
 	public var IPAddress:String = String()
+
+	public var SessionContextKey:String = String()
 }

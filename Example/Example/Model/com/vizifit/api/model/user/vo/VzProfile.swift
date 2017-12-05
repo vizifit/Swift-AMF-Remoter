@@ -2,7 +2,7 @@
 //  VzProfile.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:7.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -30,9 +30,11 @@ import SwiftAMFRemoter
 
 	public var Weight:Int = -1
 
-	public var UnitOfMeasure:Int = -1
-
 	public var Tagline:String = String()
+
+	public var MetricUnitType:VzMetricUnitType?
+
+	public var MetricUnitTypeId:Int = -1
 
 	public var User:VzUser?
 

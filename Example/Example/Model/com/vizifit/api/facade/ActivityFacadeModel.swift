@@ -2,7 +2,7 @@
 //  ActivityFacadeModel.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:6.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -22,29 +22,37 @@ import SwiftAMFRemoter
 
     
 
-	public var AddUserProgramActivityScheduleResult:[Any]?
+	public var _generateDependenciesResult:ActivityFacadeManifest?
 
-	public var GetActivityConfigurationDataResult:ActivityConfigurationData?
+	public var AddProgramResult:VzServiceResult?
 
-	public var GetActivityItemsByActivityIdResult:[Any]?
+	public var AddProgramWithImageResult:VzServiceResult?
 
-	public var GetActivityItemsByActivityItemListIdResult:[Any]?
+	public var AddUserProgramActivityScheduleResult:VzServiceResult?
 
-	public var GetAllActivitiesResult:[Any]?
+	public var GetActivityConfigurationDataResult:VzServiceResult?
 
-	public var GetAllActivityItemsResult:[Any]?
+	public var GetActivityItemsByActivityIdResult:VzServiceResult?
 
-	public var GetAllActivitySchedulesResult:[Any]?
+	public var GetActivityItemsByActivityItemListIdResult:VzServiceResult?
 
-	public var GetAllProgramActivitiesResult:[Any]?
+	public var GetAllActivitiesResult:VzServiceResult?
 
-	public var GetAllProgramsResult:[Any]?
+	public var GetAllActivityItemsResult:VzServiceResult?
 
-	public var GetProgramActivitiesByProgramIdResult:[Any]?
+	public var GetAllActivitySchedulesResult:VzServiceResult?
 
-	public var GetUserProgramActivityScheduleResult:[Any]?
+	public var GetAllProgramActivitiesResult:VzServiceResult?
 
-	public var GetUserProgramsByUserIdResult:[Any]?
+	public var GetAllProgramsResult:VzServiceResult?
 
-	public var UpdateUserProgramActivityScheduleResult:[Any]?
+	public var GetProgramActivitiesByProgramIdResult:VzServiceResult?
+
+	public var GetUserProgramActivityScheduleResult:VzServiceResult?
+
+	public var GetUserProgramsByUserIdResult:VzServiceResult?
+
+	public var UpdateUserProgramActivityScheduleResult:VzServiceResult?
+
+	public var UpdateUserProgramActivityScheduleTestResult:VzServiceResult?
 }

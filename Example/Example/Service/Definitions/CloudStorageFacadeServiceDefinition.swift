@@ -18,10 +18,22 @@ class CloudStorageFacadeServiceDefinition : BaseRemoteServiceDefinition
 	
 	/**
 
+_generateDependencies Service method
+
+Arguments:
+ none: There are no parameters for this service.
+
+Service Returns: Please refer to services for return type
+*/
+open static let  _GENERATE_DEPENDENCIES:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.CloudStorageFacade")
+
+/**
+
 GetAllMediaAssetsByUser Service method
 
 Arguments:
 (0) userId: int
+ (1) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */
@@ -32,14 +44,14 @@ open static let  GET_ALL_MEDIA_ASSETS_BY_USER:CloudStorageFacadeServiceDefinitio
 SaveMediaAssetByUserId Service method
 
 Arguments:
-(0) token: String
- (1) userId: int
- (2) typeId: int
- (3) contentTypeId: int
- (4) name: String
- (5) description: String
- (6) filedata: String
- (7) blobContainerName: String
+(0) userId: int
+ (1) typeId: int
+ (2) contentTypeId: int
+ (3) name: String
+ (4) description: String
+ (5) filedata: String
+ (6) blobContainerName: String
+ (7) sessionContextKey: String
 
 Service Returns: Please refer to services for return type
 */

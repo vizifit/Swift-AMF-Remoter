@@ -2,7 +2,7 @@
  
 [![Swift][swift-badge]][swift-url] 
 [![License][mit-badge]][mit-url]  
-**Swift-AMF-Remoter** provides an API for advanced reflection at runtime including dynamic construction of types.
+**Swift-AMF-Remoter** provides an API for making remote calls (single or grouped) to an AMF server.
 
 ## Usage
 

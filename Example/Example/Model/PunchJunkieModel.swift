@@ -13,7 +13,7 @@ import UIKit
 open class PunchJunkieModel : NSObject{
     
     
-    open static let sharedInstance = PunchJunkieModel()
+    public static let sharedInstance = PunchJunkieModel()
 
     
     //This prevents others from using the default '()' initializer for this class.

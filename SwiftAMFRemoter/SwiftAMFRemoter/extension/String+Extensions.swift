@@ -11,7 +11,7 @@ import Foundation
 
 extension String {
     var length : Int {
-        return self.characters.count
+        return self.count
     }
     
     func replaceCharacters(target: String, withString: String, range:Range<String.Index>? = nil) -> String{
@@ -23,6 +23,7 @@ extension String {
     }
     
     public func indexOf(_ char: Character) -> Int? {
+    
         if let idx = characters.index(of: char) {
             return characters.distance(from: startIndex, to: idx)
         }

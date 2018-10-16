@@ -60,7 +60,7 @@ open class BaseServiceConnector: IServiceConnectorView{
     /**
      Gets unique Id of connector
      */
-    open var connectorId:String { get { return self.connectorId} }
+    open var connectorId:String { get { return self._connectorId} }
     
     
 }

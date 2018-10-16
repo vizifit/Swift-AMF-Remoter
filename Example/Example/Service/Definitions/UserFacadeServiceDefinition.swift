@@ -25,7 +25,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  _GENERATE_DEPENDENCIES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.UserFacade")
+public static let  _GENERATE_DEPENDENCIES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -40,7 +40,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  CREATE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_NETWORK","CreateNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  CREATE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_NETWORK","CreateNetwork","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -56,7 +56,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  CREATE_USER_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_USER_BY_EMAIL","CreateUserByEmail","com.vizifit.API.Facade.UserFacade")
+public static let  CREATE_USER_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_USER_BY_EMAIL","CreateUserByEmail","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -75,7 +75,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  CREATE_USER_BY_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_USER_BY_NETWORK","CreateUserByNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  CREATE_USER_BY_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("CREATE_USER_BY_NETWORK","CreateUserByNetwork","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -86,7 +86,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GENERATE_SESSION_CONTEXT_KEY:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_CONTEXT_KEY","GenerateSessionContextKey","com.vizifit.API.Facade.UserFacade")
+public static let  GENERATE_SESSION_CONTEXT_KEY:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_CONTEXT_KEY","GenerateSessionContextKey","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -97,7 +97,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GENERATE_SESSION_NONCE:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_NONCE","GenerateSessionNonce","com.vizifit.API.Facade.UserFacade")
+public static let  GENERATE_SESSION_NONCE:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GENERATE_SESSION_NONCE","GenerateSessionNonce","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -108,7 +108,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_APP_CONFIGURATION_DATA:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_APP_CONFIGURATION_DATA","GetAppConfigurationData","com.vizifit.API.Facade.UserFacade")
+public static let  GET_APP_CONFIGURATION_DATA:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_APP_CONFIGURATION_DATA","GetAppConfigurationData","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -119,7 +119,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_APP_CONFIGURATION_DATA_WITH_USER_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_APP_CONFIGURATION_DATA_WITH_USER_ID","GetAppConfigurationDataWithUserId","com.vizifit.API.Facade.UserFacade")
+public static let  GET_APP_CONFIGURATION_DATA_WITH_USER_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_APP_CONFIGURATION_DATA_WITH_USER_ID","GetAppConfigurationDataWithUserId","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -130,7 +130,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_BRANDS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_BRANDS","GetBrands","com.vizifit.API.Facade.UserFacade")
+public static let  GET_BRANDS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_BRANDS","GetBrands","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -141,7 +141,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_CURRENT_SESSION:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_CURRENT_SESSION","GetCurrentSession","com.vizifit.API.Facade.UserFacade")
+public static let  GET_CURRENT_SESSION:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_CURRENT_SESSION","GetCurrentSession","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -152,7 +152,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_EXCEPTION:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_EXCEPTION","GetException","com.vizifit.API.Facade.UserFacade")
+public static let  GET_EXCEPTION:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_EXCEPTION","GetException","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -163,7 +163,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_INSTRUCTORS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_INSTRUCTORS","GetInstructors","com.vizifit.API.Facade.UserFacade")
+public static let  GET_INSTRUCTORS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_INSTRUCTORS","GetInstructors","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -174,7 +174,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_NETWORK_TYPES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_NETWORK_TYPES","GetNetworkTypes","com.vizifit.API.Facade.UserFacade")
+public static let  GET_NETWORK_TYPES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_NETWORK_TYPES","GetNetworkTypes","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -186,7 +186,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_USER_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_EMAIL","GetUserByEmail","com.vizifit.API.Facade.UserFacade")
+public static let  GET_USER_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_EMAIL","GetUserByEmail","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -199,7 +199,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_USER_BY_EMAIL_WITH_REQUESTOR_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_EMAIL_WITH_REQUESTOR_ID","GetUserByEmailWithRequestorId","com.vizifit.API.Facade.UserFacade")
+public static let  GET_USER_BY_EMAIL_WITH_REQUESTOR_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_EMAIL_WITH_REQUESTOR_ID","GetUserByEmailWithRequestorId","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -211,7 +211,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_USER_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_ID","GetUserById","com.vizifit.API.Facade.UserFacade")
+public static let  GET_USER_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_BY_ID","GetUserById","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -222,7 +222,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_USER_TYPES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_TYPES","GetUserTypes","com.vizifit.API.Facade.UserFacade")
+public static let  GET_USER_TYPES:UserFacadeServiceDefinition = UserFacadeServiceDefinition("GET_USER_TYPES","GetUserTypes","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -234,7 +234,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  LOGIN_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("LOGIN_BY_EMAIL","LoginByEmail","com.vizifit.API.Facade.UserFacade")
+public static let  LOGIN_BY_EMAIL:UserFacadeServiceDefinition = UserFacadeServiceDefinition("LOGIN_BY_EMAIL","LoginByEmail","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -247,7 +247,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  LOGIN_BY_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("LOGIN_BY_NETWORK","LoginByNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  LOGIN_BY_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("LOGIN_BY_NETWORK","LoginByNetwork","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -260,7 +260,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  NETWORK_USER_EXISTS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("NETWORK_USER_EXISTS","NetworkUserExists","com.vizifit.API.Facade.UserFacade")
+public static let  NETWORK_USER_EXISTS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("NETWORK_USER_EXISTS","NetworkUserExists","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -274,7 +274,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  REMOVE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("REMOVE_NETWORK","RemoveNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  REMOVE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("REMOVE_NETWORK","RemoveNetwork","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -286,7 +286,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  RESET_PASSWORD:UserFacadeServiceDefinition = UserFacadeServiceDefinition("RESET_PASSWORD","ResetPassword","com.vizifit.API.Facade.UserFacade")
+public static let  RESET_PASSWORD:UserFacadeServiceDefinition = UserFacadeServiceDefinition("RESET_PASSWORD","ResetPassword","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -299,7 +299,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  RESET_PASSWORD_WITH_CONFIRM:UserFacadeServiceDefinition = UserFacadeServiceDefinition("RESET_PASSWORD_WITH_CONFIRM","ResetPasswordWithConfirm","com.vizifit.API.Facade.UserFacade")
+public static let  RESET_PASSWORD_WITH_CONFIRM:UserFacadeServiceDefinition = UserFacadeServiceDefinition("RESET_PASSWORD_WITH_CONFIRM","ResetPasswordWithConfirm","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -313,7 +313,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  UPDATE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_NETWORK","UpdateNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  UPDATE_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_NETWORK","UpdateNetwork","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -326,7 +326,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  UPDATE_PASSWORD:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PASSWORD","UpdatePassword","com.vizifit.API.Facade.UserFacade")
+public static let  UPDATE_PASSWORD:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PASSWORD","UpdatePassword","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -344,7 +344,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  UPDATE_PROFILE:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PROFILE","UpdateProfile","com.vizifit.API.Facade.UserFacade")
+public static let  UPDATE_PROFILE:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PROFILE","UpdateProfile","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -358,7 +358,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  UPDATE_PROFILE_IMAGE_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PROFILE_IMAGE_BY_ID","UpdateProfileImageById","com.vizifit.API.Facade.UserFacade")
+public static let  UPDATE_PROFILE_IMAGE_BY_ID:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_PROFILE_IMAGE_BY_ID","UpdateProfileImageById","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -374,7 +374,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  UPDATE_USER:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_USER","UpdateUser","com.vizifit.API.Facade.UserFacade")
+public static let  UPDATE_USER:UserFacadeServiceDefinition = UserFacadeServiceDefinition("UPDATE_USER","UpdateUser","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -385,7 +385,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  USER_EXISTS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS","UserExists","com.vizifit.API.Facade.UserFacade")
+public static let  USER_EXISTS:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS","UserExists","com.vizifit.API.Facade.UserFacade")
 
 /**
 
@@ -398,7 +398,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  USER_EXISTS_FOR_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS_FOR_NETWORK","UserExistsForNetwork","com.vizifit.API.Facade.UserFacade")
+public static let  USER_EXISTS_FOR_NETWORK:UserFacadeServiceDefinition = UserFacadeServiceDefinition("USER_EXISTS_FOR_NETWORK","UserExistsForNetwork","com.vizifit.API.Facade.UserFacade")
 
 
  

@@ -16,36 +16,36 @@ open class AMFMessageHeader:BasicObject
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let CredentialsHeader = "Credentials"
+    public static let CredentialsHeader = "Credentials"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// DSid stands for Data Set Identification. It represents a Guid used to identify the remote client.
     /// </summary>
-    open static let AMFDSIdHeader = "DSId"
+    public static let AMFDSIdHeader = "DSId"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let DebugHeader = "amf_server_debug"
+    public static let DebugHeader = "amf_server_debug"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let ServiceBrowserHeader = "DescribeService"
+    public static let ServiceBrowserHeader = "DescribeService"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let ClearedCredentials = "ClearedCredentials"
+    public static let ClearedCredentials = "ClearedCredentials"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let CredentialsIdHeader = "CredentialsId"
+    public static let CredentialsIdHeader = "CredentialsId"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let RequestPersistentHeader = "RequestPersistentHeader"
+    public static let RequestPersistentHeader = "RequestPersistentHeader"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let UrlAppendHeader = "AppendToGatewayUrl"
+    public static let UrlAppendHeader = "AppendToGatewayUrl"
     
     fileprivate var _content: AnyObject? // Maybe NSObject?
     

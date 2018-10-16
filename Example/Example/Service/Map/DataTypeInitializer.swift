@@ -13,7 +13,7 @@ import SwiftAMFRemoter
 
 open class DataTypeInitializer  {
  
- 	open static func registerClassAliases(){
+ 	public static func registerClassAliases(){
  	
  		 let mgr:IRemoteServiceManager = RemoteServiceManager.getInstance() { RemoteServiceManager() }
  		

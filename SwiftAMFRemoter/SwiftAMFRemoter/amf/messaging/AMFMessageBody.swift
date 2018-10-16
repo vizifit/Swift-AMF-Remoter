@@ -15,19 +15,19 @@ open class AMFMessageBody:BasicObject  {
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let Recordset:String = "rs://"
+    public static let Recordset:String = "rs://"
     /// <summary>
     /// Suffix to denote a success.
     /// </summary>
-    open static let OnResult:String  = "/onResult"
+    public static let OnResult:String  = "/onResult"
     /// <summary>
     /// Suffix to denote a failure.
     /// </summary>
-    open static let OnStatus:String  = "/onStatus"
+    public static let OnStatus:String  = "/onStatus"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let OnDebugEvents:String  = "/onDebugEvents"
+    public static let OnDebugEvents:String  = "/onDebugEvents"
     
     
     /// <summary>
@@ -98,7 +98,7 @@ open class AMFMessageBody:BasicObject  {
         {
         get
         {
-            return _target.characters.count ==  0 || _target == "" || _target == "null"
+            return _target.isEmpty
         }
     }
     
@@ -212,7 +212,7 @@ open class AMFMessageBody:BasicObject  {
         {
         get
         {
-            if( _target != "nil" && _target.characters.count != 0 && _target != "" ){
+            if( _target != "nil" && _target.count != 0 && _target != "" ){
                 
                 
                 if( _target.lastIndexOf(".") != -1 ){

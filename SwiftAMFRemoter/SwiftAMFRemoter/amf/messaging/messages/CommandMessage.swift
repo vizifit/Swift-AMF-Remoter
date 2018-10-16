@@ -15,74 +15,74 @@ open class CommandMessage : AsyncMessage{
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let AuthenticationMessageRefType = "flex.messaging.messages.AuthenticationMessage";
+    public static let AuthenticationMessageRefType = "flex.messaging.messages.AuthenticationMessage";
     /// <summary>
     /// This operation is used to test connectivity over the current channel to the remote endpoint.
     /// </summary>
-    open static let ClientPingOperation = 5;
+    public static let ClientPingOperation = 5;
     /// <summary>
     /// This operation is used to subscribe to a remote destination.
     /// </summary>
-    open static let SubscribeOperation = 0;
+    public static let SubscribeOperation = 0;
     /// <summary>
     /// This operation is used to unsubscribe from a remote destination.
     /// </summary>
-    open static let UnsubscribeOperation = 1;
+    public static let UnsubscribeOperation = 1;
     /// <summary>
     /// This is the default operation for new CommandMessage instances.
     /// </summary>
-    open static let UnknownOperation = 10000;
+    public static let UnknownOperation = 10000;
     /// <summary>
     /// This operation is used to poll a remote destination for pending, undelivered messages.
     /// </summary>
-    open static let PollOperation = 2;
+    public static let PollOperation = 2;
     /// <summary>
     /// This operation is used by a remote destination to sync missed or cached messages back to a client as a result of a client issued poll command.
     /// </summary>
-    open static let ClientSyncOperation = 4;
+    public static let ClientSyncOperation = 4;
     /// <summary>
     /// This operation is used to request a list of failover endpoint URIs for the remote destination based on cluster membership.
     /// </summary>
-    open static let ClusterRequestOperation = 7;
+    public static let ClusterRequestOperation = 7;
     /// <summary>
     /// This operation is used to send credentials to the endpoint so that the user can be
     /// logged in over the current channel. The credentials need to be Base64 encoded and
     /// stored in the body of the message.
     /// </summary>
-    open static let LoginOperation = 8;
+    public static let LoginOperation = 8;
     /// <summary>
     /// This operation is used to log the user out of the current channel, and will
     /// invalidate the server session if the channel is HTTP based.
     /// </summary>
-    open static let LogoutOperation = 9;
+    public static let LogoutOperation = 9;
     /// <summary>
     /// This operation is used to indicate that the client's session with a remote destination has timed out.
     /// </summary>
-    open static let SessionInvalidateOperation = 10;
+    public static let SessionInvalidateOperation = 10;
     /// <summary>
     /// This operation is used to indicate that a channel has disconnected.
     /// </summary>
-    open static let DisconnectOperation = 12;
+    public static let DisconnectOperation = 12;
     
     /// <summary>
     /// The name for the selector header in subscribe messages.
     /// </summary>
-    open static let SelectorHeader = "DSSelector"
+    public static let SelectorHeader = "DSSelector"
     
     /// <summary>
     /// The name for the selector header in subscribe messages.
     /// </summary>
-    open static let MessagingVersion:String = "DSMessagingVersion"
+    public static let MessagingVersion:String = "DSMessagingVersion"
     
     /// <summary>
     /// The name for the header used internaly on the server to indicate that an
     ///	unsubscribe message is due to a client session being invalidated.
     /// </summary>
-    open static let SessionInvalidatedHeader = "DSSessionInvalidated"
+    public static let SessionInvalidatedHeader = "DSSessionInvalidated"
     /// <summary>
     /// This member supports the Fluorine infrastructure and is not intended to be used directly from your code.
     /// </summary>
-    open static let FluorineMessageClientTimeoutHeader = "FluorineMessageClientTimeout"
+    public static let FluorineMessageClientTimeoutHeader = "FluorineMessageClientTimeout"
     /// <summary>
     /// Poll wait must be suppressed.
     /// </summary>
@@ -145,7 +145,7 @@ open class CommandMessage : AsyncMessage{
     /// </summary>
     /// <param name="operation">The operation code.</param>
     /// <returns>A string representing the operation code.</returns>
-    open static func operationToString( _ operation:Int)->String
+    public static func operationToString( _ operation:Int)->String
     {
         if (operation < 0 || operation >= OperationNames.count){
             
@@ -190,7 +190,7 @@ open class CommandMessage : AsyncMessage{
     }
     
     
-    open static func commandMessageFactory(destination:String, endpoint:String, timeToLive:Int=15000, connectionId:String?=nil) -> CommandMessage{
+    public static func commandMessageFactory(destination:String, endpoint:String, timeToLive:Int=15000, connectionId:String?=nil) -> CommandMessage{
         
         let message = CommandMessage()
         message.clientId = UUID().uuidString // "D" - xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx (32 digits separated by hyphens)

@@ -17,29 +17,29 @@ open class FlexMessageHeaders
     /// Each message will contain this header identifying the Consumer instance that will
     /// receive the message.
     /// </summary>
-    open static let DestinationClientIdHeader:String = "DSDstClientId"
+    public static let DestinationClientIdHeader:String = "DSDstClientId"
     /// <summary>
     /// Messages are tagged with the endpoint id for the Channel they are sent over.
     /// Channels set this value automatically when they send a message.
     /// </summary>
-    open static let  EndpointHeader:String = "DSEndpoint"
+    public static let  EndpointHeader:String = "DSEndpoint"
     /// <summary>
     /// Messages that need to set remote credentials for a destination carry the Base64 encoded
     /// credentials in this header.
     /// </summary>
-    open static let RemoteCredentialsHeader:String = "DSRemoteCredentials"
+    public static let RemoteCredentialsHeader:String = "DSRemoteCredentials"
     /// <summary>
     /// Messages sent with a defined request timeout use this header.
     /// The request timeout value is set on outbound messages by services or channels and the value
     /// controls how long the corresponding MessageResponder will wait for an acknowledgement,
     /// result or fault response for the message before timing out the request.
     /// </summary>
-    open static let RequestTimeoutHeader:String = "DSRequestTimeout"
+    public static let RequestTimeoutHeader:String = "DSRequestTimeout"
     /// <summary>
     /// This header is used to transport the global FlexClient Id value in outbound messages
     /// once it has been assigned by the server.
     /// </summary>
-    open static let FlexClientIdHeader:String = "DSId"
+    public static let FlexClientIdHeader:String = "DSId"
 }
 
 @objc(FlexMessage) open class FlexMessage : BasicObject, IMessage{

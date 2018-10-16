@@ -25,7 +25,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  _GENERATE_DEPENDENCIES:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.CloudStorageFacade")
+public static let  _GENERATE_DEPENDENCIES:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("_GENERATE_DEPENDENCIES","_generateDependencies","com.vizifit.API.Facade.CloudStorageFacade")
 
 /**
 
@@ -37,7 +37,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  GET_ALL_MEDIA_ASSETS_BY_USER:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("GET_ALL_MEDIA_ASSETS_BY_USER","GetAllMediaAssetsByUser","com.vizifit.API.Facade.CloudStorageFacade")
+public static let  GET_ALL_MEDIA_ASSETS_BY_USER:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("GET_ALL_MEDIA_ASSETS_BY_USER","GetAllMediaAssetsByUser","com.vizifit.API.Facade.CloudStorageFacade")
 
 /**
 
@@ -55,7 +55,7 @@ Arguments:
 
 Service Returns: Please refer to services for return type
 */
-open static let  SAVE_MEDIA_ASSET_BY_USER_ID:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("SAVE_MEDIA_ASSET_BY_USER_ID","SaveMediaAssetByUserId","com.vizifit.API.Facade.CloudStorageFacade")
+public static let  SAVE_MEDIA_ASSET_BY_USER_ID:CloudStorageFacadeServiceDefinition = CloudStorageFacadeServiceDefinition("SAVE_MEDIA_ASSET_BY_USER_ID","SaveMediaAssetByUserId","com.vizifit.API.Facade.CloudStorageFacade")
 
 
  

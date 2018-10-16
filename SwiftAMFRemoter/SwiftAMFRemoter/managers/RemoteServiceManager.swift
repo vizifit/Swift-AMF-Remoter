@@ -17,7 +17,7 @@ open class RemoteServiceManager: IRemoteServiceManager  {
     
     
     /// Message constant
-    open static let SINGLETON_MSG = "RemoteServiceManager Singleton already constructed!"
+    public static let SINGLETON_MSG = "RemoteServiceManager Singleton already constructed!"
     
     // Mapping of NotificationConnector
     fileprivate var serviceConnectorMap: [String: IServiceConnectorView]

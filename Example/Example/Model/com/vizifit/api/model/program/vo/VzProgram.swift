@@ -2,7 +2,7 @@
 //  VzProgram.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:7.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -24,9 +24,17 @@ import SwiftAMFRemoter
 
 	public var ItemOrder:Int = -1
 
+	public var ProgramCategoryTypeId:Int = -1
+
+	public var ProgramCategoryType:VzProgramCategoryType?
+
 	public var ProgramStatusTypeId:Int = -1
 
 	public var ProgramStatusType:VzProgramStatusType?
+
+	public var ProgramAccessTypeId:Int = -1
+
+	public var ProgramAccessType:VzProgramAccessType?
 
 	public var Activities:[Any]?
 }

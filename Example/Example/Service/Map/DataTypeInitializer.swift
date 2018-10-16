@@ -13,7 +13,7 @@ import SwiftAMFRemoter
 
 open class DataTypeInitializer  {
  
- 	open static func registerClassAliases(){
+ 	public static func registerClassAliases(){
  	
  		 let mgr:IRemoteServiceManager = RemoteServiceManager.getInstance() { RemoteServiceManager() }
  		
@@ -26,6 +26,12 @@ open class DataTypeInitializer  {
 		mgr.addClassMap( ClassMap(className: "CloudStorageFacadeModel", classAlias: "com.vizifit.API.Facade.CloudStorageFacadeModel"))
 
 		mgr.addClassMap( ClassMap(className: "UserFacadeModel", classAlias: "com.vizifit.API.Facade.UserFacadeModel"))
+
+		mgr.addClassMap( ClassMap(className: "ActivityFacadeManifest", classAlias: "com.vizifit.API.Facade.ActivityFacadeManifest"))
+
+		mgr.addClassMap( ClassMap(className: "CloudStorageFacadeManifest", classAlias: "com.vizifit.API.Facade.CloudStorageFacadeManifest"))
+
+		mgr.addClassMap( ClassMap(className: "UserFacadeManifest", classAlias: "com.vizifit.API.Facade.UserFacadeManifest"))
 
 		mgr.addClassMap( ClassMap(className: "ActivityConfigurationData", classAlias: "com.vizifit.API.Model.Activity.ActivityConfigurationData"))
 
@@ -60,6 +66,8 @@ open class DataTypeInitializer  {
 		mgr.addClassMap( ClassMap(className: "BaseMedia", classAlias: "com.vizifit.API.Model.Base.BaseMedia"))
 
 		mgr.addClassMap( ClassMap(className: "BaseMediaContent", classAlias: "com.vizifit.API.Model.Base.BaseMediaContent"))
+
+		mgr.addClassMap( ClassMap(className: "BaseResult", classAlias: "com.vizifit.API.Model.Base.BaseResult"))
 
 		mgr.addClassMap( ClassMap(className: "BaseScheduleItem", classAlias: "com.vizifit.API.Model.Base.BaseScheduleItem"))
 
@@ -99,13 +107,23 @@ open class DataTypeInitializer  {
 
 		mgr.addClassMap( ClassMap(className: "VzProgram", classAlias: "com.vizifit.API.Model.Program.VzProgram"))
 
+		mgr.addClassMap( ClassMap(className: "VzProgramAccessType", classAlias: "com.vizifit.API.Model.Program.VzProgramAccessType"))
+
 		mgr.addClassMap( ClassMap(className: "VzProgramActivityAssignment", classAlias: "com.vizifit.API.Model.Program.VzProgramActivityAssignment"))
 
+		mgr.addClassMap( ClassMap(className: "VzProgramCategoryType", classAlias: "com.vizifit.API.Model.Program.VzProgramCategoryType"))
+
 		mgr.addClassMap( ClassMap(className: "VzProgramStatusType", classAlias: "com.vizifit.API.Model.Program.VzProgramStatusType"))
+
+		mgr.addClassMap( ClassMap(className: "VzServiceResult", classAlias: "com.vizifit.API.Model.Result.VzServiceResult"))
 
 		mgr.addClassMap( ClassMap(className: "VzScheduleDayType", classAlias: "com.vizifit.API.Model.Schedule.VzScheduleDayType"))
 
 		mgr.addClassMap( ClassMap(className: "VzScheduleTimeType", classAlias: "com.vizifit.API.Model.Schedule.VzScheduleTimeType"))
+
+		mgr.addClassMap( ClassMap(className: "VzMetricUnitAttributeType", classAlias: "com.vizifit.API.Model.System.VzMetricUnitAttributeType"))
+
+		mgr.addClassMap( ClassMap(className: "VzMetricUnitType", classAlias: "com.vizifit.API.Model.System.VzMetricUnitType"))
 
 		mgr.addClassMap( ClassMap(className: "UserContext", classAlias: "com.vizifit.API.Model.User.UserContext"))
 

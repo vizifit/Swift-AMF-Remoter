@@ -54,7 +54,7 @@ open class ASObject: BasicObject{
 //    }
  
     open var isTyped:Bool{
-        get { return (self.type != nil && self.type!.characters.count > 0) ? true : false }
+        get { return (self.type != nil && self.type!.count > 0) ? true : false }
     }
     
     open var hasProperties:Bool{

@@ -111,7 +111,7 @@ class ViewController: UIViewController, IServiceConnectorView {
         
         do {
             
-            let pCache:AMFPersistantCache = try AMFPersistantCache(cacheId: "TestCacheItem", cacheData: [])
+            let pCache:AMFPersistantCache = try AMFPersistantCache(cacheId: "USED_DATA_CACHE", cacheData: [])
             let result = try PersistantStorage.encodeItemToCache(cacheItemKey: pCache.cacheId, cache: pCache, object: value)
             
             print(result)
@@ -135,6 +135,12 @@ class ViewController: UIViewController, IServiceConnectorView {
     
     func testEncodeDecode() {
         
+        
+        let cachefiles = ["USED_DATA_CACHE",
+                          "MEDIA_DATA_CACHE",
+                          "ACTIVITY_DATA_CACHE"]
+        
+        PersistantStorage.remove(cachefiles, from: .caches)
         _encoder.resetPosition()
         _decoder.resetPosition()
         

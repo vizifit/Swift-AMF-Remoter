@@ -13,5 +13,5 @@ open class ServiceConstants{
     
     
     
-    open static let SERVICE_KEY:String  = "VZ_DEV_ENDPOINT"
+    public static let SERVICE_KEY:String  = "VZ_DEV_ENDPOINT"
 }

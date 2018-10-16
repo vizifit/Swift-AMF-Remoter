@@ -76,22 +76,22 @@ open class ClassDefinition
         get { return _members }
     }
     
-    open static func isClassExternizable(_ flags:Int)->Bool{
+    public static func isClassExternizable(_ flags:Int)->Bool{
         
         return ((flags >> 1) & 1) != 0
     }
     
-    open static func isClassDynamic(_ flags:Int)->Bool{
+    public static func isClassDynamic(_ flags:Int)->Bool{
         
         return ((flags >> 2) & 1) != 0
     }
     
-    open static func classMemberCount(_ flags:Int)->Int{
+    public static func classMemberCount(_ flags:Int)->Int{
         
         return flags >> 3
     }
     
-    open static func getFlags(_ clsDef:ClassDefinition)->Int{
+    public static func getFlags(_ clsDef:ClassDefinition)->Int{
         var flags = clsDef.members.count;
         flags = (flags << 1) | (clsDef.isDynamic ? 1 : 0);
         flags = (flags << 1) | (clsDef.isExternalizable ? 1 : 0);

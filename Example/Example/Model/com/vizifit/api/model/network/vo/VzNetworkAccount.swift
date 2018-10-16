@@ -2,7 +2,7 @@
 //  VzNetworkAccount.swift
 //  SwiftAMFRemoter
 //
-//  Created by SwiftAMFManager on 11-5-2017 1:7.
+//  Created by SwiftAMFManager on 11-29-2017 23:39.
 //  Copyright © 2017 by SwiftAMFManager. All rights reserved.
 //
 
@@ -24,7 +24,7 @@ import SwiftAMFRemoter
 
 	public var AuthToken:String = String()
 
-	public var DateRegistered:Any?
+	public var DateRegistered:Date?
 
 	public var DateRemoved:Any?
 

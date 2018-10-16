@@ -151,12 +151,12 @@ public final class NetConnection :NSObject{
     }
   
     
-    open func call( request:IMessage, serviceDefinition:IAMFServiceDefinition){
+    public func call( request:IMessage, serviceDefinition:IAMFServiceDefinition){
         
         _netConnectionClient!.call(request: request, serviceDefinition: serviceDefinition)
     }
     
-    open func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
+    public func call( requestGroup:AMFServiceRequestGroup, requestMessages:[AMFServiceRequestMessage]){
         
         _netConnectionClient!.call(requestGroup: requestGroup, requestMessages: requestMessages)
     }

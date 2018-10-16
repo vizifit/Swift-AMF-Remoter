@@ -82,7 +82,7 @@ open class  AMFServiceRequestGroup{
     }
 
    
-    open static func generateGroupKey(requestGroup:AMFServiceRequestGroup)->String?{
+    public static func generateGroupKey(requestGroup:AMFServiceRequestGroup)->String?{
     
         var generatedKey:String = "SVC_GROUP_REQ_"
         generatedKey += UUID().uuidString

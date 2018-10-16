@@ -64,7 +64,7 @@ public enum AMFCoderError: Error {
 open class AMF3Coder : AMFCoder{
     
     
-    open static var verboseDebug:Bool = false
+    public static var verboseDebug:Bool = false
     
     override public init(){
 

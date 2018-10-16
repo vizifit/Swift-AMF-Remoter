@@ -15,7 +15,7 @@ import Foundation
     open var correlationId:String /// Correlation id for the AsyncMessage.
     
     
-    open static let  SubtopicHeader:String = "DSSubtopic"
+    public static let  SubtopicHeader:String = "DSSubtopic"
    
     
     required public init() {

@@ -18,7 +18,7 @@ public enum ObjectEncoding : Int {
 
 open class AMFCoder: AMFByteArray, IAMFCoder {
     
-    open static var bypassUtf16Length:Bool = false
+    public static var bypassUtf16Length:Bool = false
     
     public func encodeValue(_ value:Any?) {
         

@@ -94,6 +94,6 @@ open class ServiceConnectorNotification: IServiceConnectorNotification{
     
     open var resultMessageGroup:[String:Any?]? { get {return self._resultMessageGroup} }
     
-    open var serviceKey:String { get {return self.serviceKey} }
+    open var serviceKey:String { get {return self._serviceKey} }
     
 }

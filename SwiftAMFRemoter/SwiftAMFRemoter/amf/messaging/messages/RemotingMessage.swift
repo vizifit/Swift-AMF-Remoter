@@ -76,7 +76,7 @@ import Foundation
         return localClone!
     }
     
-    open static func updateRemoteMessage(message:RemotingMessage, endpoint:String?, clientId:String?){
+    public static func updateRemoteMessage(message:RemotingMessage, endpoint:String?, clientId:String?){
         
         
         if(endpoint != nil){
@@ -89,7 +89,7 @@ import Foundation
         
     }
     
-    open static func remoteMessageFactory(destination:String, endpoint:String, timeToLive:Int=15000, connectionId:String?=nil) -> RemotingMessage{
+    public static func remoteMessageFactory(destination:String, endpoint:String, timeToLive:Int=15000, connectionId:String?=nil) -> RemotingMessage{
     
         
         

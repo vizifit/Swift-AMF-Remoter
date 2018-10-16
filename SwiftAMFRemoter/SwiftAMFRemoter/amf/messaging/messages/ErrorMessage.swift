@@ -22,12 +22,12 @@ import Foundation
     /// <summary>
     /// Client authentication fault code.
     /// </summary>
-    open static let ClientAuthenticationError = "Client.Authentication";
+    public static let ClientAuthenticationError = "Client.Authentication";
     
     /// <summary>
     /// Client authorization fault code.
     /// </summary>
-    open static let ClientAuthorizationError = "Client.Authorization";
+    public static let ClientAuthorizationError = "Client.Authorization";
     
     required public init() {
         
